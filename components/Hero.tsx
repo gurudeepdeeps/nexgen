@@ -52,19 +52,22 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
   }, []);
 
   const handleDownloadBrochure = () => {
+      const fileName = 'ZERONE_3.0_Brochure.pdf';
+      const filePath = `/${fileName}`;
+
       // Track download event
       if (typeof window.gtag !== 'undefined') {
           window.gtag('event', 'file_download', {
-              file_name: 'ZERONE_3.0_Brochure.pdf',
+              file_name: fileName,
               file_extension: 'pdf',
-              link_url: '/brochure.pdf'
+              link_url: filePath
           });
       }
 
       // Direct download link approach
       const link = document.createElement('a');
-      link.href = '/brochure.pdf'; 
-      link.setAttribute('download', 'ZERONE_3.0_Brochure.pdf');
+      link.href = filePath; 
+      link.setAttribute('download', fileName);
       link.setAttribute('target', '_blank'); // Fallback to open in new tab if download fails
       document.body.appendChild(link);
       link.click();
@@ -80,8 +83,6 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
         <div className="absolute inset-0 z-0 pointer-events-none">
             {/* Subtle Golden Spotlight behind Title */}
             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] bg-gold-600/5 rounded-full blur-[100px]" />
-            
-            {/* REMOVED VERTICAL GUIDE LINES HERE as requested */}
         </div>
 
         {/* Full Screen Hero Section */}
