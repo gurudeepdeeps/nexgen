@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, User, Trophy, Scroll, Phone, CheckCircle, ArrowRight } from 'lucide-react';
+import { X, User, Trophy, Scroll, Phone, CheckCircle, ArrowRight, Upload, CreditCard, Building } from 'lucide-react';
 import { EventDetails } from '../types';
 
 interface EventModalProps {
@@ -9,20 +10,66 @@ interface EventModalProps {
   onClose: () => void;
 }
 
+interface Participant {
+    name: string;
+    usn: string;
+}
+
 const EventModal: React.FC<EventModalProps> = ({ event, isOpen, onClose }) => {
   const [view, setView] = useState<'details' | 'register' | 'success'>('details');
-  const [formData, setFormData] = useState({
-      name: '',
-      usn: '',
-      college: '',
-      phone: ''
-  });
+  
+  // Dynamic Form State
+  const [teamName, setTeamName] = useState('');
+  const [college, setCollege] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [utr, setUtr] = useState('');
+  const [participants, setParticipants] = useState<Participant[]>([]);
+  const [file, setFile] = useState<File | null>(null);
+
+  // Initialize participants based on team size
+  useEffect(() => {
+    if (event) {
+        // Create initial empty slots for the maximum members allowed
+        const initialParticipants = Array(event.maxMembers).fill({ name: '', usn: '' });
+        setParticipants(initialParticipants);
+        setTeamName('');
+        setCollege('');
+        setPhone('');
+        setEmail('');
+        setUtr('');
+        setFile(null);
+    }
+  }, [event]);
 
   if (!event) return null;
+
+  const handleParticipantChange = (index: number, field: keyof Participant, value: string) => {
+      const updated = [...participants];
+      updated[index] = { ...updated[index], [field]: value };
+      setParticipants(updated);
+  };
+
+  const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+      if (e.target.files && e.target.files[0]) {
+          setFile(e.target.files[0]);
+      }
+  };
 
   const handleRegister = (e: React.FormEvent) => {
       e.preventDefault();
       // Simulate API call
+      console.log({
+          event: event.title,
+          teamName,
+          participants,
+          college,
+          phone,
+          email,
+          utr,
+          file
+      });
+      
       setTimeout(() => {
           setView('success');
       }, 1000);
@@ -32,52 +79,51 @@ const EventModal: React.FC<EventModalProps> = ({ event, isOpen, onClose }) => {
       onClose();
       setTimeout(() => {
           setView('details');
-          setFormData({ name: '', usn: '', college: '', phone: '' });
       }, 500);
   };
 
   return (
     <AnimatePresence>
       {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4">
+        <div className="fixed inset-0 z-[100] flex items-center justify-center px-4 py-4">
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={resetAndClose}
-            className="absolute inset-0 bg-black/90 backdrop-blur-sm"
+            className="absolute inset-0 bg-black/95 backdrop-blur-md"
           />
           
           <motion.div
             layoutId={`card-${event.id}`}
-            className="relative w-full max-w-4xl bg-[#0f0404] border border-gold-600 rounded-lg shadow-[0_0_50px_rgba(212,163,44,0.2)] overflow-hidden max-h-[90vh] overflow-y-auto custom-scrollbar flex flex-col"
+            className="relative w-full max-w-5xl bg-[#0f0404] border border-gold-600 rounded-lg shadow-[0_0_50px_rgba(212,163,44,0.2)] overflow-hidden max-h-[95vh] flex flex-col"
             initial={{ scale: 0.8, opacity: 0, rotateX: 20 }}
             animate={{ scale: 1, opacity: 1, rotateX: 0 }}
             exit={{ scale: 0.8, opacity: 0, rotateX: -20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
           >
             {/* Header */}
-            <div className="h-48 relative flex items-center justify-center shrink-0 overflow-hidden">
+            <div className="h-32 md:h-48 relative flex items-center justify-center shrink-0 overflow-hidden border-b border-gold-800">
                <img 
                   src={event.imageUrl} 
                   alt={event.title} 
                   className="absolute inset-0 w-full h-full object-cover" 
                />
-               <div className="absolute inset-0 bg-black/60" />
+               <div className="absolute inset-0 bg-black/70" />
                <div className="relative z-10 text-center px-4">
-                   <h2 className="text-3xl md:text-5xl font-display text-white text-shadow-strong uppercase tracking-wider">{event.title}</h2>
-                   <p className="text-gold-300 font-serif text-lg md:text-xl mt-2">{event.subtitle}</p>
+                   <h2 className="text-2xl md:text-5xl font-display text-white text-shadow-strong uppercase tracking-wider">{event.title}</h2>
+                   <p className="text-gold-300 font-serif text-sm md:text-xl mt-2">{event.subtitle}</p>
                </div>
                <button 
                 onClick={resetAndClose}
-                className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-red-900 rounded-full text-white transition-colors z-20"
+                className="absolute top-4 right-4 p-2 bg-black/50 hover:bg-red-900 rounded-full text-white transition-colors z-20 border border-gold-900"
                >
                    <X />
                </button>
             </div>
 
             {/* Content Area */}
-            <div className="flex-1 overflow-y-auto">
+            <div className="flex-1 overflow-y-auto custom-scrollbar bg-[#050101]">
                 <AnimatePresence mode="wait">
                     {view === 'details' && (
                         <motion.div 
@@ -150,56 +196,150 @@ const EventModal: React.FC<EventModalProps> = ({ event, isOpen, onClose }) => {
                             initial={{ opacity: 0, x: 20 }}
                             animate={{ opacity: 1, x: 0 }}
                             exit={{ opacity: 0, x: -20 }}
-                            className="p-8 max-w-2xl mx-auto"
+                            className="p-4 md:p-8"
                         >
-                            <h3 className="text-gold-500 font-display text-3xl mb-6 text-center">Warrior Registration</h3>
-                            <form onSubmit={handleRegister} className="space-y-6">
-                                <div>
-                                    <label className="block text-gold-200 font-serif mb-2">Full Name / Team Lead</label>
-                                    <input 
-                                        required
-                                        type="text" 
-                                        className="w-full bg-black/50 border border-gold-800 rounded p-3 text-white focus:border-gold-400 focus:outline-none focus:ring-1 focus:ring-gold-400 transition-all"
-                                        placeholder="Enter your name"
-                                        value={formData.name}
-                                        onChange={e => setFormData({...formData, name: e.target.value})}
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-gold-200 font-serif mb-2">USN / ID</label>
-                                    <input 
-                                        required
-                                        type="text" 
-                                        className="w-full bg-black/50 border border-gold-800 rounded p-3 text-white focus:border-gold-400 focus:outline-none focus:ring-1 focus:ring-gold-400 transition-all"
-                                        placeholder="1SI..."
-                                        value={formData.usn}
-                                        onChange={e => setFormData({...formData, usn: e.target.value})}
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-gold-200 font-serif mb-2">College Name</label>
-                                    <input 
-                                        required
-                                        type="text" 
-                                        className="w-full bg-black/50 border border-gold-800 rounded p-3 text-white focus:border-gold-400 focus:outline-none focus:ring-1 focus:ring-gold-400 transition-all"
-                                        placeholder="SIT, Tumkur"
-                                        value={formData.college}
-                                        onChange={e => setFormData({...formData, college: e.target.value})}
-                                    />
-                                </div>
-                                <div>
-                                    <label className="block text-gold-200 font-serif mb-2">Phone Scroll (Number)</label>
-                                    <input 
-                                        required
-                                        type="tel" 
-                                        className="w-full bg-black/50 border border-gold-800 rounded p-3 text-white focus:border-gold-400 focus:outline-none focus:ring-1 focus:ring-gold-400 transition-all"
-                                        placeholder="98765..."
-                                        value={formData.phone}
-                                        onChange={e => setFormData({...formData, phone: e.target.value})}
-                                    />
+                            <h3 className="text-gold-500 font-display text-3xl mb-6 text-center border-b border-gold-900 pb-4">
+                                {event.maxMembers > 1 ? 'Squad Registration' : 'Warrior Registration'}
+                            </h3>
+                            
+                            <form onSubmit={handleRegister} className="space-y-6 max-w-4xl mx-auto">
+                                
+                                {/* Core Team Info */}
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 p-6 bg-white/5 rounded-lg border border-gold-900/30">
+                                     <div className="md:col-span-2">
+                                        <label className="block text-gold-400 font-serif mb-2 text-sm uppercase tracking-wide">
+                                            {event.maxMembers > 1 ? "Team Name" : "Participant Name / Alias"}
+                                        </label>
+                                        <input 
+                                            required
+                                            type="text" 
+                                            className="w-full bg-black/50 border border-gold-800 rounded p-3 text-white focus:border-gold-400 focus:outline-none focus:ring-1 focus:ring-gold-400 transition-all"
+                                            placeholder="Enter Name"
+                                            value={teamName}
+                                            onChange={e => setTeamName(e.target.value)}
+                                        />
+                                     </div>
+
+                                    <div>
+                                        <label className="block text-gold-200 font-sans mb-2 text-xs uppercase">College Name</label>
+                                        <div className="relative">
+                                            <Building className="absolute left-3 top-3.5 w-4 h-4 text-gray-500" />
+                                            <input 
+                                                required
+                                                type="text" 
+                                                className="w-full bg-black/50 border border-gold-800 rounded p-3 pl-10 text-white focus:border-gold-400 focus:outline-none"
+                                                placeholder="SIT, Tumkur"
+                                                value={college}
+                                                onChange={e => setCollege(e.target.value)}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div>
+                                        <label className="block text-gold-200 font-sans mb-2 text-xs uppercase">Primary Contact</label>
+                                        <div className="relative">
+                                            <Phone className="absolute left-3 top-3.5 w-4 h-4 text-gray-500" />
+                                            <input 
+                                                required
+                                                type="tel" 
+                                                className="w-full bg-black/50 border border-gold-800 rounded p-3 pl-10 text-white focus:border-gold-400 focus:outline-none"
+                                                placeholder="98765..."
+                                                value={phone}
+                                                onChange={e => setPhone(e.target.value)}
+                                            />
+                                        </div>
+                                    </div>
+                                    <div className="md:col-span-2">
+                                        <label className="block text-gold-200 font-sans mb-2 text-xs uppercase">Email Address</label>
+                                        <input 
+                                            required
+                                            type="email" 
+                                            className="w-full bg-black/50 border border-gold-800 rounded p-3 text-white focus:border-gold-400 focus:outline-none"
+                                            placeholder="team@example.com"
+                                            value={email}
+                                            onChange={e => setEmail(e.target.value)}
+                                        />
+                                    </div>
                                 </div>
 
-                                <div className="flex gap-4 pt-4">
+                                {/* Participant Details Loop - Improved Visibility */}
+                                <div className="space-y-4">
+                                    <h4 className="text-gold-400 font-serif text-lg border-b border-gold-900/50 pb-2 mt-4 flex items-center gap-2">
+                                        <User className="w-5 h-5"/> {event.maxMembers > 1 ? "Squad Members" : "Participant Details"}
+                                    </h4>
+                                    
+                                    {participants.map((p, idx) => (
+                                        <div key={idx} className="flex flex-col md:flex-row gap-4 bg-[#1a0505] p-4 rounded border border-gold-900/50 items-start md:items-end">
+                                            <div className="w-full md:w-12 text-gold-500 font-display text-2xl opacity-50 text-center md:text-left">
+                                                {String(idx + 1).padStart(2, '0')}
+                                            </div>
+                                            <div className="flex-grow w-full">
+                                                <label className="block text-gray-400 text-[10px] mb-1 uppercase tracking-widest">Full Name</label>
+                                                <input 
+                                                    required
+                                                    type="text" 
+                                                    className="w-full bg-black/80 border border-gold-800/50 rounded p-2 text-white focus:border-gold-500 focus:outline-none"
+                                                    placeholder="Participant Name"
+                                                    value={p.name}
+                                                    onChange={e => handleParticipantChange(idx, 'name', e.target.value)}
+                                                />
+                                            </div>
+                                            <div className="w-full md:w-1/3">
+                                                <label className="block text-gray-400 text-[10px] mb-1 uppercase tracking-widest">USN / ID</label>
+                                                <input 
+                                                    required
+                                                    type="text" 
+                                                    className="w-full bg-black/80 border border-gold-800/50 rounded p-2 text-white focus:border-gold-500 focus:outline-none"
+                                                    placeholder="1SI..."
+                                                    value={p.usn}
+                                                    onChange={e => handleParticipantChange(idx, 'usn', e.target.value)}
+                                                />
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+
+                                {/* Payment Details */}
+                                <div className="bg-gold-900/10 p-6 rounded border border-gold-700/50 mt-8">
+                                    <h4 className="text-gold-400 font-serif text-lg mb-4 flex items-center gap-2">
+                                        <CreditCard className="w-5 h-5"/> Payment Verification
+                                    </h4>
+                                    
+                                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                        <div>
+                                            <label className="block text-gold-200 font-sans mb-2 text-xs uppercase">UTR / Transaction ID</label>
+                                            <input 
+                                                required
+                                                type="text" 
+                                                className="w-full bg-black/50 border border-gold-800 rounded p-3 text-white focus:border-gold-400 focus:outline-none"
+                                                placeholder="Transaction ID"
+                                                value={utr}
+                                                onChange={e => setUtr(e.target.value)}
+                                            />
+                                        </div>
+                                        <div>
+                                            <label className="block text-gold-200 font-sans mb-2 text-xs uppercase">Upload Screenshot</label>
+                                            <div className="relative">
+                                                <input 
+                                                    required
+                                                    type="file" 
+                                                    accept="image/*,application/pdf"
+                                                    onChange={handleFileChange}
+                                                    className="hidden"
+                                                    id="payment-upload"
+                                                />
+                                                <label 
+                                                    htmlFor="payment-upload"
+                                                    className={`flex items-center justify-center gap-2 w-full p-3 border border-dashed rounded cursor-pointer transition-colors ${file ? 'border-green-500 text-green-400 bg-green-900/10' : 'border-gold-800 text-gray-400 hover:border-gold-500 hover:text-gold-200 bg-black/50'}`}
+                                                >
+                                                    <Upload className="w-4 h-4" />
+                                                    <span className="truncate text-sm">{file ? file.name : "Choose File (Image/PDF)"}</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="flex gap-4 pt-4 sticky bottom-0 bg-[#0f0404] py-4 border-t border-gold-900/50 z-10">
                                     <button 
                                         type="button"
                                         onClick={() => setView('details')}
@@ -211,7 +351,7 @@ const EventModal: React.FC<EventModalProps> = ({ event, isOpen, onClose }) => {
                                         type="submit"
                                         className="flex-1 px-6 py-3 bg-gold-600 text-black font-bold font-display uppercase tracking-widest hover:bg-gold-500 transition-colors rounded-sm shadow-[0_0_15px_#D4A32C]"
                                     >
-                                        Confirm
+                                        Submit Registration
                                     </button>
                                 </div>
                             </form>
@@ -235,7 +375,8 @@ const EventModal: React.FC<EventModalProps> = ({ event, isOpen, onClose }) => {
                             </motion.div>
                             <h3 className="text-4xl font-display text-gold-400 mb-4">Allegiance Sworn!</h3>
                             <p className="text-gray-300 font-sans text-lg mb-8 max-w-md">
-                                Your registration for <span className="text-white font-bold">{event.title}</span> has been sealed in the royal archives. Prepare for battle.
+                                Your registration for <span className="text-white font-bold">{event.title}</span> has been sealed in the royal archives. <br/><br/>
+                                Our scribes will verify your payment and send a decree to your email shortly.
                             </p>
                             
                              <button 

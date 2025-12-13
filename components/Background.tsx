@@ -1,4 +1,6 @@
+
 import React, { useEffect, useRef } from 'react';
+import { motion } from 'framer-motion';
 
 const Background: React.FC = () => {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -23,16 +25,17 @@ const Background: React.FC = () => {
     resize();
 
     // Particle System (Golden Ash / Embers)
+    // Reduced count for performance (80 -> 40)
     const particles: { x: number; y: number; size: number; speed: number; opacity: number; sway: number }[] = [];
-    const particleCount = 200; // Increased count for better visibility
+    const particleCount = 40;
 
     for (let i = 0; i < particleCount; i++) {
       particles.push({
         x: Math.random() * width,
         y: Math.random() * height,
-        size: Math.random() * 3 + 1, // Larger particles
-        speed: Math.random() * 1.5 + 0.5, // Faster
-        opacity: Math.random() * 0.8 + 0.2, // More visible
+        size: Math.random() * 2 + 0.5, 
+        speed: Math.random() * 0.5 + 0.2,
+        opacity: Math.random() * 0.5 + 0.1,
         sway: Math.random() * 0.05 - 0.025,
       });
     }
@@ -43,22 +46,17 @@ const Background: React.FC = () => {
       // Draw Particles
       particles.forEach((p) => {
         p.y += p.speed;
-        p.x += Math.sin(p.y * 0.01) * 1 + p.sway; // More sway
+        p.x += Math.sin(p.y * 0.01) * 0.5 + p.sway; 
 
-        // Reset if out of bounds
         if (p.y > height) {
           p.y = -10;
           p.x = Math.random() * width;
         }
 
         ctx.beginPath();
-        // Golden/Fire color with glow
-        ctx.shadowBlur = 5;
-        ctx.shadowColor = "#D4A32C";
-        ctx.fillStyle = `rgba(255, 215, 0, ${p.opacity})`; 
+        ctx.fillStyle = `rgba(212, 163, 44, ${p.opacity})`; 
         ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
         ctx.fill();
-        ctx.shadowBlur = 0; // Reset shadow for performance
       });
 
       requestAnimationFrame(animate);
@@ -72,43 +70,56 @@ const Background: React.FC = () => {
   }, []);
 
   return (
-    <div className="fixed inset-0 w-full h-full pointer-events-none z-[-1] overflow-hidden bg-[#1a0505]">
+    <div className="fixed inset-0 w-full h-full pointer-events-none z-[-1] overflow-hidden bg-[#1a1500]">
       
-      {/* Base Layer: Rich Royal Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-[#2b0a0a] via-[#1a0505] to-[#120303]" />
-
-      {/* Texture Layer: Ancient Stone/Grunge (Removes the pitch black feel) */}
-      <div className="absolute inset-0 opacity-40 mix-blend-overlay" 
-           style={{ 
-               backgroundImage: `url("https://images.unsplash.com/photo-1550684848-fac1c5b4e853?q=80&w=2070&auto=format&fit=crop")`, 
-               backgroundSize: 'cover',
-               backgroundPosition: 'center'
-           }} 
+      {/* EPIC VISIBLE BACKGROUND IMAGE (Ancient Palace/Fortress) */}
+      <div 
+        className="absolute inset-0 transition-opacity duration-1000"
+        style={{ 
+            backgroundImage: `url("https://images.unsplash.com/photo-1599581878070-5b6d2e6161e7?q=80&w=2070&auto=format&fit=crop")`, 
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            opacity: 0.35 // Higher opacity so it's not black
+        }} 
       />
+
+      {/* Warm Gradient Overlay (Instead of black) */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-[#3d1e05]/30 to-black/80" />
       
-      {/* Pattern Overlay */}
-      <div className="absolute inset-0 opacity-10 mix-blend-color-dodge" 
+      {/* Texture */}
+      <div className="absolute inset-0 opacity-10 mix-blend-overlay" 
            style={{ 
                backgroundImage: `url("https://www.transparenttextures.com/patterns/black-scales.png")`, 
                backgroundSize: '120px'
            }} 
       />
 
-      {/* Giant Rotating Chakra/Mandala in Background (Slow Cinematic Movement) */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120vmax] h-[120vmax] opacity-[0.06] animate-spin-slow mix-blend-screen">
-         <div className="w-full h-full border-[80px] border-dashed border-gold-600 rounded-full" />
-      </div>
-      
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[90vmax] h-[90vmax] opacity-[0.08] animate-spin-reverse-slow mix-blend-screen">
-         <div className="w-full h-full border-[40px] border-dotted border-gold-400 rounded-full" />
+      {/* Floating Light Spirits - Reduced count for performance */}
+      <div className="absolute inset-0 overflow-hidden">
+          {[...Array(5)].map((_, i) => (
+             <motion.div 
+                key={i}
+                animate={{ 
+                    y: [0, -800], 
+                    opacity: [0, 0.6, 0],
+                }}
+                transition={{ 
+                    duration: Math.random() * 20 + 15, 
+                    repeat: Infinity, 
+                    ease: "linear"
+                }}
+                className="absolute rounded-full bg-gold-400 blur-[20px]"
+                style={{ 
+                    left: `${Math.random() * 100}%`, 
+                    top: `${Math.random() * 50 + 100}%`,
+                    width: '40px',
+                    height: '40px'
+                }}
+             />
+          ))}
       </div>
 
-      {/* Canvas for Falling Ash/Snow */}
       <canvas ref={canvasRef} className="absolute inset-0 z-0" />
-
-      {/* Ambient Glows */}
-      <div className="absolute top-[-10%] left-0 w-[50vw] h-[50vw] bg-gold-600/10 rounded-full blur-[100px] mix-blend-screen" />
-      <div className="absolute bottom-[-10%] right-0 w-[50vw] h-[50vw] bg-red-900/10 rounded-full blur-[100px] mix-blend-screen" />
     </div>
   );
 };

@@ -1,16 +1,39 @@
-import React, { useEffect, useState } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { Download, ChevronRight, Trophy, Sword, Star, Crown, Calendar } from 'lucide-react';
 
-const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onChangeView }) => {
+import React, { useEffect, useState } from 'react';
+import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
+import { Download, ChevronRight, Calendar } from 'lucide-react';
+
+// Declare global to access the gtag function defined in App.tsx or index.html
+declare global {
+  interface Window {
+    gtag: (...args: any[]) => void;
+  }
+}
+
+export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onChangeView }) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
-  const { scrollY } = useScroll();
-  const titleY = useTransform(scrollY, [0, 300], [0, -100]);
-  const opacity = useTransform(scrollY, [0, 300], [1, 0]);
+  
+  // Mouse Parallax Logic
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
+  const smoothX = useSpring(mouseX, { stiffness: 150, damping: 15 });
+  const smoothY = useSpring(mouseY, { stiffness: 150, damping: 15 });
+
+  const ringsX = useTransform(smoothX, [-0.5, 0.5], [-30, 30]);
+  const ringsY = useTransform(smoothY, [-0.5, 0.5], [-30, 30]);
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    const { clientX, clientY } = e;
+    const { innerWidth, innerHeight } = window;
+    const x = clientX / innerWidth - 0.5;
+    const y = clientY / innerHeight - 0.5;
+    mouseX.set(x);
+    mouseY.set(y);
+  };
 
   useEffect(() => {
-    // Set Date to May 25, 2025
-    const targetDate = new Date('2025-05-25T09:00:00').getTime();
+    // Set Date to Dec 24, 2025
+    const targetDate = new Date('2025-12-24T09:00:00').getTime();
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate - now;
@@ -28,28 +51,52 @@ const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onChangeView
     return () => clearInterval(interval);
   }, []);
 
-  const handleDownloadBrochure = (e: React.MouseEvent) => {
-      e.preventDefault();
-      const link = document.createElement("a");
-      link.href = "data:text/plain;charset=utf-8," + encodeURIComponent("ZERONE 3.0 Brochure Content Simulation...");
-      link.download = "zerone_brochure.txt";
+  const handleDownloadBrochure = () => {
+      // Track download event
+      if (typeof window.gtag !== 'undefined') {
+          window.gtag('event', 'file_download', {
+              file_name: 'ZERONE_3.0_Brochure.pdf',
+              file_extension: 'pdf',
+              link_url: '/brochure.pdf'
+          });
+      }
+
+      // Direct download link approach
+      const link = document.createElement('a');
+      link.href = '/brochure.pdf'; 
+      link.setAttribute('download', 'ZERONE_3.0_Brochure.pdf');
+      link.setAttribute('target', '_blank'); // Fallback to open in new tab if download fails
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
-      alert("Brochure download started!");
   };
 
   return (
-    <div className="w-full overflow-hidden perspective-1000">
+    <div 
+        className="w-full overflow-hidden perspective-1000 relative z-20"
+        onMouseMove={handleMouseMove}
+    >
+        {/* --- LIGHTING & AMBIANCE LAYERS --- */}
+        <div className="absolute inset-0 z-0 pointer-events-none">
+            {/* Subtle Golden Spotlight behind Title */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] md:w-[1000px] md:h-[1000px] bg-gold-600/5 rounded-full blur-[100px]" />
+            
+            {/* REMOVED VERTICAL GUIDE LINES HERE as requested */}
+        </div>
+
         {/* Full Screen Hero Section */}
-        <div className="relative min-h-screen w-full flex items-center justify-center bg-transparent pt-24 pb-10 overflow-hidden">
+        <div className="relative min-h-screen w-full flex flex-col items-center justify-center bg-transparent overflow-hidden pt-20 pb-8 md:pt-32 md:pb-0">
         
-        {/* 3D Rotating Rings Background (Replaces Sword) */}
+        {/* 3D Rotating Rings Background with Parallax */}
         <motion.div 
-            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[900px] h-[900px] rounded-full border border-gold-900/10 pointer-events-none"
-            animate={{ rotate: 360, scale: [1, 1.1, 1] }}
+            className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[550px] h-[550px] md:w-[900px] md:h-[900px] rounded-full border border-gold-900/10 pointer-events-none"
+            animate={{ rotate: 360 }}
+            style={{ 
+                x: ringsX, 
+                y: ringsY,
+                perspective: 1000 
+            }}
             transition={{ duration: 80, repeat: Infinity, ease: "linear" }}
-            style={{ perspective: 1000 }}
         >
             <div className="absolute inset-0 rounded-full border-t-[3px] border-gold-500/20 transform rotate-45" />
             <div className="absolute inset-20 rounded-full border-b-[3px] border-red-900/30 transform -rotate-45" />
@@ -58,56 +105,68 @@ const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onChangeView
 
         {/* Main Content */}
         <motion.div 
-            style={{ y: titleY, opacity }}
-            className="relative z-10 text-center px-4 w-full max-w-6xl flex flex-col items-center mt-8"
+            className="relative z-30 text-center px-4 w-full max-w-7xl flex flex-col items-center justify-center"
         >
-            
-            {/* Top Organization Header */}
-            <motion.div
-                initial={{ opacity: 0, y: -20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.8 }}
-                className="mb-6 flex flex-col items-center justify-center gap-4"
-            >
-                <div className="flex items-center gap-4">
-                     <img 
-                        src="https://img.collegepravesh.com/2018/10/SIT-Tumkur-Logo.png" 
-                        alt="SIT Logo" 
-                        className="w-16 h-16 md:w-20 md:h-20 object-contain drop-shadow-[0_0_15px_rgba(255,255,255,0.3)]"
-                    />
-                    <div className="text-left">
-                        <h3 className="text-gray-300 font-serif text-sm md:text-lg tracking-wider">
+             {/* --- HEADER SECTION: COLLEGE & DEPT --- */}
+             <motion.div
+                 initial={{ opacity: 0, y: -20 }}
+                 animate={{ opacity: 1, y: 0 }}
+                 transition={{ delay: 0.2, duration: 0.8 }}
+                 className="w-full max-w-6xl mx-auto mb-4 relative z-10"
+             >
+                {/* Bordered Royal Badge Container */}
+                <div className="relative border border-gold-600/40 bg-black/60 backdrop-blur-md rounded-xl p-4 md:px-10 flex flex-col md:flex-row items-center justify-center gap-3 md:gap-6 shadow-[0_0_50px_rgba(0,0,0,0.8)] mx-auto w-full max-w-[95%] md:max-w-full">
+                    
+                    {/* Decorative Corner Accents */}
+                    <div className="absolute top-0 left-0 w-6 h-6 border-t-2 border-l-2 border-gold-500 rounded-tl-lg" />
+                    <div className="absolute top-0 right-0 w-6 h-6 border-t-2 border-r-2 border-gold-500 rounded-tr-lg" />
+                    <div className="absolute bottom-0 left-0 w-6 h-6 border-b-2 border-l-2 border-gold-500 rounded-bl-lg" />
+                    <div className="absolute bottom-0 right-0 w-6 h-6 border-b-2 border-r-2 border-gold-500 rounded-br-lg" />
+
+                    {/* Logo Area */}
+                    <div className="relative shrink-0 mb-1 md:mb-0">
+                         <div className="absolute inset-0 bg-white/10 blur-xl rounded-full" />
+                         <img 
+                            src="https://img.collegepravesh.com/2018/10/SIT-Tumkur-Logo.png" 
+                            alt="SIT Logo" 
+                            className="relative w-12 h-12 md:w-20 md:h-20 object-contain"
+                         />
+                    </div>
+
+                    {/* Text Area - Centered Items */}
+                    <div className="text-center flex flex-col items-center justify-center w-full">
+                        <h3 className="text-white font-serif text-sm sm:text-lg md:text-2xl lg:text-3xl font-bold tracking-wider mb-1 leading-tight text-shadow-strong md:whitespace-nowrap px-2">
                             SIDDAGANGA INSTITUTE OF TECHNOLOGY
                         </h3>
-                         <p className="text-gold-500/80 font-sans text-xs uppercase tracking-[0.2em] font-bold">
+                        {/* Divider */}
+                        <div className="h-px w-3/4 bg-gradient-to-r from-transparent via-gold-500 to-transparent mb-1 opacity-60" />
+                        <h4 className="text-gold-400 font-display text-xs sm:text-sm md:text-lg tracking-[0.2em] uppercase font-bold text-center px-1">
                             Organized by Dept. of MCA
-                        </p>
+                        </h4>
                     </div>
                 </div>
-            </motion.div>
 
-             {/* Presented By */}
-             <motion.div
-                 initial={{ scale: 0.9, opacity: 0 }}
-                 animate={{ scale: 1, opacity: 1 }}
-                 transition={{ delay: 0.3, duration: 0.8 }}
-                 className="mb-2"
-             >
-                <span className="text-gold-400 font-display text-lg md:text-2xl tracking-[0.3em] uppercase border-b border-gold-800 pb-1">
-                    Presented by Pied Pipers
-                </span>
+                {/* Presented By Section - Below the Box */}
+                <div className="text-center mt-4 md:mt-6">
+                    <p className="text-gold-200/60 font-serif text-[10px] md:text-xs tracking-[0.25em] uppercase mb-1">
+                        In Association With Students' Coding Club
+                    </p>
+                    <h5 className="text-gold-500 font-display text-lg md:text-2xl tracking-[0.2em] uppercase text-shadow-gold flex flex-col md:flex-row items-center justify-center gap-2">
+                        PIEDPIPERS <span className="text-[10px] md:text-xs text-gold-600 tracking-widest font-sans opacity-80 md:mt-1">Presents</span>
+                    </h5>
+                </div>
              </motion.div>
 
-            {/* EPIC MAIN TITLE */}
-            <div className="relative py-4 md:py-8 perspective-1000 group cursor-default w-full">
+            {/* --- EVENT TITLE SECTION --- */}
+            <div className="relative py-0 perspective-1000 group cursor-default w-full mt-0">
                 <motion.h1
                     initial={{ scale: 0.8, opacity: 0, rotateX: 20 }}
                     animate={{ scale: 1, opacity: 1, rotateX: 0 }}
                     transition={{ type: "spring", stiffness: 80, damping: 20, delay: 0.5 }}
-                    className="relative z-10 text-6xl md:text-[9rem] leading-none font-display font-black text-transparent bg-clip-text bg-gradient-to-b from-[#ffecb3] via-[#d4a32c] to-[#5c4005] drop-shadow-2xl"
+                    className="relative z-10 text-5xl md:text-[8rem] lg:text-[10rem] leading-none font-display font-black text-transparent bg-clip-text bg-gradient-to-b from-[#ffecb3] via-[#d4a32c] to-[#5c4005] drop-shadow-2xl"
                     style={{
                         textShadow: '0 10px 30px rgba(0,0,0,0.8), 0 0 50px rgba(212, 163, 44, 0.3)',
-                        WebkitTextStroke: '2px rgba(138, 110, 40, 0.3)'
+                        WebkitTextStroke: '1px rgba(138, 110, 40, 0.5)'
                     }}
                 >
                     ZERONE 3.0
@@ -115,154 +174,90 @@ const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onChangeView
             </div>
 
             {/* Subtitle */}
-            <div className="flex items-center justify-center gap-6 mb-8">
-                <motion.div animate={{ x: [-5, 0, -5] }} transition={{ repeat: Infinity, duration: 2 }} className="text-gold-500 text-2xl hidden md:block">✦</motion.div>
+            <div className="flex items-center justify-center gap-3 md:gap-6 mb-2 md:mb-3">
+                <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 2 }} className="text-gold-500 text-lg md:text-2xl hidden md:block">✦</motion.div>
                 <motion.h2
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.8 }}
-                    className="text-3xl md:text-6xl font-serif text-white tracking-[0.2em] uppercase"
+                    className="text-2xl md:text-6xl font-serif text-white tracking-[0.3em] uppercase"
                     style={{ textShadow: '0 0 20px rgba(212, 163, 44, 0.6)' }}
                 >
                     YUGA
                 </motion.h2>
-                <motion.div animate={{ x: [5, 0, 5] }} transition={{ repeat: Infinity, duration: 2 }} className="text-gold-500 text-2xl hidden md:block">✦</motion.div>
+                <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 2 }} className="text-gold-500 text-lg md:text-2xl hidden md:block">✦</motion.div>
             </div>
             
-            <p className="text-gold-200/60 font-sans tracking-[0.5em] text-xs md:text-lg mb-8 uppercase">The Age of Digital Empires</p>
+            <p className="text-gold-200/60 font-sans tracking-[0.3em] text-xs md:text-lg mb-6 md:mb-8 uppercase px-6 py-1">
+                The Age of Digital Empire
+                <br/>
+                <span className="text-[10px] md:text-xs text-gold-600 block mt-1 md:mt-2 tracking-[0.2em] font-bold">MCA Alumni Sponsored Fest</span>
+            </p>
 
-            {/* Date Display */}
-            <div className="flex items-center gap-3 bg-gold-900/30 border border-gold-600/50 px-6 py-3 rounded-full mb-10 backdrop-blur-md">
-                 <Calendar className="text-gold-400 w-5 h-5" />
-                 <span className="text-gold-100 font-serif text-lg tracking-widest border-r border-gold-600/50 pr-4 mr-1">MAY 25 & 26</span>
-                 <span className="text-gold-400 font-sans text-sm">2025</span>
-            </div>
-
-            {/* Countdown */}
-            <div className="flex justify-center flex-wrap gap-4 md:gap-8 mb-10 font-serif text-gold-300">
-            {[
-                { label: 'Days', val: timeLeft.days },
-                { label: 'Hours', val: timeLeft.hours },
-                { label: 'Min', val: timeLeft.minutes },
-                { label: 'Sec', val: timeLeft.seconds }
-            ].map((item, idx) => (
-                <div key={idx} className="flex flex-col items-center">
-                    <div className="relative group">
-                        <span className="text-xl md:text-4xl font-bold border border-gold-800 bg-black/60 px-3 py-2 md:px-4 md:py-3 rounded backdrop-blur-md min-w-[60px] md:min-w-[70px] inline-block text-center shadow-[0_0_15px_rgba(212,163,44,0.3)] border-b-4 border-b-gold-600">
-                            {String(item.val).padStart(2, '0')}
-                        </span>
-                    </div>
-                    <span className="text-[10px] mt-2 uppercase tracking-widest text-gold-600 font-sans">{item.label}</span>
+            {/* Date & Countdown Container */}
+            <div className="flex flex-col md:flex-row items-center gap-6 md:gap-8 mb-8 md:mb-12">
+                {/* Date Display */}
+                <div className="flex items-center gap-4 bg-black/80 border border-gold-600 px-6 py-3 rounded-lg backdrop-blur-md shadow-[0_0_20px_rgba(212,163,44,0.15)] scale-90 md:scale-100">
+                    <Calendar className="text-gold-400 w-6 h-6" />
+                    <span className="text-gold-100 font-serif text-2xl tracking-widest border-r border-gold-600/50 pr-4 mr-1">DEC 24</span>
+                    <span className="text-gold-400 font-sans text-xl">2025</span>
                 </div>
-            ))}
+
+                {/* Countdown */}
+                <div className="flex gap-4 font-serif text-gold-300 scale-90 md:scale-100">
+                    {[
+                        { label: 'Days', val: timeLeft.days },
+                        { label: 'Hours', val: timeLeft.hours },
+                        { label: 'Min', val: timeLeft.minutes },
+                        { label: 'Sec', val: timeLeft.seconds }
+                    ].map((item, idx) => (
+                        <div key={idx} className="flex flex-col items-center">
+                            <div className="relative group">
+                                <span className="text-xl md:text-3xl font-bold border border-gold-800 bg-black/80 px-3 py-2 rounded backdrop-blur-md min-w-[60px] inline-block text-center shadow-[0_0_15px_rgba(212,163,44,0.2)] border-b-2 border-b-gold-600">
+                                    {String(item.val).padStart(2, '0')}
+                                </span>
+                            </div>
+                            <span className="text-[10px] mt-1 uppercase tracking-widest text-gold-500 font-sans font-bold">{item.label}</span>
+                        </div>
+                    ))}
+                </div>
             </div>
 
             {/* Buttons */}
-            <div className="flex flex-col md:flex-row items-center justify-center gap-6">
+            <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 w-full max-w-4xl relative z-40 pb-8 md:pb-16">
+                
+                {/* Enter Arena Button */}
                 <motion.button
-                    whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(212,163,44,0.4)" }}
+                    whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(212,163,44,0.3)" }}
                     whileTap={{ scale: 0.95 }}
                     onClick={() => onChangeView('events')}
-                    className="relative px-12 py-4 bg-[#1a0505] border border-gold-600 text-gold-100 font-bold font-serif tracking-widest text-lg group overflow-hidden"
+                    className="relative group w-full md:w-64 h-14 md:h-16 bg-black/40 border border-gold-500 rounded flex items-center justify-center overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(212,163,44,0.1)]"
                 >
-                    <span className="relative z-10 flex items-center gap-2">
-                        ENTER THE ARENA <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    <div className="absolute inset-0 bg-gold-600/10 group-hover:bg-gold-600/20 transition-colors" />
+                    <div className="absolute inset-1 border border-gold-500/30 rounded-sm" />
+                    <span className="relative z-10 flex items-center justify-center gap-3 text-gold-100 font-serif font-bold tracking-[0.15em] uppercase text-sm md:text-base">
+                        ENTER THE ARENA <ChevronRight className="w-5 h-5 text-gold-400 group-hover:translate-x-1 transition-transform" />
                     </span>
-                    <div className="absolute inset-0 bg-gold-600 transform scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-300 z-0" />
                 </motion.button>
                 
+                {/* Download Brochure Button */}
                 <motion.button
-                    whileHover={{ scale: 1.05, backgroundColor: 'rgba(255,255,255,0.05)' }}
+                    whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(212,163,44,0.3)" }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleDownloadBrochure}
-                    className="px-8 py-4 text-gray-400 font-sans tracking-widest text-sm flex items-center gap-2 hover:text-gold-300 transition-colors uppercase border-b border-transparent hover:border-gold-500"
+                    className="relative group w-full md:w-64 h-14 md:h-16 bg-black/40 border border-gold-500 rounded flex items-center justify-center overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(212,163,44,0.1)]"
                 >
-                    <Download className="w-4 h-4" />
-                    Get Decree (Brochure)
+                     <div className="absolute inset-0 bg-gold-600/10 group-hover:bg-gold-600/20 transition-colors" />
+                    <div className="absolute inset-1 border border-gold-500/30 rounded-sm" />
+                    <span className="relative z-10 flex items-center justify-center gap-3 text-gold-100 font-sans font-bold tracking-[0.15em] uppercase text-sm md:text-base">
+                        <Download className="w-5 h-5 text-gold-400" /> DOWNLOAD BROCHURE
+                    </span>
                 </motion.button>
+
             </div>
         </motion.div>
         
-        {/* Scroll Indicator */}
-        <motion.div 
-            className="absolute bottom-4 left-1/2 transform -translate-x-1/2 z-20"
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-        >
-             <div className="w-6 h-10 border-2 border-gold-500 rounded-full flex justify-center p-2 bg-black/50 backdrop-blur">
-                 <div className="w-1 h-2 bg-gold-500 rounded-full animate-bounce" />
-             </div>
-        </motion.div>
-        </div>
-
-        {/* Scrollable Content Section 1: Highlights */}
-        <div className="relative z-10 bg-[#0a0202] py-20 px-6 border-t border-gold-900/50">
-             <div className="max-w-6xl mx-auto">
-                 <div className="text-center mb-16">
-                     <h2 className="text-3xl md:text-5xl font-display text-gold-400 mb-4">THE REALM HIGHLIGHTS</h2>
-                     <div className="w-24 h-1 bg-gradient-to-r from-transparent via-gold-600 to-transparent mx-auto" />
-                 </div>
-
-                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                     <FeatureCard icon={<Trophy className="w-8 h-8 text-gold-400" />} title="Epic Prize Pool" desc="Compete for glory and riches. Over ₹50,000 worth of treasures await the victors." />
-                     <FeatureCard icon={<Sword className="w-8 h-8 text-gold-400" />} title="8 Legendary Events" desc="From coding battles to treasure hunts, prove your mettle across diverse domains." />
-                     <FeatureCard icon={<Star className="w-8 h-8 text-gold-400" />} title="Cultural Saga" desc="Experience the fusion of technology and tradition. A grand feast for the eyes and mind." />
-                 </div>
-             </div>
-        </div>
-
-        {/* Scrollable Content Section 2: The Arena */}
-        <div className="relative z-10 bg-[#050101] py-24 px-6">
-            <div className="max-w-5xl mx-auto flex flex-col md:flex-row items-center gap-12">
-                <div className="w-full md:w-1/2">
-                    <motion.div 
-                        initial={{ opacity: 0, x: -50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                        className="relative rounded-lg overflow-hidden border border-gold-800/50 shadow-2xl"
-                    >
-                         <img src="https://images.unsplash.com/photo-1517048676732-d65bc937f952?q=80&w=1000&auto=format&fit=crop" alt="The Arena" className="w-full h-auto opacity-70 hover:opacity-100 transition-opacity duration-700" />
-                         <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent" />
-                    </motion.div>
-                </div>
-                <div className="w-full md:w-1/2 text-left">
-                     <motion.div
-                        initial={{ opacity: 0, x: 50 }}
-                        whileInView={{ opacity: 1, x: 0 }}
-                        viewport={{ once: true }}
-                     >
-                         <div className="flex items-center gap-2 mb-4 text-gold-500">
-                             <Crown className="w-6 h-6" />
-                             <span className="font-serif tracking-widest uppercase">The Legacy</span>
-                         </div>
-                         <h2 className="text-4xl md:text-5xl font-display text-white mb-6 leading-tight">WHERE LEGENDS <br/><span className="text-gold-500">ARE FORGED</span></h2>
-                         <p className="text-gray-400 font-sans text-lg leading-relaxed mb-6">
-                             Zerone has been the testing ground for the brightest minds of the region for over a decade. In 2025, we return bigger, bolder, and louder. The YUGA edition brings forth challenges that will test not just your coding skills, but your strategy, creativity, and endurance.
-                         </p>
-                         <button onClick={() => onChangeView('about')} className="text-gold-400 hover:text-white font-serif uppercase tracking-widest border-b border-gold-500 pb-1 flex items-center gap-2 group">
-                             Read the full saga <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                         </button>
-                     </motion.div>
-                </div>
-            </div>
         </div>
     </div>
   );
 };
-
-const FeatureCard: React.FC<{ icon: React.ReactNode, title: string, desc: string }> = ({ icon, title, desc }) => (
-    <motion.div 
-       whileHover={{ y: -10 }}
-       className="bg-[#150505] p-8 rounded border border-gold-900/30 hover:border-gold-500/50 transition-all text-center group"
-    >
-        <div className="w-16 h-16 bg-gold-900/20 rounded-full flex items-center justify-center mx-auto mb-6 group-hover:bg-gold-500/20 transition-colors">
-            {icon}
-        </div>
-        <h3 className="text-xl font-serif text-white mb-3">{title}</h3>
-        <p className="text-gray-400 text-sm leading-relaxed">
-            {desc}
-        </p>
-    </motion.div>
-);
-
-export default Hero;

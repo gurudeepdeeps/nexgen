@@ -1,3 +1,4 @@
+
 export enum EventCategory {
   CODING = 'Coding',
   DESIGN = 'Design',
@@ -24,6 +25,7 @@ export interface EventDetails {
   prizePool: string;
   registrationFee: string;
   teamSize: string; 
+  maxMembers: number; // Added for form logic
   rules: string[];
   coordinators: Coordinator[];
   imageUrl: string; 

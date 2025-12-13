@@ -1,3 +1,4 @@
+
 import React from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 
@@ -6,7 +7,7 @@ const About: React.FC = () => {
   const rotateX = useTransform(scrollYProgress, [0, 1], [0, 20]);
 
   return (
-    <div id="about" className="relative py-32 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
+    <div id="about" className="relative py-20 px-6 md:px-12 max-w-7xl mx-auto overflow-hidden">
         {/* Decorative Background Symbol */}
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-5 pointer-events-none">
             <div className="text-[20rem] font-display text-gold-500 rotate-12">Z</div>
@@ -29,11 +30,11 @@ const About: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8 }}
-            className="text-center mb-20 relative z-10"
+            className="text-center mb-16 relative z-10"
         >
             <span className="text-gold-600 font-serif uppercase tracking-[0.3em] text-sm block mb-4">The Royal Decree</span>
             <h2 className="text-4xl md:text-7xl font-display text-transparent bg-clip-text bg-gradient-to-b from-gold-300 to-gold-700 mb-8 drop-shadow-lg">
-                THE KINGDOM CALLS
+                NAMASKARA
             </h2>
             
             <div className="relative max-w-4xl mx-auto p-1">
@@ -43,71 +44,48 @@ const About: React.FC = () => {
                 
                 <div className="bg-[#0f0404]/80 backdrop-blur-sm p-8 md:p-12 rounded-lg border border-gold-500/20 shadow-2xl relative text-left md:text-center">
                     <p className="text-xl md:text-2xl font-serif text-gold-100 leading-relaxed mb-6">
-                        "From the ancient halls of <span className="text-gold-500">Siddaganga Institute of Technology</span>, we summon the bravest tech-warriors."
+                        "We extend a warm royal welcome to all participants and students from various institutes joining us."
                     </p>
                     <p className="text-gray-400 font-sans text-lg leading-relaxed text-justify mb-6">
-                        Organized by the <strong>Department of MCA</strong> in association with the <strong>Pied Pipers</strong> club, ZERONE 3.0 is not just a fest; it is a battleground of intellect. 
-                        The theme <strong>YUGA: The Age of Digital Empires</strong> represents the fusion of ancient valor and futuristic innovation.
+                        Organized by the <strong>Department of MCA</strong> (Program Accredited by NBA) in association with <strong>Students' Coding Club PIEDPIPERS</strong>, 
+                        Siddaganga Institute of Technology presents <strong>ZERONE 3.0 – YUGA: The Age of Digital Empires</strong>.
                     </p>
                     <p className="text-gray-400 font-sans text-lg leading-relaxed text-justify">
-                        Just as empires of old were built on strategy and strength, the digital empires of today are built on code, creativity, and intellect.
-                        Step into our realm, showcase your excellence, and be part of this majestic celebration of technology.
+                        This <strong>MCA Alumni Sponsored Fest</strong> is an Intercollegiate Tech Showdown. 
+                        On <strong>24th December 2025</strong>, the gates open. 
+                        Step into our realm, showcase your excellence, and be part of this majestic celebration of technology and innovation.
                     </p>
                 </div>
             </div>
         </motion.div>
 
-        {/* The Chronicles Section (Added for length & animation) */}
-        <div className="mb-32 perspective-1000">
-             <div className="text-center mb-12">
-                 <h3 className="text-3xl font-display text-white">THE CHRONICLES</h3>
-                 <p className="text-gray-500 text-sm tracking-widest uppercase">History of Dominance</p>
-             </div>
-             
-             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                 {[
-                    { year: '2023', theme: 'Genesis', desc: 'The beginning of a new era of technical excellence.' },
-                    { year: '2024', theme: 'Ascension', desc: 'Rising above the ordinary, setting new standards.' },
-                    { year: '2025', theme: 'Yuga', desc: 'The current age. Where digital empires are forged.' }
-                 ].map((item, i) => (
-                     <motion.div
-                        key={i}
-                        style={{ rotateX: rotateX }}
-                        whileHover={{ scale: 1.05, rotateX: 0 }}
-                        className="bg-[#150505] p-6 rounded border border-gold-900/30 text-center shadow-2xl"
-                     >
-                         <div className="text-5xl font-display text-gold-900 mb-4">{item.year}</div>
-                         <h4 className="text-xl font-serif text-gold-400 mb-2">{item.theme}</h4>
-                         <p className="text-gray-400 text-sm">{item.desc}</p>
-                     </motion.div>
-                 ))}
-             </div>
-        </div>
-
         {/* Vision & Mission */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16 relative z-10">
             <motion.div 
                 whileHover={{ scale: 1.02 }}
                 className="bg-gradient-to-br from-[#1a0505] to-black p-8 rounded border-l-4 border-gold-500"
             >
-                <h3 className="text-2xl font-display text-gold-400 mb-4">OUR VISION</h3>
+                <h3 className="text-2xl font-display text-gold-400 mb-4">OUR REALM</h3>
                 <p className="text-gray-400 font-sans">
-                    To create a platform where technical brilliance meets creative execution, fostering a community of innovators who are ready to lead the digital age.
+                    Siddaganga Institute of Technology.<br/>
+                    An Autonomous Institution, Affiliated to VTU, Belagavi. Approved by AICTE, New Delhi.
+                    Accredited by NAAC with A++ Grade.
                 </p>
             </motion.div>
              <motion.div 
                 whileHover={{ scale: 1.02 }}
                 className="bg-gradient-to-bl from-[#1a0505] to-black p-8 rounded border-r-4 border-gold-500 text-right"
             >
-                <h3 className="text-2xl font-display text-gold-400 mb-4">OUR MISSION</h3>
+                <h3 className="text-2xl font-display text-gold-400 mb-4">THE ALLIANCE</h3>
                 <p className="text-gray-400 font-sans">
-                    To challenge conventions, inspire collaboration, and push the boundaries of what is possible through a series of rigorously designed technical and non-technical events.
+                    Department of MCA<br/>
+                    In Association with Students' Coding Club PIEDPIPERS.
                 </p>
             </motion.div>
         </div>
 
         {/* Dignitaries */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-20 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-12 relative z-10">
             {[
                 { title: 'Patron', name: 'Dr. Shivakumaraiah', role: 'Joint Secretary & CEO' },
                 { title: 'President', name: 'Dr. Premasudha B G', role: 'Professor & Head' },
