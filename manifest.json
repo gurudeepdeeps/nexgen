@@ -1,18 +1,20 @@
+
 {
-  "name": "ZERONE 3.0",
+  "name": "ZERONE 3.0 - YUGA",
   "short_name": "ZERONE",
   "start_url": "/",
   "display": "standalone",
   "background_color": "#000000",
   "theme_color": "#D4A32C",
+  "description": "An epic, Baahubali-inspired intercollegiate tech showdown event website for the Department of MCA, Siddaganga Institute of Technology.",
   "icons": [
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/3062/3062634.png",
+      "src": "https://img.collegepravesh.com/2018/10/SIT-Tumkur-Logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://cdn-icons-png.flaticon.com/512/3062/3062634.png",
+      "src": "https://img.collegepravesh.com/2018/10/SIT-Tumkur-Logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }

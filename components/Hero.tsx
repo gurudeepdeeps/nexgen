@@ -12,6 +12,7 @@ declare global {
 
 export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onChangeView }) => {
   const [timeLeft, setTimeLeft] = useState({ days: 0, hours: 0, minutes: 0, seconds: 0 });
+  const [isDownloading, setIsDownloading] = useState(false);
   
   // Mouse Parallax Logic
   const mouseX = useMotionValue(0);
@@ -51,27 +52,43 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
     return () => clearInterval(interval);
   }, []);
 
-  const handleDownloadBrochure = () => {
+  const handleDownloadBrochure = async () => {
       const fileName = 'ZERONE_3.0_Brochure.pdf';
-      const filePath = `/${fileName}`;
+      // Using the Raw GitHub URL as requested
+      const pdfUrl = 'https://raw.githubusercontent.com/lingadevaru-hp/zerone-yuga3/main/ZERONE_3.0_Brochure.pdf';
+
+      setIsDownloading(true);
 
       // Track download event
       if (typeof window.gtag !== 'undefined') {
           window.gtag('event', 'file_download', {
               file_name: fileName,
               file_extension: 'pdf',
-              link_url: filePath
+              link_url: pdfUrl
           });
       }
 
-      // Direct download link approach
-      const link = document.createElement('a');
-      link.href = filePath; 
-      link.setAttribute('download', fileName);
-      link.setAttribute('target', '_blank'); // Fallback to open in new tab if download fails
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      try {
+        // Fetch the file as a blob to force download
+        const response = await fetch(pdfUrl);
+        if (!response.ok) throw new Error('Network response was not ok');
+        
+        const blob = await response.blob();
+        const url = window.URL.createObjectURL(blob);
+        const link = document.createElement('a');
+        link.href = url;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        window.URL.revokeObjectURL(url);
+      } catch (error) {
+        console.error('Download failed, opening in new tab fallback', error);
+        // Fallback: Open in new tab if direct download fails (e.g. CORS issues)
+        window.open(pdfUrl, '_blank');
+      } finally {
+        setIsDownloading(false);
+      }
   };
 
   return (
@@ -246,12 +263,14 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                     whileHover={{ scale: 1.05, boxShadow: "0 0 40px rgba(212,163,44,0.3)" }}
                     whileTap={{ scale: 0.95 }}
                     onClick={handleDownloadBrochure}
+                    disabled={isDownloading}
                     className="relative group w-full md:w-64 h-14 md:h-16 bg-black/40 border border-gold-500 rounded flex items-center justify-center overflow-hidden transition-all duration-300 shadow-[0_0_20px_rgba(212,163,44,0.1)]"
                 >
                      <div className="absolute inset-0 bg-gold-600/10 group-hover:bg-gold-600/20 transition-colors" />
                     <div className="absolute inset-1 border border-gold-500/30 rounded-sm" />
                     <span className="relative z-10 flex items-center justify-center gap-3 text-gold-100 font-sans font-bold tracking-[0.15em] uppercase text-sm md:text-base">
-                        <Download className="w-5 h-5 text-gold-400" /> DOWNLOAD BROCHURE
+                        <Download className={`w-5 h-5 text-gold-400 ${isDownloading ? 'animate-bounce' : ''}`} /> 
+                        {isDownloading ? 'DOWNLOADING...' : 'DOWNLOAD BROCHURE'}
                     </span>
                 </motion.button>
 

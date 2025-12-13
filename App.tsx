@@ -13,6 +13,7 @@ import Background from './components/Background';
 import CustomCursor from './components/CustomCursor';
 import NotFound from './components/NotFound';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Analytics } from '@vercel/analytics/react';
 
 // Declare gtag to avoid TypeScript errors
 declare global {
@@ -107,6 +108,7 @@ const App: React.FC = () => {
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden selection:bg-gold-900 selection:text-gold-100">
       <CustomCursor />
+      <Analytics />
       
       {/* Loader only shows once initially */}
       {loading && <Loader onLoadingComplete={handleLoadingComplete} />}
