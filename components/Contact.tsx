@@ -190,18 +190,18 @@ const Contact: React.FC = () => {
             <TiltCard className="w-full h-96 mb-12">
                  <div className="w-full h-full rounded-lg overflow-hidden border border-gold-800/50 shadow-2xl relative group bg-black/50">
                      <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3882.686566817653!2d77.12398531530962!3d13.307525211913168!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb02c6b8e4b7b2b%3A0x6b8e4b7b2b6b8e4b!2sSiddaganga%20Institute%20of%20Technology!5e0!3m2!1sen!2sin!4v1620000000000!5m2!1sen!2sin" 
+                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15529.74235335198!2d77.1272223!3d13.3072222!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb02c6c6e76d9f9%3A0x7d206f4705574522!2sBirla%20Auditorium!5e0!3m2!1sen!2sin" 
                         width="100%" 
                         height="100%" 
                         style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(1.2)' }} 
                         allowFullScreen 
                         loading="lazy" 
-                        title="SIT Map"
+                        title="SIT Map - Birla Auditorium"
                         className="group-hover:filter-none transition-all duration-700 opacity-80 group-hover:opacity-100"
                     ></iframe>
                     <div className="absolute top-4 left-4 bg-black/80 p-3 rounded border border-gold-500 backdrop-blur-md shadow-lg transform group-hover:scale-105 transition-transform">
                         <div className="flex items-center gap-2 text-gold-400 font-bold font-sans">
-                            <MapPin className="w-4 h-4 animate-bounce" /> SIT TUMKUR
+                            <MapPin className="w-4 h-4 animate-bounce" /> BIRLA AUDITORIUM, SIT
                         </div>
                     </div>
                     {/* Map Decorative Overlay */}
