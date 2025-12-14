@@ -156,8 +156,7 @@ export const EVENTS: EventDetails[] = [
     ],
     imageUrl: 'https://images.unsplash.com/photo-1599939571322-792a326991f2?q=80&w=1000&auto=format&fit=crop',
     registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeQnRO8_71iDXu1jcnii3sl1gY_mPxTqQHzTw-OfTwlh2_8yg/viewform?usp=publish-editor',
-    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeQnRO8_71iDXu1jcnii3sl1gY_mPxTqQHzTw-OfTwlh2_8yg/viewform?usp=publish-editor'
-  },
+ },
   {
     id: 'chakravyuha',
     title: 'CHAKRAVYUHA WARZONE',
