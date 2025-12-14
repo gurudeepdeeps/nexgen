@@ -7,12 +7,53 @@ import { EventCategory } from '../types';
 
 const Contact: React.FC = () => {
     
-  // Function to get a deterministic random image based on index/name
-  const getAvatar = (seed: string) => {
-      const hash = seed.split('').reduce((acc, char) => char.charCodeAt(0) + acc, 0);
-      const gender = hash % 2 === 0 ? 'men' : 'women';
-      const id = hash % 50; 
-      return `https://randomuser.me/api/portraits/${gender}/${id}.jpg`;
+  // Mapping of coordinator names to their image files
+  const coordinatorImages: Record<string, string> = {
+    // Event Coordinators - Using images from event co ordnetrs DP folder
+    'Achyuth U S': '/event-coordinators-dp/achyuth.jpg',
+    'Bindusree K S': '/event-coordinators-dp/bindhu shree .jpeg',
+    'Darshan S Naik': '/event-coordinators-dp/darshan.jpeg',
+    'Jeevan G': '/event-coordinators-dp/jeevan.jpeg',
+    'Madhumitha S': '/event-coordinators-dp/madhumitha.jpeg',
+    'Pooja R': '/event-coordinators-dp/pooja.jpeg',
+    'Mohith K V': '/event-coordinators-dp/Mohith.jpg',
+    'Snehashree N': '/event-coordinators-dp/snehashree.jpeg',
+    'Nithya Tejavi': '/event-coordinators-dp/nithya.jpg',
+    'Shashiraj': '/event-coordinators-dp/shashiraj.jpeg',
+    'Likitha P Kumar': '/event-coordinators-dp/likitha.jpeg',
+    'Rahul H N': '/default-avatar.svg', // Using default as no specific image available
+    'Nuthan A M': '/event-coordinators-dp/nuthan.jpg',
+    'Harshitha S': '/event-coordinators-dp/harshitha.jpeg',
+    'Bindushree T R': '/event-coordinators-dp/bindu shree T R.jpeg',
+    'Akash Y': '/event-coordinators-dp/akash.jpg',
+    'Khushi Jagadeesh': '/event-coordinators-dp/khushi.jpeg',
+    
+    // Student Coordinators
+    'Lingadevaru HP': '/event-coordinators-dp/lingadevaru.jpg',
+    // Removed duplicate 'Khushi Jagadeesh' entry
+    
+    // Faculty Coordinators
+    'Dr. H S VijayaKumar': '/default-avatar.svg',
+    'Dr. Prashanth G K': '/default-avatar.svg'
+  };
+
+  // Function to get coordinator image with fallback to default avatar
+  const getAvatar = (name: string) => {
+    if (!name) return '/default-avatar.svg';
+    
+    // Try to find an exact match first
+    const exactMatch = coordinatorImages[name];
+    if (exactMatch) return exactMatch;
+    
+    // Try to find a partial match (in case of name variations)
+    const normalizedSearchName = name.toLowerCase().trim();
+    const matchingKey = Object.keys(coordinatorImages).find(key => {
+      const normalizedKey = key.toLowerCase();
+      return normalizedSearchName.includes(normalizedKey) || 
+             normalizedKey.includes(normalizedSearchName);
+    });
+    
+    return matchingKey ? coordinatorImages[matchingKey] : '/default-avatar.svg';
   };
 
   const getEventIcon = (category: EventCategory) => {
