@@ -45,7 +45,7 @@ export const EVENTS: EventDetails[] = [
     ],
     imageUrl: '/event-images/coding.jpg',
     registrationUrl:
-      'https://docs.google.com/forms/d/e/1FAIpQLSf8B5d9RP4dEvAJng3rzOaxbWzmW6dbLSrDUhDLq41Jz8V1Yw/viewform'
+      'https://docs.google.com/forms/d/e/1FAIpQLSeKiwS5OjHcsIvWFiZPL-Az_BFS2cfXqhc-Ma7rgFyRXKaDQQ/viewform'
   },
 
   {
@@ -132,7 +132,7 @@ export const EVENTS: EventDetails[] = [
     imageUrl:
       'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5',
     registrationUrl:
-      'https://docs.google.com/forms/d/e/1FAIpQLSfRSVs7aNfCRPJvy_o0vMWmxMpC6gu91bFwo1Py-3dRitBG7w/viewform'
+      'https://docs.google.com/forms/d/e/1FAIpQLSf8B5d9RP4dEvAJng3rzOaxbWzmW6dbLSrDUhDLq41Jz8V1Yw/viewform'
   },
 
   {
@@ -215,7 +215,7 @@ export const EVENTS: EventDetails[] = [
     imageUrl:
       'https://images.unsplash.com/photo-1561070791-2526d30994b5',
     registrationUrl:
-      'https://docs.google.com/forms/d/e/1FAIpQLSchN-x5YgBAvJ1u5q9gmLBRtgF1uHOI2WRsa_BHx3UWxU5ciA/viewform'
+      'https://docs.google.com/forms/d/e/1FAIpQLSf8B5d9RP4dEvAJng3rzOaxbWzmW6dbLSrDUhDLq41Jz8V1Yw/viewform'
   },
 
   {
@@ -242,7 +242,7 @@ export const EVENTS: EventDetails[] = [
     imageUrl:
       'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b',
     registrationUrl:
-      'https://docs.google.com/forms/d/e/1FAIpQLSchN-x5YgBAvJ1u5q9gmLBRtgF1uHOI2WRsa_BHx3UWxU5ciA/viewform'
+      'https://docs.google.com/forms/d/e/1FAIpQLSd1L8ltxkr3PZIYotx35KGadNQbiN_n3CjVDLZ7RkPiY7WZng/viewform'
   }
 ];
 
