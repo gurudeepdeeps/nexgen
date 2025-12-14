@@ -40,7 +40,152 @@ export const EVENTS: EventDetails[] = [
       { name: 'Darshan S Naik', phone: '9535598827' },
       { name: 'Bindushree T R', phone: '8050020429' }
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop'
+    imageUrl: 'https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=1000&auto=format&fit=crop',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeKiwS5OjHcsIvWFiZPL-Az_BFS2cfXqhc-Ma7rgFyRXKaDQQ/viewform?usp=publish-editor'
+  },
+  {
+    id: 'raja-neeti',
+    title: 'RAJA NEETI SABHA',
+    subtitle: 'IT Manager',
+    category: EventCategory.MANAGEMENT,
+    description: 'Test your leadership, crisis management, and decision-making skills.',
+    prizePool: '₹3,000',
+    registrationFee: '₹200',
+    teamSize: 'Solo',
+    maxMembers: 1,
+    rules: [
+      'This is an individual event.',
+      'Registration fee: Rs. 200.',
+      'Maximum 3 participants per college.',
+      'Smartphones may be used only when instructed.',
+      'Rules for each round will be announced on the spot.',
+      'Malpractice will lead to immediate disqualification.',
+      'Judges decisions are final and binding.',
+      'Participants must demonstrate problem-solving and decision making skills.',
+      'Professional behavior is expected throughout the event.'
+    ],
+    coordinators: [
+      { name: 'Madhumitha S', phone: '9482139571' },
+      { name: 'Jeevan G', phone: '9686585450' }
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=1000&auto=format&fit=crop',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfxIeqxlEMXWDeun6F1Zs2OSf9zIhwSwM_0Xl8C2Ve9lcanfg/viewform?usp=publish-editor'
+  },
+  {
+    id: 'drishti',
+    title: 'DRISHTI',
+    subtitle: 'The Royal Lens (Photography)',
+    category: EventCategory.PHOTOGRAPHY,
+    description: 'Capture the essence of the fest. An on-spot photography and videography challenge.',
+    prizePool: '₹3,000',
+    registrationFee: '₹200',
+    teamSize: 'Solo',
+    maxMembers: 1,
+    rules: [
+      'This is an individual event.',
+      'Registration fee: Rs. 200.',
+      'Maximum 3 participants per college.',
+      'Participants must assemble 30 minutes before the event.',
+      'All editing must be done in front of volunteers in the designated area.',
+      'Malpractice (taking help from others) will result in immediate elimination.',
+      'Edited photos and videos must be submitted within the given time.',
+      'No additional people other than participants are allowed in the event area.',
+      'Participants must use only the provided equipment and software (or own mobile as specified).',
+      'All submitted content must be original.'
+    ],
+    coordinators: [
+      { name: 'Pooja R', phone: '8296077558' },
+      { name: 'Akash Y', phone: '6363614954' }
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1000&auto=format&fit=crop',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLScz3b8KdImvTaYtCoRQmTRHya9KxezLqhBVXmLJCrPpcDb2tg/viewform?usp=publish-editor'
+  },
+  {
+    id: 'dhwani',
+    title: 'DHWANI YUDDHA',
+    subtitle: 'Tech Talk',
+    category: EventCategory.SPEAKING,
+    description: 'Articulate your ideas. A platform to speak on emerging technologies.',
+    prizePool: '₹4,000',
+    registrationFee: '₹250',
+    teamSize: 'Solo',
+    maxMembers: 1,
+    rules: [
+      'This is a solo event.',
+      'Registration fee: ₹250.',
+      'Maximum 3 participants per college.',
+      'The competition will consist of 3 rounds.',
+      'No preparation time will be provided.',
+      'Carrying paper materials or electronic devices is strictly prohibited.',
+      'Use of offensive language or breaking any rule will lead to disqualification.',
+      'The judges decision is final and binding.',
+      'The event will test knowledge, creativity, and presentation skills.',
+      'In case of a tie, a tiebreaker round will be conducted.'
+    ],
+    coordinators: [
+      { name: 'Mohith K V', phone: '9353938681' },
+      { name: 'Snehashree N', phone: '8088816630' }
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5?q=80&w=1000&auto=format&fit=crop',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSfRSVs7aNfCRPJvy_o0vMWmxMpC6gu91bFwo1Py-3dRitBG7w/viewform?usp=publish-editor'
+  },
+  {
+    id: 'garuda',
+    title: 'GARUDA ANVESHANA',
+    subtitle: 'Treasure Hunt',
+    category: EventCategory.TREASURE_HUNT,
+    description: 'Decipher clues and navigate the empire to find the hidden treasure.',
+    prizePool: '₹7,000',
+    registrationFee: '₹400 / Team',
+    teamSize: '4 Members',
+    maxMembers: 4,
+    rules: [
+      'Each team must have 4 members.',
+      'Registration fee: ₹400.',
+      'A maximum of 2 teams per college is allowed.',
+      'Carry proof of registration or event ID throughout the event.',
+      'Respect others: any form of misconduct will lead to disqualification.',
+      'Do not tamper with other teams, property, or seek external help.',
+      'Do not destroy or misuse clues or event items.',
+      'Follow all campus rules and stay within the allowed areas.',
+      'No outsider assistance is permitted.'
+    ],
+    coordinators: [
+      { name: 'Nithya Tejavi', phone: '7899422270' },
+      { name: 'Shashiraj', phone: '9353042284' }
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1599939571322-792a326991f2?q=80&w=1000&auto=format&fit=crop',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeQnRO8_71iDXu1jcnii3sl1gY_mPxTqQHzTw-OfTwlh2_8yg/viewform?usp=publish-editor',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSeQnRO8_71iDXu1jcnii3sl1gY_mPxTqQHzTw-OfTwlh2_8yg/viewform?usp=publish-editor'
+  },
+  {
+    id: 'chakravyuha',
+    title: 'CHAKRAVYUHA WARZONE',
+    subtitle: 'BGMI',
+    category: EventCategory.GAMING,
+    description: 'Survive the battleground. Squad up and dominate the warzone.',
+    prizePool: '₹7,000',
+    registrationFee: '₹500 / Team',
+    teamSize: '4 Members',
+    maxMembers: 4,
+    rules: [
+      'Number of participants per team: 4.',
+      'Registration fee: ₹500.',
+      'Maximum 2 teams per college.',
+      'Participants must carry their valid ID proof for the event.',
+      'The squad must be physically present for the match.',
+      'The game will be played in custom rooms created by the host.',
+      'Rules for each round will be disclosed on the spot.',
+      'Exploiting bugs or glitches for unfair advantage will lead to disqualification.',
+      'Every round will have a fixed time duration.',
+      'Participants must carry their own mobile devices.'
+    ],
+    coordinators: [
+      { name: 'Achyuth U S', phone: '9148686067' },
+      { name: 'Bindusree K S', phone: '8904464903' }
+    ],
+    imageUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?q=80&w=1000&auto=format&fit=crop',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSchN-x5YgBAvJ1u5q9gmLBRtgF1uHOI2WRsa_BHx3UWxU5ciA/viewform?usp=publish-editor'
   },
   {
     id: 'web-kala',
@@ -68,7 +213,8 @@ export const EVENTS: EventDetails[] = [
       { name: 'Nuthan A M', phone: '9845541168' },
       { name: 'Harshitha S', phone: '6363323303' }
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format&fit=crop'
+    imageUrl: 'https://images.unsplash.com/photo-1561070791-2526d30994b5?q=80&w=1000&auto=format&fit=crop',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSchN-x5YgBAvJ1u5q9gmLBRtgF1uHOI2WRsa_BHx3UWxU5ciA/viewform?usp=publish-editor'
   },
   {
     id: 'drishti',
@@ -177,7 +323,8 @@ export const EVENTS: EventDetails[] = [
       { name: 'Likitha P Kumar', phone: '8660290349' },
       { name: 'Rahul H N', phone: '9632607249' }
     ],
-    imageUrl: 'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=1000&auto=format&fit=crop'
+    imageUrl: 'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b?q=80&w=1000&auto=format&fit=crop',
+    registrationUrl: 'https://docs.google.com/forms/d/e/1FAIpQLSchN-x5YgBAvJ1u5q9gmLBRtgF1uHOI2WRsa_BHx3UWxU5ciA/viewform?usp=publish-editor'
   },
   {
     id: 'chakravyuha',
@@ -242,7 +389,7 @@ export const TIMELINE: TimelineItem[] = [
   { time: '09:15 AM - 01:00 PM', title: 'The Battles Begin', description: 'Event Rounds Commenced' },
   { time: '01:00 PM - 02:00 PM', title: 'Grand Feast', description: 'Lunch Break' },
   { time: '02:00 PM - 04:00 PM', title: 'The Final Showdown', description: 'Concluding Rounds' },
-  { time: '04:30 PM - 05:30 PM', title: 'The Final Decree', description: 'Valedictory & Prize Distribution' },
+  { time: '04:30 PM - 05:30 PM', title: 'Abhiandana', description: 'Valedictory & Prize Distribution' },
   { time: '05:30 PM Onwards', title: 'ZERONE YUGA', description: 'The Saga Concludes' },
 ];
 

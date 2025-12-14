@@ -197,13 +197,13 @@ const TimelineCard: React.FC<{ item: any, isLeft: boolean, index: number, isLast
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, margin: "-100px" }}
             transition={{ duration: 0.8, type: "spring", bounce: 0.2 }}
-            className={`flex items-center justify-between mb-32 w-full ${isLeft ? 'flex-row' : 'flex-row-reverse'}`}
+            className={`flex flex-col md:items-center md:justify-between mb-16 md:mb-32 w-full ${isLeft ? 'md:flex-row' : 'md:flex-row-reverse'}`}
         >
             {/* Content Box */}
-            <div className={`w-5/12 ${isLeft ? 'text-right' : 'text-left'}`}>
+            <div className={`w-full md:w-5/12 ${isLeft ? 'md:text-right' : 'md:text-left'} text-left`}>
                 <motion.div 
                     whileHover={{ scale: 1.02 }}
-                    className={`group relative bg-[#0f0404]/90 backdrop-blur-md border rounded-xl p-8 transition-all duration-300 ${isLast ? 'border-purple-500/50 shadow-[0_0_30px_rgba(168,85,247,0.2)]' : 'border-gold-900/50 hover:border-gold-500/80'}`}
+                    className={`group relative bg-[#0f0404]/90 backdrop-blur-md border rounded-xl p-6 md:p-8 transition-all duration-300 ${isLast ? 'border-purple-500/50 shadow-[0_0_30px_rgba(168,85,247,0.2)]' : 'border-gold-900/50 hover:border-gold-500/80'}`}
                 >
                     {/* Glowing Corner Accents */}
                     <div className={`absolute top-0 left-0 w-4 h-4 border-t-2 border-l-2 opacity-50 group-hover:opacity-100 transition-opacity ${isLast ? 'border-purple-500' : 'border-gold-600'}`} />
@@ -214,7 +214,7 @@ const TimelineCard: React.FC<{ item: any, isLeft: boolean, index: number, isLast
                         {index + 1}
                     </div>
 
-                    <h3 className={`relative text-2xl md:text-4xl font-display mb-3 transition-colors ${isLast ? 'text-purple-200 group-hover:text-purple-100' : 'text-gold-100 group-hover:text-gold-400'}`}>{item.title}</h3>
+                    <h3 className={`relative text-2xl md:text-4xl font-display mb-3 transition-colors break-words ${isLast ? 'text-purple-200 group-hover:text-purple-100' : 'text-gold-100 group-hover:text-gold-400'}`}>{item.title}</h3>
                     <p className="relative text-gray-400 font-sans text-lg tracking-wide">{item.description}</p>
                 </motion.div>
             </div>

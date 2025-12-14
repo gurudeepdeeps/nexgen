@@ -42,7 +42,7 @@ const Navigation: React.FC<NavProps> = ({ activeView, onChangeView }) => {
                     >
                         ZERONE
                     </span>
-                </div>
+                </div> 
             </div>
 
             {/* Right Side: Links */}
@@ -73,6 +73,7 @@ const Navigation: React.FC<NavProps> = ({ activeView, onChangeView }) => {
                     )}
                 </motion.button>
                 ))}
+                
             </div>
         </div>
       </nav>
@@ -82,7 +83,7 @@ const Navigation: React.FC<NavProps> = ({ activeView, onChangeView }) => {
           {/* Mobile Brand */}
           <div className="flex items-center gap-3" onClick={() => handleNavClick('home')}>
               <img 
-                src="https://img.collegepravesh.com/2018/10/SIT-Tumkur-Logo.png" 
+                src={new URL('../SIT-Tumkur-Logo.png', import.meta.url).href} 
                 alt="SIT Logo" 
                 className="w-9 h-9 object-contain bg-white/95 p-0.5 rounded-full shadow-[0_0_10px_rgba(212,163,44,0.3)]"
               />
@@ -129,6 +130,7 @@ const Navigation: React.FC<NavProps> = ({ activeView, onChangeView }) => {
                 {link.label.toUpperCase()}
               </motion.button>
             ))}
+            
           </motion.div>
         )}
       </AnimatePresence>

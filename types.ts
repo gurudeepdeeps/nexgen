@@ -29,6 +29,7 @@ export interface EventDetails {
   rules: string[];
   coordinators: Coordinator[];
   imageUrl: string; 
+  registrationUrl?: string; // Google Form URL for registration
 }
 
 export interface TimelineItem {

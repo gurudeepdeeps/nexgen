@@ -9,12 +9,12 @@
   "description": "An epic, Baahubali-inspired intercollegiate tech showdown event website for the Department of MCA, Siddaganga Institute of Technology.",
   "icons": [
     {
-      "src": "https://img.collegepravesh.com/2018/10/SIT-Tumkur-Logo.png",
+      "src": "/SIT-Tumkur-Logo.png",
       "sizes": "192x192",
       "type": "image/png"
     },
     {
-      "src": "https://img.collegepravesh.com/2018/10/SIT-Tumkur-Logo.png",
+      "src": "/SIT-Tumkur-Logo.png",
       "sizes": "512x512",
       "type": "image/png"
     }

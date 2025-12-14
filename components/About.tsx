@@ -32,9 +32,9 @@ const About: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16 relative z-10"
         >
-            <span className="text-gold-600 font-serif uppercase tracking-[0.3em] text-sm block mb-4">The Royal Decree</span>
+            <span className="text-gold-600 font-serif uppercase tracking-[0.3em] text-sm block mb-4">The Royal Proclamation</span>
             <h2 className="text-4xl md:text-7xl font-display text-transparent bg-clip-text bg-gradient-to-b from-gold-300 to-gold-700 mb-8 drop-shadow-lg">
-                NAMASKARA
+                Namaskara
             </h2>
             
             <div className="relative max-w-4xl mx-auto p-1">
@@ -65,7 +65,7 @@ const About: React.FC = () => {
                 whileHover={{ scale: 1.02 }}
                 className="bg-gradient-to-br from-[#1a0505] to-black p-8 rounded border-l-4 border-gold-500"
             >
-                <h3 className="text-2xl font-display text-gold-400 mb-4">OUR REALM</h3>
+                <h3 className="text-2xl font-display text-gold-400 mb-4">OUR SAMASTHANA</h3>
                 <p className="text-gray-400 font-sans">
                     Siddaganga Institute of Technology.<br/>
                     An Autonomous Institution, Affiliated to VTU, Belagavi. Approved by AICTE, New Delhi.
@@ -76,7 +76,7 @@ const About: React.FC = () => {
                 whileHover={{ scale: 1.02 }}
                 className="bg-gradient-to-bl from-[#1a0505] to-black p-8 rounded border-r-4 border-gold-500 text-right"
             >
-                <h3 className="text-2xl font-display text-gold-400 mb-4">THE ALLIANCE</h3>
+                <h3 className="text-2xl font-display text-gold-400 mb-4">SANGAMA</h3>
                 <p className="text-gray-400 font-sans">
                     Department of MCA<br/>
                     In Association with Students' Coding Club PIEDPIPERS.
@@ -86,9 +86,9 @@ const About: React.FC = () => {
 
         {/* Dignitaries */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-12 relative z-10">
-            {[
+                {[
                 { title: 'Patron', name: 'Dr. Shivakumaraiah', role: 'Joint Secretary & CEO' },
-                { title: 'President', name: 'Dr. Premasudha B G', role: 'Professor & Head' },
+                { title: 'President', name: 'Dr. Premasudha B G', role: 'Professor & Head, Dept. of MCA' },
                 { title: 'Rector', name: 'Dr. S V Dinesh', role: 'Principal SIT, Tumkur' }
             ].map((dignitary, idx) => (
                 <motion.div 

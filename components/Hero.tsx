@@ -54,8 +54,7 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
 
   const handleDownloadBrochure = async () => {
       const fileName = 'ZERONE_3.0_Brochure.pdf';
-      // Using the Raw GitHub URL as requested
-      const pdfUrl = 'https://raw.githubusercontent.com/lingadevaru-hp/zerone-yuga3/main/ZERONE_3.0_Brochure.pdf';
+      const pdfUrl = new URL('../ZERONE_3.0_Brochure_compressed.pdf', import.meta.url).href;
 
       setIsDownloading(true);
 
@@ -145,7 +144,7 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                     <div className="relative shrink-0 mb-1 md:mb-0">
                          <div className="absolute inset-0 bg-white/10 blur-xl rounded-full" />
                          <img 
-                            src="https://img.collegepravesh.com/2018/10/SIT-Tumkur-Logo.png" 
+                            src={new URL('../SIT-Tumkur-Logo.png', import.meta.url).href} 
                             alt="SIT Logo" 
                             className="relative w-12 h-12 md:w-20 md:h-20 object-contain"
                          />
@@ -254,7 +253,7 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                     <div className="absolute inset-0 bg-gold-600/10 group-hover:bg-gold-600/20 transition-colors" />
                     <div className="absolute inset-1 border border-gold-500/30 rounded-sm" />
                     <span className="relative z-10 flex items-center justify-center gap-3 text-gold-100 font-serif font-bold tracking-[0.15em] uppercase text-sm md:text-base">
-                        ENTER THE ARENA <ChevronRight className="w-5 h-5 text-gold-400 group-hover:translate-x-1 transition-transform" />
+                        ENTER THE YUGA <ChevronRight className="w-5 h-5 text-gold-400 group-hover:translate-x-1 transition-transform" />
                     </span>
                 </motion.button>
                 

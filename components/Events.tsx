@@ -4,7 +4,7 @@ import { motion, useMotionValue, useSpring, useTransform, AnimatePresence } from
 import { EVENTS } from '../constants';
 import { EventDetails } from '../types';
 import EventModal from './EventModal';
-import { ChevronRight, ChevronLeft, Search } from 'lucide-react';
+import { ChevronRight, ChevronLeft, Search, X } from 'lucide-react';
 
 const Events: React.FC = () => {
   const [selectedEvent, setSelectedEvent] = useState<EventDetails | null>(null);
@@ -35,17 +35,31 @@ const Events: React.FC = () => {
          <h2 className="text-4xl md:text-6xl font-display text-gold-500 mb-4 text-shadow-gold">THE BATTLEFIELDS</h2>
          
          {/* Search Bar */}
-         <div className="relative max-w-md mx-auto mb-6 group">
+         <div className="relative max-w-lg mx-auto mb-6 group sticky top-4 z-50">
             <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
-                <Search className="w-5 h-5 text-gold-600 group-focus-within:text-gold-400" />
+                <Search className="w-5 h-5 text-gold-500 group-focus-within:text-gold-300" />
             </div>
+            <label htmlFor="battlefield-search" className="block text-xs uppercase tracking-widest text-gold-400 mb-2">Choose Yuddh</label>
             <input 
+                id="battlefield-search"
                 type="text"
-                placeholder="Search Arena (e.g., Coding, Gaming)..."
+                aria-label="Choose Yuddh"
+                autoComplete="off"
+                placeholder="Choose Yuddh (e.g., Coding, Gaming)…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
-                className="w-full bg-black/40 border border-gold-800 rounded-full py-3 pl-12 pr-4 text-gold-100 placeholder-gold-700/50 focus:outline-none focus:border-gold-500 focus:ring-1 focus:ring-gold-500 transition-all backdrop-blur-sm"
+                className="w-full bg-black/70 border border-gold-600 rounded-full py-3.5 pl-12 pr-12 text-white placeholder-white/60 focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500 transition-all backdrop-blur-md shadow-[0_0_24px_rgba(212,163,44,0.25)]"
             />
+            {searchQuery && (
+              <button 
+                type="button" 
+                onClick={() => setSearchQuery('')} 
+                className="absolute inset-y-0 right-3 flex items-center justify-center text-gold-400 hover:text-white transition-colors"
+                aria-label="Clear search"
+              >
+                <X className="w-5 h-5" />
+              </button>
+            )}
          </div>
 
          <p className="text-gray-400 font-serif tracking-widest uppercase hidden md:block text-sm">
