@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="100" cy="100" r="100" fill="#D4A32C" fill-opacity="0.2"/>
+  <circle cx="100" cy="80" r="40" fill="#D4A32C" fill-opacity="0.3"/>
+  <path d="M100 130C71.1634 130 47.5 153.663 47.5 182.5V200H152.5V182.5C152.5 153.663 128.837 130 100 130Z" fill="#D4A32C" fill-opacity="0.3"/>
+  <text x="50%" y="60%" dominant-baseline="middle" text-anchor="middle" font-family="Arial" font-size="72" fill="#D4A32C" font-weight="bold">?</text>
+</svg>
