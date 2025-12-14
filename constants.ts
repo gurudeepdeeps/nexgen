@@ -1,4 +1,4 @@
-
+  
 import { EventCategory, EventDetails, TimelineItem, Coordinator } from './types';
 
 export const GENERAL_RULES = [
