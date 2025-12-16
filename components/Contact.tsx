@@ -23,7 +23,7 @@ const Contact: React.FC = () => {
     'Likitha P Kumar': '/event-coordinators-dp/likitha.jpeg',
     'Rahul H N': '/event-coordinators-dp/rahual.jpg',
     'Nuthan A M': '/event-coordinators-dp/nuthan.jpg',
-    'Harshitha S': '/event-coordinators-dp/harshitha.jpeg',
+    'Harshitha H': '/event-coordinators-dp/harshitha.jpeg',
     'Bindushree T R': '/event-coordinators-dp/bindushree_tr.jpeg',
     'Akash Y': '/event-coordinators-dp/akash.jpg',
     'Khushi Jagadeesh': '/event-coordinators-dp/khushi.jpeg',

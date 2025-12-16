@@ -64,7 +64,7 @@ const About: React.FC = () => {
                 whileHover={{ scale: 1.02 }}
                 className="bg-gradient-to-br from-[#1a0505] to-black p-8 rounded border-l-4 border-gold-500"
             >
-                <h3 className="text-2xl font-display text-gold-400 mb-4">OUR SAMASTHANA</h3>
+                <h3 className="text-2xl font-display text-gold-400 mb-4">OUR SAMSTHANA</h3>
                 <p className="text-gray-400 font-sans">
                     Siddaganga Institute of Technology.<br/>
                     An Autonomous Institution, Affiliated to VTU, Belagavi. Approved by AICTE, New Delhi.

@@ -66,7 +66,7 @@ export const EVENTS: EventDetails[] = [
       'Participants must bring resume (soft copy).',
       'Smartphones allowed only when instructed.',
       'Rules will be announced on the spot.',
-      'Any malpractice will lead to elimination.',
+      'Any Malpractice leads to elimination.',
       'Judges’ decision is final.'
     ],
     coordinators: [
@@ -216,11 +216,12 @@ export const EVENTS: EventDetails[] = [
       'Referring to external code is strictly not allowed.',
       'Participants must bring their own laptops, mobile phones, and chargers.',
       'The event schedule must be followed strictly.',
-      'Participants must install all required software prior to the event.'
+      'Participants must install all required software prior to the event.',
+      'Any Malpractice leads to elimination.'
     ],
     coordinators: [
       { name: 'Nuthan A M', phone: '9845541168' },
-      { name: 'Harshitha S', phone: '6363323303' }
+      { name: 'Harshitha H', phone: '6363323303' }
     ],
     imageUrl: '/event-images/web-design.jpg',
     registrationUrl:
