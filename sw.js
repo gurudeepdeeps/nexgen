@@ -1,4 +1,4 @@
-// Service Worker for ZERONE 3.0 - YUGA
+// Service Worker for ZERONE - YUGA
 // Version: 3.0.0
 
 const CACHE_NAME = 'zerone-v3';

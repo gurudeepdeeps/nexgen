@@ -48,7 +48,7 @@ const About: React.FC = () => {
                     </p>
                     <p className="text-gray-400 font-sans text-lg leading-relaxed text-justify mb-6">
                         Organized by the <strong>Department of MCA</strong> (Program Accredited by NBA) in association with <strong>Students Coding Club PIEDPIPERS</strong>, 
-                        Siddaganga Institute of Technology presents <strong>ZERONE 3.0 – YUGA: The Age of Digital Empires</strong>.
+                        Siddaganga Institute of Technology presents <strong>ZERONE – YUGA: The Age of Digital Empires</strong>.
                     </p>
                     <p className="text-gray-400 font-sans text-lg leading-relaxed text-justify">
                         On <strong>24th December 2025</strong>, the gates open. 

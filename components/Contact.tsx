@@ -99,68 +99,7 @@ const Contact: React.FC = () => {
                 <p className="text-gray-400 font-serif tracking-[0.2em] uppercase">Keepers of the Code</p>
             </motion.div>
 
-            {/* Event Specific Coordinators */}
-            <div className="mb-24">
-                <div className="flex items-center gap-4 mb-8">
-                    <div className="h-px bg-gold-800/50 flex-grow" />
-                    <h3 className="text-xl md:text-2xl font-serif text-gold-100 uppercase tracking-widest text-center px-4 py-2 rounded bg-black/40 border border-gold-900/30 backdrop-blur-sm">Battalion Commanders</h3>
-                    <div className="h-px bg-gold-800/50 flex-grow" />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {EVENTS.map((event, idx) => (
-                        <TiltCard key={event.id} index={idx}>
-                             {/* Card Header with Image Background Hint */}
-                            <div className="relative h-24 overflow-hidden border-b border-gold-900/30">
-                                <img src={event.imageUrl} alt={event.title} className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500 transform group-hover:scale-110" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0404] to-transparent" />
-                                <div className="absolute bottom-3 left-4 flex items-center gap-2 z-10">
-                                     <div className="p-1.5 bg-gold-600/20 rounded-full border border-gold-500/50 text-gold-400">
-                                        {getEventIcon(event.category)}
-                                     </div>
-                                     <h4 className="font-display text-gold-100 text-lg tracking-wide text-shadow-sm">{event.title}</h4>
-                                </div>
-                            </div>
-                            
-                            {/* Coordinators List */}
-                            <div className="p-5 space-y-4 bg-[#0f0404]/80 backdrop-blur-md">
-                                {event.coordinators.map((coord, cIdx) => (
-                                    <div key={cIdx} className="flex items-center justify-between group/coord border-b border-white/5 pb-2 last:border-0 last:pb-0">
-                                        <div className="flex items-center gap-3">
-                                            {/* Avatar */}
-                                            <div className="w-10 h-10 rounded-full border border-gold-800/50 overflow-hidden shrink-0 shadow-sm group-hover/coord:border-gold-500 transition-colors">
-                                                <img 
-                                                    src={getAvatar(coord.name)} 
-                                                    alt={coord.name} 
-                                                    className="w-full h-full object-cover opacity-90 group-hover/coord:opacity-100 transition-opacity"
-                                                />
-                                            </div>
-                                            
-                                            <div className="flex-grow min-w-0">
-                                                <p className="text-gray-200 font-serif text-sm truncate group-hover/coord:text-gold-300 transition-colors">{coord.name}</p>
-                                                <a 
-                                                    href={`tel:${coord.phone}`} 
-                                                    className="flex items-center gap-1 text-gray-500 hover:text-gold-400 transition-colors text-[10px] font-mono mt-0.5"
-                                                >
-                                                    <Phone className="w-3 h-3" />
-                                                    {coord.phone}
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        {/* Event Icon/Logo Beside Name (Empty Space) */}
-                                        <div className="opacity-20 group-hover/coord:opacity-60 transition-opacity text-gold-500 transform rotate-12">
-                                            {getEventIcon(event.category)}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </TiltCard>
-                    ))}
-                </div>
-            </div>
-
-            {/* General Coordinators Section */}
+            {/* General Coordinators Section - Moved to Top */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
                 
                 {/* Student Coordinators */}
@@ -227,20 +166,89 @@ const Contact: React.FC = () => {
                 </TiltCard>
             </div>
 
-            {/* Map - With Tilt and Enhanced Style */}
+            {/* Event Specific Coordinators - Moved After Faculty/Student */}
+            <div className="mb-24">
+                <div className="flex items-center gap-4 mb-8">
+                    <div className="h-px bg-gold-800/50 flex-grow" />
+                    <h3 className="text-xl md:text-2xl font-serif text-gold-100 uppercase tracking-widest text-center px-4 py-2 rounded bg-black/40 border border-gold-900/30 backdrop-blur-sm">Battalion Commanders</h3>
+                    <div className="h-px bg-gold-800/50 flex-grow" />
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {EVENTS.map((event, idx) => (
+                        <TiltCard key={event.id} index={idx}>
+                             {/* Card Header with Image Background Hint */}
+                            <div className="relative h-24 overflow-hidden border-b border-gold-900/30">
+                                <img src={event.imageUrl} alt={event.title} className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500 transform group-hover:scale-110" />
+                                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0404] to-transparent" />
+                                <div className="absolute bottom-3 left-4 flex items-center gap-2 z-10">
+                                     <div className="p-1.5 bg-gold-600/20 rounded-full border border-gold-500/50 text-gold-400">
+                                        {getEventIcon(event.category)}
+                                     </div>
+                                     <h4 className="font-display text-gold-100 text-lg tracking-wide text-shadow-sm">{event.title}</h4>
+                                </div>
+                            </div>
+                            
+                            {/* Coordinators List */}
+                            <div className="p-5 space-y-4 bg-[#0f0404]/80 backdrop-blur-md">
+                                {event.coordinators.map((coord, cIdx) => (
+                                    <div key={cIdx} className="flex items-center justify-between group/coord border-b border-white/5 pb-2 last:border-0 last:pb-0">
+                                        <div className="flex items-center gap-3">
+                                            {/* Avatar */}
+                                            <div className="w-10 h-10 rounded-full border border-gold-800/50 overflow-hidden shrink-0 shadow-sm group-hover/coord:border-gold-500 transition-colors">
+                                                <img 
+                                                    src={getAvatar(coord.name)} 
+                                                    alt={coord.name} 
+                                                    className="w-full h-full object-cover opacity-90 group-hover/coord:opacity-100 transition-opacity"
+                                                />
+                                            </div>
+                                            
+                                            <div className="flex-grow min-w-0">
+                                                <p className="text-gray-200 font-serif text-sm truncate group-hover/coord:text-gold-300 transition-colors">{coord.name}</p>
+                                                <a 
+                                                    href={`tel:${coord.phone}`} 
+                                                    className="flex items-center gap-1 text-gray-500 hover:text-gold-400 transition-colors text-[10px] font-mono mt-0.5"
+                                                >
+                                                    <Phone className="w-3 h-3" />
+                                                    {coord.phone}
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        {/* Event Icon/Logo Beside Name (Empty Space) */}
+                                        <div className="opacity-20 group-hover/coord:opacity-60 transition-opacity text-gold-500 transform rotate-12">
+                                            {getEventIcon(event.category)}
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </TiltCard>
+                    ))}
+                </div>
+            </div>
+
+            {/* Map - With Tilt and Enhanced Style - Made Clickable */}
             <TiltCard className="w-full h-96 mb-12">
-                 <div className="w-full h-full rounded-lg overflow-hidden border border-gold-800/50 shadow-2xl relative group bg-black/50">
+                 <div className="w-full h-full rounded-lg overflow-hidden border border-gold-800/50 shadow-2xl relative group bg-black/50 cursor-pointer">
+                     <a 
+                        href="https://www.google.com/maps/search/?api=1&query=Birla+Auditorium+Siddaganga+Institute+of+Technology+Tumkur"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="absolute inset-0 z-10"
+                        aria-label="Open Birla Auditorium location in Google Maps"
+                     >
+                     </a>
                      <iframe 
                         src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15529.74235335198!2d77.1272223!3d13.3072222!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb02c6c6e76d9f9%3A0x7d206f4705574522!2sBirla%20Auditorium!5e0!3m2!1sen!2sin" 
                         width="100%" 
                         height="100%" 
-                        style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(1.2)' }} 
+                        style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(1.2)', pointerEvents: 'none' }} 
                         allowFullScreen 
                         loading="lazy" 
                         title="SIT Map - Birla Auditorium"
                         className="group-hover:filter-none transition-all duration-700 opacity-80 group-hover:opacity-100"
                     ></iframe>
-                    <div className="absolute top-4 left-4 bg-black/80 p-3 rounded border border-gold-500 backdrop-blur-md shadow-lg transform group-hover:scale-105 transition-transform">
+                    <div className="absolute top-4 left-4 bg-black/80 p-3 rounded border border-gold-500 backdrop-blur-md shadow-lg transform group-hover:scale-105 transition-transform pointer-events-none">
                         <div className="flex items-center gap-2 text-gold-400 font-bold font-sans">
                             <MapPin className="w-4 h-4 animate-bounce" /> BIRLA AUDITORIUM, SIT
                         </div>
@@ -248,12 +256,16 @@ const Contact: React.FC = () => {
                     {/* Map Decorative Overlay */}
                     <div className="absolute inset-0 border-[4px] border-gold-900/20 pointer-events-none rounded-lg" />
                     <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-gold-500 rounded-br-lg opacity-50 pointer-events-none" />
+                    {/* Click hint */}
+                    <div className="absolute bottom-4 right-4 bg-black/80 px-3 py-2 rounded border border-gold-500/50 backdrop-blur-md pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
+                        <span className="text-gold-300 text-xs font-sans">Click to open in Maps</span>
+                    </div>
                 </div>
             </TiltCard>
 
             {/* Footer */}
             <div className="border-t border-gold-900/30 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2025 ZERONE 3.0. Forged in Code.</p>
+                <p>&copy; 2025 ZERONE. Forged in Code.</p>
             </div>
         </div>
     </div>

@@ -10,7 +10,7 @@ import Sponsors from './components/Sponsors';
 import Contact from './components/Contact';
 import Rules from './components/Rules';
 import Background from './components/Background';
-import CustomCursor from './components/CustomCursor';
+import SparkCursor from './components/SparkCursor';
 import NotFound from './components/NotFound';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Analytics } from '@vercel/analytics/react';
@@ -37,7 +37,7 @@ const App: React.FC = () => {
       
       // Track Page View on Change
       window.gtag('config', GA_TRACKING_ID, {
-        page_title: `ZERONE 3.0 | ${pageTitle}`,
+        page_title: `ZERONE | ${pageTitle}`,
         page_path: `/${currentView}`,
       });
     }
@@ -107,7 +107,7 @@ const App: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-black text-white overflow-x-hidden selection:bg-gold-900 selection:text-gold-100">
-      <CustomCursor />
+      <SparkCursor />
       <Analytics />
       
       {/* Loader only shows once initially */}

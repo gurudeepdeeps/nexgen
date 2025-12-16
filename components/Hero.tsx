@@ -175,7 +175,7 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                         WebkitTextStroke: '1px rgba(138, 110, 40, 0.5)'
                     }}
                 >
-                    ZERONE 3.0
+                    ZERONE
                 </motion.h1>
             </div>
 
@@ -226,6 +226,31 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                     ))}
                 </div>
             </div>
+
+            {/* Registration Notice */}
+            <motion.div 
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 1.2, duration: 0.8 }}
+                className="max-w-4xl mx-auto mb-8 md:mb-12 px-6"
+            >
+                <div className="bg-black/60 border border-gold-600/40 backdrop-blur-md rounded-lg p-6 shadow-[0_0_30px_rgba(212,163,44,0.15)]">
+                    <div className="flex items-center justify-center gap-3 mb-3">
+                        <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                        <h4 className="text-gold-400 font-display text-lg tracking-widest uppercase">Registration Notice</h4>
+                        <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                    </div>
+                    <div className="text-center space-y-2">
+                        <p className="text-gray-300 font-serif text-base md:text-lg">
+                            <span className="text-gold-300 font-bold">Registration closes on 22nd December 2025 (Night)</span>
+                        </p>
+                        <p className="text-gray-400 font-sans text-sm md:text-base">
+                            All events will be conducted simultaneously. Participants can register for <span className="text-gold-400 font-bold">only one event</span>. 
+                            Multiple registrations are not allowed.
+                        </p>
+                    </div>
+                </div>
+            </motion.div>
 
             {/* Buttons */}
             <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-6 w-full max-w-4xl relative z-40 pb-8 md:pb-16">
