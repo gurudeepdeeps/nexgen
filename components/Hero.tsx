@@ -53,38 +53,21 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
   }, []);
 
   const handleDownloadBrochure = async () => {
-      const fileName = 'ZERONE_3.0_Brochure.pdf';
-      const pdfUrl = new URL('../ZERONE_3.0_Brochure_compressed.pdf', import.meta.url).href;
+      const brochureUrl = 'https://www.canva.com/design/DAG7Xg2cVhg/ff6VA8Def79HrSqJPEwkqQ/view?utlId=h98b7434cd2#14';
 
       setIsDownloading(true);
 
       // Track download event
       if (typeof window.gtag !== 'undefined') {
           window.gtag('event', 'file_download', {
-              file_name: fileName,
-              file_extension: 'pdf',
-              link_url: pdfUrl
+              file_name: 'ZERONE 3.0 Brochure (Canva)',
+              file_extension: 'url',
+              link_url: brochureUrl
           });
       }
 
       try {
-        // Fetch the file as a blob to force download
-        const response = await fetch(pdfUrl);
-        if (!response.ok) throw new Error('Network response was not ok');
-        
-        const blob = await response.blob();
-        const url = window.URL.createObjectURL(blob);
-        const link = document.createElement('a');
-        link.href = url;
-        link.download = fileName;
-        document.body.appendChild(link);
-        link.click();
-        document.body.removeChild(link);
-        window.URL.revokeObjectURL(url);
-      } catch (error) {
-        console.error('Download failed, opening in new tab fallback', error);
-        // Fallback: Open in new tab if direct download fails (e.g. CORS issues)
-        window.open(pdfUrl, '_blank');
+        window.open(brochureUrl, '_blank', 'noopener,noreferrer');
       } finally {
         setIsDownloading(false);
       }

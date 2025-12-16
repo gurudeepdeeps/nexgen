@@ -76,7 +76,7 @@ const Background: React.FC = () => {
       <div 
         className="absolute inset-0 transition-opacity duration-1000"
         style={{ 
-            backgroundImage: `url("https://images.unsplash.com/photo-1599581878070-5b6d2e6161e7?q=80&w=2070&auto=format&fit=crop")`, 
+            backgroundImage: `url("/event-images/home-page-background.jpg")`, 
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             opacity: 0.35 // Higher opacity so it's not black

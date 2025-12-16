@@ -73,8 +73,7 @@ export const EVENTS: EventDetails[] = [
       { name: 'Madhumitha S', phone: '9482139571' },
       { name: 'Jeevan G', phone: '9686585450' }
     ],
-    imageUrl:
-      'https://images.unsplash.com/photo-1519389950473-47ba0277781c',
+    imageUrl: '/event-images/it-manager.jpg',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSfxIeqxlEMXWDeun6F1Zs2OSf9zIhwSwM_0Xl8C2Ve9lcanfg/viewform'
   },
@@ -104,8 +103,7 @@ export const EVENTS: EventDetails[] = [
       { name: 'Pooja R', phone: '8296077558' },
       { name: 'Akash Y', phone: '6363614954' }
     ],
-    imageUrl:
-      'https://images.unsplash.com/photo-1516035069371-29a1b244cc32',
+    imageUrl: '/event-images/photography.jpg',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLScz3b8KdImvTaYtCoRQmTRHya9KxezLqhBVXmLJCrPpcDb2tg/viewform'
   },
@@ -133,8 +131,7 @@ export const EVENTS: EventDetails[] = [
       { name: 'Mohith K V', phone: '9353938681' },
       { name: 'Snehashree N', phone: '8088816630' }
     ],
-    imageUrl:
-      'https://images.unsplash.com/photo-1526374965328-7f61d4dc18c5',
+    imageUrl: '/event-images/tech-talk.jpg',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSf8B5d9RP4dEvAJng3rzOaxbWzmW6dbLSrDUhDLq41Jz8V1Yw/viewform'
   },
@@ -163,8 +160,7 @@ export const EVENTS: EventDetails[] = [
       { name: 'Nithya Tejasvi', phone: '7899422270' },
       { name: 'Shashiraj', phone: '9900003586' }
     ],
-    imageUrl:
-      'https://images.unsplash.com/photo-1599939571322-792a326991f2',
+    imageUrl: '/event-images/treasure-hunt.jpg',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSeQnRO8_71iDXu1jcnii3sl1gY_mPxTqQHzTw-OfTwlh2_8yg/viewform'
   },
@@ -194,8 +190,7 @@ export const EVENTS: EventDetails[] = [
       { name: 'Achyuth U S', phone: '9148686067' },
       { name: 'Bindusree K S', phone: '8904464903' }
     ],
-    imageUrl:
-      'https://images.unsplash.com/photo-1542751371-adc38448a05e',
+    imageUrl: '/event-images/bgmi.jpg',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSchN-x5YgBAvJ1u5q9gmLBRtgF1uHOI2WRsa_BHx3UWxU5ciA/viewform'
   },
@@ -227,8 +222,7 @@ export const EVENTS: EventDetails[] = [
       { name: 'Nuthan A M', phone: '9845541168' },
       { name: 'Harshitha S', phone: '6363323303' }
     ],
-    imageUrl:
-      'https://images.unsplash.com/photo-1561070791-2526d30994b5',
+    imageUrl: '/event-images/web-design.jpg',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSf8B5d9RP4dEvAJng3rzOaxbWzmW6dbLSrDUhDLq41Jz8V1Yw/viewform'
   },
@@ -254,8 +248,7 @@ export const EVENTS: EventDetails[] = [
       { name: 'Likitha P Kumar', phone: '8660290349' },
       { name: 'Rahul H N', phone: '9632607249' }
     ],
-    imageUrl:
-      'https://images.unsplash.com/photo-1606326608606-aa0b62935f2b',
+    imageUrl: '/event-images/it-quiz.jpg',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSd1L8ltxkr3PZIYotx35KGadNQbiN_n3CjVDLZ7RkPiY7WZng/viewform'
   }
