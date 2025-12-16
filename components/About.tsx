@@ -47,7 +47,7 @@ const About: React.FC = () => {
                         "We extend a warm welcome to all participants and students from various institutes joining us."
                     </p>
                     <p className="text-gray-400 font-sans text-lg leading-relaxed text-justify mb-6">
-                        Organized by the <strong>Department of MCA</strong> (Program Accredited by NBA) in association with <strong>Students' Coding Club PIEDPIPERS</strong>, 
+                        Organized by the <strong>Department of MCA</strong> (Program Accredited by NBA) in association with <strong>Students Coding Club PIEDPIPERS</strong>, 
                         Siddaganga Institute of Technology presents <strong>ZERONE 3.0 – YUGA: The Age of Digital Empires</strong>.
                     </p>
                     <p className="text-gray-400 font-sans text-lg leading-relaxed text-justify">
@@ -78,7 +78,7 @@ const About: React.FC = () => {
                 <h3 className="text-2xl font-display text-gold-400 mb-4">SANGAMA</h3>
                 <p className="text-gray-400 font-sans">
                     Department of MCA<br/>
-                    In Association with Students' Coding Club PIEDPIPERS.
+                    In Association with Students Coding Club PIEDPIPERS.
                 </p>
             </motion.div>
         </div>

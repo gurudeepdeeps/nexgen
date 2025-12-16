@@ -133,7 +133,7 @@ export const EVENTS: EventDetails[] = [
     ],
     imageUrl: '/event-images/tech-talk.jpg',
     registrationUrl:
-      'https://docs.google.com/forms/d/e/1FAIpQLSf8B5d9RP4dEvAJng3rzOaxbWzmW6dbLSrDUhDLq41Jz8V1Yw/viewform'
+      'https://docs.google.com/forms/d/e/1FAIpQLSfRSVs7aNfCRPJvy_o0vMWmxMpC6gu91bFwo1Py-3dRitBG7w/viewform?usp=header'
   },
 
   {
@@ -198,7 +198,7 @@ export const EVENTS: EventDetails[] = [
   {
     id: 'web-kala',
     title: 'WEB KALA VINYASA',
-    subtitle: 'Web & Poster Designing',
+    subtitle: 'Poster and Web Designing',
     category: EventCategory.DESIGN,
     description:
       'Design creative web pages and posters.',

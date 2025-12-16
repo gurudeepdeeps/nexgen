@@ -155,7 +155,7 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                 {/* Presented By Section - Below the Box */}
                 <div className="text-center mt-4 md:mt-6">
                     <p className="text-gold-200/60 font-serif text-[10px] md:text-xs tracking-[0.25em] uppercase mb-1">
-                        In Association With Students' Coding Club
+                        In Association With Students Coding Club
                     </p>
                     <h5 className="text-gold-500 font-display text-lg md:text-2xl tracking-[0.2em] uppercase text-shadow-gold flex flex-col md:flex-row items-center justify-center gap-2">
                         PIEDPIPERS <span className="text-[10px] md:text-xs text-gold-600 tracking-widest font-sans opacity-80 md:mt-1">Presents</span>
