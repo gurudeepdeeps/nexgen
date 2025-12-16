@@ -4,7 +4,7 @@ import { EventCategory, EventDetails, TimelineItem, Coordinator } from './types'
 
 export const GENERAL_RULES = [
   'Valid College ID is mandatory for all participants.',
-  'On-spot registration is NOT permitted.',
+  'ON-SPOT REGISTRATION IS NOT PERMITTED. Only for BGMI and Treasure Hunt.',
   'Registration fees are non-refundable.',
   'The use of any substances that alter consciousness is strictly prohibited.',
   'Participants are required to bring their own electronic devices.',
