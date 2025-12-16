@@ -4,7 +4,7 @@ import { EventCategory, EventDetails, TimelineItem, Coordinator } from './types'
 
 export const GENERAL_RULES = [
   'Valid College ID is mandatory for all participants.',
-  'ON-SPOT REGISTRATION IS NOT PERMITTED. Only for BGMI and Treasure Hunt.',
+  'On-spot registration is allowed for all 6 events except BGMI and Treasure Hunt',
   'Registration fees are non-refundable.',
   'The use of any substances that alter consciousness is strictly prohibited.',
   'Participants are required to bring their own electronic devices.',
@@ -25,20 +25,21 @@ export const EVENTS: EventDetails[] = [
     category: EventCategory.CODING,
     description:
       'A solo coding event to test your algorithmic prowess. Show your skills in C, C++, Java, or Python.',
-    prizePool: '₹5,000',
+    prizePool: '₹4,000',
     registrationFee: '₹200',
     teamSize: 'Solo',
     maxMembers: 1,
     rules: [
-      'This is a solo event.',
-      'Registration fee: ₹200.',
-      'Maximum 3 participants per college.',
-      'Languages allowed: C, C++, Java, Python.',
-      'Participants must report 30 minutes early.',
-      'Personal gadgets are prohibited.',
-      'Any malpractice will lead to elimination.',
-      'Judges’ decision is final.',
-      'Rules for rounds will be disclosed on the spot.'
+      'This is an individual event.',
+      'A maximum of 3 participants per college is allowed.',
+      'Allowed programming languages: C, C++, Java, Python.',
+      'Participants must report to the venue 30 minutes before the event for round-wise instructions.',
+      'Pen and paper will be provided if required.',
+      'HackerRank credentials are mandatory for all participants.',
+      'Personal gadgets are strictly prohibited; organizers will provide a PC for the event.',
+      'Any form of malpractice will lead to immediate disqualification.',
+      'The decision of the judges is final and binding.',
+      'Rules for each round will be announced on the spot.'
     ],
     coordinators: [
       { name: 'Darshan Shankar Naik', phone: '9535598827' },
