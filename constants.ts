@@ -259,7 +259,7 @@ export const EVENTS: EventDetails[] = [
 /* -------------------- TIMELINE -------------------- */
 
 export const TIMELINE: TimelineItem[] = [
-  { time: '08:00 AM - 09:00 AM', title: 'Registration', description: 'Registration' },
+  { time: '7:30 am - 09:00 AM', title: 'Registration', description: 'Registration' },
   { time: '09:00 AM - 09:15 AM', title: 'The Royal Inaugural', description: 'Opening Ceremony' },
   { time: '09:15 AM - 01:00 PM', title: 'The Battles Begin', description: 'Event Rounds' },
   { time: '01:00 PM - 02:00 PM', title: 'Grand Feast', description: 'Lunch Break' },

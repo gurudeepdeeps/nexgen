@@ -147,6 +147,34 @@ const Roadmap: React.FC = () => {
       </div>
 
       <div className="relative z-20 max-w-6xl mx-auto transform-style-3d">
+        {/* Registration Notice */}
+        <motion.div
+            initial={{ opacity: 0, y: -20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="mb-16"
+        >
+            <div className="bg-black/80 border border-gold-600/40 backdrop-blur-md rounded-xl p-6 shadow-[0_0_30px_rgba(212,163,44,0.15)] text-center">
+                <div className="flex items-center justify-center gap-3 mb-3">
+                    <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                    <h4 className="text-gold-400 font-display text-lg tracking-widest uppercase">Registration Timeline</h4>
+                    <div className="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+                </div>
+                <div className="flex flex-col md:flex-row items-center justify-center gap-4 md:gap-8">
+                    <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 bg-green-400 rounded-full"></div>
+                        <span className="text-green-300 font-serif text-base md:text-lg font-bold">Opens at 7:30 am</span>
+                    </div>
+                    <div className="hidden md:block text-gold-400">→</div>
+                    <div className="flex items-center gap-2">
+                        <div className="w-3 h-3 bg-red-400 rounded-full"></div>
+                        <span className="text-red-300 font-serif text-base md:text-lg font-bold">Closes on 22nd December (Night)</span>
+                    </div>
+                </div>
+            </div>
+        </motion.div>
+        
         <div className="text-center mb-32 relative">
            <motion.div
              style={{ rotateX: perspectiveRotate }}

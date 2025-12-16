@@ -62,7 +62,7 @@ const Rules: React.FC = () => {
 
                 <div className="mt-12 pt-8 border-t border-gold-900/50 text-center">
                     <p className="text-gold-500/60 font-sans uppercase tracking-widest text-sm">
-                        By Order of the Department of MCA, SIT
+                        Department of MCA, SIT
                     </p>
                 </div>
             </motion.div>

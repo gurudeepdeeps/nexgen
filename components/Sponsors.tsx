@@ -8,16 +8,16 @@ const sponsorsList = [
     { name: "PixelPerfect Studios", tier: "Creative Partner", color: "from-orange-400 to-red-600" },
     { name: "CyberGuard Solutions", tier: "Security Partner", color: "from-blue-400 to-indigo-600" }
 ];
-
+   
 const Sponsors: React.FC = () => {
   return (
     <div id="sponsors" className="relative py-20 px-6 min-h-screen">
-        <div className="max-w-7xl mx-auto text-center">
+        <div className="max-w-7xl mx-auto text-center"> 
             <motion.div
                 initial={{ opacity: 0, y: 30 }}
-                animate={{ opacity: 1, y: 0 }}
+                animate={{ opacity: 1, y: 0 }} 
                 className="mb-20"
-            >
+            > 
                 <h2 className="text-4xl md:text-7xl font-display text-gold-500 mb-6 text-shadow-strong">SANRAKSHANA</h2>
                 <p className="text-gray-400 font-serif tracking-widest uppercase">The Pillars of the Empire</p>
             </motion.div>
