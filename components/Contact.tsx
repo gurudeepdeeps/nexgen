@@ -11,20 +11,20 @@ const Contact: React.FC = () => {
   const coordinatorImages: Record<string, string> = {
     // Event Coordinators - Using images from event co ordnetrs DP folder
     'Achyuth U S': '/event-coordinators-dp/achyuth.jpg',
-    'Bindusree K S': '/event-coordinators-dp/bindhu shree .jpeg',
-    'Darshan S Naik': '/event-coordinators-dp/darshan.jpeg',
+    'Bindusree K S': '/event-coordinators-dp/bindusree_ks.jpeg',
+    'Darshan Shankar Naik': '/event-coordinators-dp/darshan.jpeg',
     'Jeevan G': '/event-coordinators-dp/jeevan.jpeg',
     'Madhumitha S': '/event-coordinators-dp/madhumitha.jpeg',
     'Pooja R': '/event-coordinators-dp/pooja.jpeg',
     'Mohith K V': '/event-coordinators-dp/Mohith.jpg',
     'Snehashree N': '/event-coordinators-dp/snehashree.jpeg',
-    'Nithya Tejavi': '/event-coordinators-dp/nithya.jpg',
+    'Nithya Tejasvi': '/event-coordinators-dp/nithya.jpg',
     'Shashiraj': '/event-coordinators-dp/shashiraj.jpeg',
     'Likitha P Kumar': '/event-coordinators-dp/likitha.jpeg',
-    'Rahul H N': '/default-avatar.svg', // Using default as no specific image available
+    'Rahul H N': '/event-coordinators-dp/rahual.jpg',
     'Nuthan A M': '/event-coordinators-dp/nuthan.jpg',
     'Harshitha S': '/event-coordinators-dp/harshitha.jpeg',
-    'Bindushree T R': '/event-coordinators-dp/bindu shree T R.jpeg',
+    'Bindushree T R': '/event-coordinators-dp/bindushree_tr.jpeg',
     'Akash Y': '/event-coordinators-dp/akash.jpg',
     'Khushi Jagadeesh': '/event-coordinators-dp/khushi.jpeg',
     

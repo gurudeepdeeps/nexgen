@@ -139,6 +139,7 @@ const App: React.FC = () => {
                             <About />
                             <Events />
                             <Roadmap />
+                            <Rules />
                         </>
                     )}
 

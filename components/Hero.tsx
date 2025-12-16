@@ -207,8 +207,6 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
             
             <p className="text-gold-200/60 font-sans tracking-[0.3em] text-xs md:text-lg mb-6 md:mb-8 uppercase px-6 py-1">
                 The Age of Digital Empire
-                <br/>
-                <span className="text-[10px] md:text-xs text-gold-600 block mt-1 md:mt-2 tracking-[0.2em] font-bold">MCA Alumni Sponsored Fest</span>
             </p>
 
             {/* Date & Countdown Container */}

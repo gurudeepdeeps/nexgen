@@ -44,14 +44,13 @@ const About: React.FC = () => {
                 
                 <div className="bg-[#0f0404]/80 backdrop-blur-sm p-8 md:p-12 rounded-lg border border-gold-500/20 shadow-2xl relative text-left md:text-center">
                     <p className="text-xl md:text-2xl font-serif text-gold-100 leading-relaxed mb-6">
-                        "We extend a warm royal welcome to all participants and students from various institutes joining us."
+                        "We extend a warm welcome to all participants and students from various institutes joining us."
                     </p>
                     <p className="text-gray-400 font-sans text-lg leading-relaxed text-justify mb-6">
                         Organized by the <strong>Department of MCA</strong> (Program Accredited by NBA) in association with <strong>Students' Coding Club PIEDPIPERS</strong>, 
                         Siddaganga Institute of Technology presents <strong>ZERONE 3.0 – YUGA: The Age of Digital Empires</strong>.
                     </p>
                     <p className="text-gray-400 font-sans text-lg leading-relaxed text-justify">
-                        This <strong>MCA Alumni Sponsored Fest</strong> is an Intercollegiate Tech Showdown. 
                         On <strong>24th December 2025</strong>, the gates open. 
                         Step into our realm, showcase your excellence, and be part of this majestic celebration of technology and innovation.
                     </p>
