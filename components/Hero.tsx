@@ -53,21 +53,27 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
   }, []);
 
   const handleDownloadBrochure = async () => {
-      const brochureUrl = 'https://www.canva.com/design/DAG7Xg2cVhg/ff6VA8Def79HrSqJPEwkqQ/view?utlId=h98b7434cd2#14';
-
       setIsDownloading(true);
+
+      const fileName = 'BROCHURE.pdf';
+      const pdfUrl = '/BROCHURE.pdf';
 
       // Track download event
       if (typeof window.gtag !== 'undefined') {
           window.gtag('event', 'file_download', {
-              file_name: 'ZERONE 3.0 Brochure (Canva)',
-              file_extension: 'url',
-              link_url: brochureUrl
+              file_name: fileName,
+              file_extension: 'pdf',
+              link_url: pdfUrl
           });
       }
 
       try {
-        window.open(brochureUrl, '_blank', 'noopener,noreferrer');
+        const link = document.createElement('a');
+        link.href = pdfUrl;
+        link.download = fileName;
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
       } finally {
         setIsDownloading(false);
       }

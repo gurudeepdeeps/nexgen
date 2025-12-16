@@ -15,8 +15,8 @@ const PRECACHE_ASSETS = [
   '/vite.config.ts',
   '/SIT-Tumkur-Logo.png',
   '/event-coordinators-dp/achyuth.jpg',
-  '/event-coordinators-dp/bindhu shree .jpeg',
-  '/event-coordinators-dp/bindu shree T R.jpeg',
+  '/event-coordinators-dp/bindushree_tr.jpeg',
+  '/event-coordinators-dp/bindusree_ks.jpeg',
   '/event-coordinators-dp/khushi.jpeg',
   '/event-coordinators-dp/likitha.jpeg',
   '/event-coordinators-dp/lingadevaru.jpg',
@@ -26,6 +26,7 @@ const PRECACHE_ASSETS = [
   '/event-coordinators-dp/pooja.jpeg',
   '/event-coordinators-dp/shashiraj.jpeg',
   '/event-coordinators-dp/snehashree.jpeg',
+  '/BROCHURE.pdf',
   // Add other static assets here
 ];
 
