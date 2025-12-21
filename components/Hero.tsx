@@ -55,8 +55,8 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
   const handleDownloadBrochure = async () => {
       setIsDownloading(true);
 
-      const fileName = 'BROCHURE.pdf';
-      const pdfUrl = '/BROCHURE.pdf';
+      const fileName = 'ZERONE_Browser_2025.pdf';
+      const pdfUrl = '/MY_BROCHURE_2025.pdf';
 
       // Track download event
       if (typeof window.gtag !== 'undefined') {

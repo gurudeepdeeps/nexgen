@@ -10,7 +10,7 @@ const sponsorsList = [
 ];
    
 const Sponsors: React.FC = () => {
-  return (
+  return ( 
     <div id="sponsors" className="relative py-20 px-6 min-h-screen">
         <div className="max-w-7xl mx-auto text-center"> 
             <motion.div
@@ -21,7 +21,7 @@ const Sponsors: React.FC = () => {
                 <h2 className="text-4xl md:text-7xl font-display text-gold-500 mb-6 text-shadow-strong">SANRAKSHANA</h2>
                 <p className="text-gray-400 font-serif tracking-widest uppercase">The Pillars of the Empire</p>
             </motion.div>
-
+  
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
                 {sponsorsList.map((sponsor, idx) => (
                     <SponsorCard key={idx} sponsor={sponsor} index={idx} />
