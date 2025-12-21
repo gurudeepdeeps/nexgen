@@ -242,7 +242,7 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                     </div>
                     <div className="text-center space-y-2">
                         <p className="text-gray-300 font-serif text-base md:text-lg">
-                            <span className="text-gold-300 font-bold">Registration closes on 22nd December 2025 (Night)</span>
+                            <span className="text-gold-300 font-bold">Registration closes on 23rd December 2025 (Night)</span>
                         </p>
                         <p className="text-gray-400 font-sans text-sm md:text-base">
                             All events will be conducted simultaneously. Participants can register for <span className="text-gold-400 font-bold">only one event</span>. 
