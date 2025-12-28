@@ -51,7 +51,7 @@ const About: React.FC = () => {
                         SJB Institute of Technology presents <strong>NEXGEN : The next generation of talent</strong>.
                     </p>
                     <p className="text-gray-400 font-sans text-lg leading-relaxed text-justify">
-                        On <strong>24th December 2025</strong>, the gates open. 
+                        On <strong>15th January 2026</strong>, the gates open. 
                         Step into our realm, showcase your excellence, and be part of this majestic celebration of technology and innovation.
                     </p>
                 </div>

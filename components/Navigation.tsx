@@ -82,15 +82,7 @@ const Navigation: React.FC<NavProps> = ({ activeView, onChangeView }) => {
       <div className="fixed top-0 left-0 w-full z-50 md:hidden flex items-center justify-between px-4 py-3 bg-black/95 backdrop-blur-xl border-b border-gold-900/40 shadow-lg">
           {/* Mobile Brand */}
           <div className="flex items-center gap-3" onClick={() => handleNavClick('home')}>
-              <img 
-                src={new URL('../SIT-Tumkur-Logo.png', import.meta.url).href} 
-                alt="SIT Logo" 
-                className="w-9 h-9 object-contain bg-white/95 p-0.5 rounded-full shadow-[0_0_10px_rgba(212,163,44,0.3)]"
-              />
-              <div className="flex flex-col">
-                  <span className="text-[10px] text-gold-400 uppercase tracking-widest leading-tight font-bold">SIT Tumkur</span>
-                  <span className="text-gold-500 font-display text-lg tracking-[0.15em] leading-none">ZERONE</span>
-              </div>
+              <span className="text-gold-500 font-display text-lg tracking-[0.15em] leading-none">NEXGEN</span>
           </div>
 
           {/* Mobile Menu Toggle */}
