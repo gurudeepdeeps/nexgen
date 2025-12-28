@@ -32,7 +32,7 @@ const About: React.FC = () => {
             transition={{ duration: 0.8 }}
             className="text-center mb-16 relative z-10"
         >
-            <span className="text-gold-600 font-serif uppercase tracking-[0.3em] text-sm block mb-4">The Royal Proclamation</span>
+            <span className="text-gold-600 font-serif uppercase tracking-[0.3em] text-sm block mb-4">Hello...</span>
             <h2 className="text-4xl md:text-7xl font-display text-transparent bg-clip-text bg-gradient-to-b from-gold-300 to-gold-700 mb-8 drop-shadow-lg">
                 Namaskara
             </h2>
@@ -47,8 +47,8 @@ const About: React.FC = () => {
                         "We extend a warm welcome to all participants and students from various institutes joining us."
                     </p>
                     <p className="text-gray-400 font-sans text-lg leading-relaxed text-justify mb-6">
-                        Organized by the <strong>Department of MCA</strong> (Program Accredited by NBA) in association with <strong>Students Coding Club PIEDPIPERS</strong>, 
-                        Siddaganga Institute of Technology presents <strong>ZERONE – YUGA: The Age of Digital Empires</strong>.
+                        Organized by the <strong>Department of MCA</strong> in association with <strong>Students Club</strong>, 
+                        SJB Institute of Technology presents <strong>NEXGEN : The next generation of talent</strong>.
                     </p>
                     <p className="text-gray-400 font-sans text-lg leading-relaxed text-justify">
                         On <strong>24th December 2025</strong>, the gates open. 
@@ -66,7 +66,7 @@ const About: React.FC = () => {
             >
                 <h3 className="text-2xl font-display text-gold-400 mb-4">OUR SAMSTHANA</h3>
                 <p className="text-gray-400 font-sans">
-                    Siddaganga Institute of Technology.<br/>
+                    SJB Institute of Technology.<br/>
                     An Autonomous Institution, Affiliated to VTU, Belagavi. Approved by AICTE, New Delhi.
                     Accredited by NAAC with A++ Grade.
                 </p>
@@ -78,7 +78,7 @@ const About: React.FC = () => {
                 <h3 className="text-2xl font-display text-gold-400 mb-4">SANGAMA</h3>
                 <p className="text-gray-400 font-sans">
                     Department of MCA<br/>
-                    In Association with Students Coding Club PIEDPIPERS.
+                    In Association with Students Club.
                 </p>
             </motion.div>
         </div>
@@ -86,9 +86,9 @@ const About: React.FC = () => {
         {/* Dignitaries */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 text-center mt-12 relative z-10">
                 {[
-                { title: 'Patron', name: 'Dr. Shivakumaraiah', role: 'Joint Secretary & CEO' },
-                { title: 'President', name: 'Dr. Premasudha B G', role: 'Professor & Head, Dept. of MCA' },
-                { title: 'Rector', name: 'Dr. S V Dinesh', role: 'Principal SIT, Tumkur' }
+                { title: 'Director', name: 'Dr. Puttaraju', role: 'Academic Director - SJBIT' },
+                { title: 'HOD', name: 'Dr. Nagamani.S', role: 'Head of Department, MCA' },
+                { title: 'Principal', name: 'K.V. Mahendra Prashanth', role: 'Principal SJB Institute of Technology, Bengaluru' }
             ].map((dignitary, idx) => (
                 <motion.div 
                     key={idx}

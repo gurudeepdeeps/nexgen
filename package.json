@@ -1,6 +1,5 @@
-
 {
-  "name": "zerone-3.0",
+  "name": "nexgen-1.0",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -10,17 +9,30 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@vercel/analytics": "^1.0.1",
     "framer-motion": "^10.16.4",
     "lucide-react": "^0.284.0",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0",
-    "@vercel/analytics": "^1.0.1"
+    "react-dom": "^18.2.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@vitejs/plugin-react": "^4.0.3",
     "typescript": "^5.0.2",
-    "vite": "^4.3.9"
-  }
+    "vite": "^7.3.0"
+  },
+  "description": "**Prerequisites:**  Node.js",
+  "main": "sw.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gurudeepdeeps/nexgen.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gurudeepdeeps/nexgen/issues"
+  },
+  "homepage": "https://github.com/gurudeepdeeps/nexgen#readme"
 }

@@ -10,8 +10,10 @@ export const GENERAL_RULES = [
   'Participants are required to bring their own electronic devices.',
   'Detailed event instructions will be provided by the coordinators.',
   'The college will not be responsible for any loss of personal belongings.',
+  /*
   'Individual Events: Maximum 3 participants per college.',
   'Group Events: Maximum 2 teams per college.',
+  */
   'Any malpractice will lead to elimination.'
 ];
 
@@ -19,44 +21,44 @@ export const GENERAL_RULES = [
 
 export const EVENTS: EventDetails[] = [
   {
-    id: 'vedix',
-    title: 'VEDIX',
-    subtitle: 'The Battle of Code',
-    category: EventCategory.CODING,
+    id: 'bgmi',
+    title: 'BGMI',
+    subtitle: 'BGMI',
+    category: EventCategory.GAMING,
     description:
-      'A solo coding event to test your algorithmic prowess. Show your skills in C, C++, Java, or Python.',
-    prizePool: '₹4,000',
-    registrationFee: '₹200',
-    teamSize: 'Solo',
-    maxMembers: 1,
+      'Battle it out in the BGMI warzone.',
+    prizePool: '₹7,000',
+    registrationFee: '₹400 / Team',
+    teamSize: '4 Members',
+    maxMembers: 4,
     rules: [
-      'This is an individual event.',
-      'A maximum of 3 participants per college is allowed.',
-      'Allowed programming languages: C, C++, Java, Python.',
-      'Participants must report to the venue 30 minutes before the event for round-wise instructions.',
-      'Pen and paper will be provided if required.',
-      'HackerRank credentials are mandatory for all participants.',
-      'Personal gadgets are strictly prohibited; organizers will provide a PC for the event.',
-      'Any form of malpractice will lead to immediate disqualification.',
-      'The decision of the judges is final and binding.',
-      'Rules for each round will be announced on the spot.'
+      'Team of 4 members.',
+      'On-spot registration is NOT allowed.',
+      'Only online registration.',
+      'Custom rooms only.',
+      'No exploiting glitches.',
+      'No Tablets allowed.',
+      'Carry your own mobile device.',
+      'Any malpractice will lead to elimination.',
+      'Judges decision is final.'
     ],
     coordinators: [
-      { name: 'Darshan Shankar Naik', phone: '9535598827' },
-      { name: 'Bindushree T R', phone: '8050020429' }
+      { name: 'Gurudeep V', phone: '6363770057' },
+      { name: 'Vijay M', phone: '9353414989' },
+      { name: 'Sourabh', phone: '8431127576' }
     ],
-    imageUrl: '/event-images/vedix-coding.jpg',
+    imageUrl: '/event-images/bgmi.png',
     registrationUrl:
-      'https://docs.google.com/forms/d/e/1FAIpQLSeKiwS5OjHcsIvWFiZPL-Az_BFS2cfXqhc-Ma7rgFyRXKaDQQ/viewform'
+      'https://docs.google.com/forms/d/e/1FAIpQLSchN-x5YgBAvJ1u5q9gmLBRtgF1uHOI2WRsa_BHx3UWxU5ciA/viewform'
   },
 
   {
-    id: 'raja-neeti',
-    title: 'RAJA NEETI SABHA',
-    subtitle: 'IT Manager',
-    category: EventCategory.MANAGEMENT,
+    id: 'video-making',
+    title: 'VIDEO MAKING',
+    subtitle: 'Video Making',
+    category: EventCategory.VIDEO_MAKING,
     description:
-      'Test your leadership, crisis management, and decision-making skills.',
+      'Capture the essence of the fest through videography.',
     prizePool: '₹4,000',
     registrationFee: '₹200',
     teamSize: 'Solo',
@@ -64,28 +66,28 @@ export const EVENTS: EventDetails[] = [
     rules: [
       'This is an Individual Event.',
       'Maximum 3 participants per college.',
-      'Participants must bring resume (soft copy).',
+      'Editing must be done on the spot.',
       'Smartphones allowed only when instructed.',
       'Rules will be announced on the spot.',
       'Any Malpractice leads to elimination.',
-      'Judges’ decision is final.'
+      'Judges decision is final.'
     ],
     coordinators: [
-      { name: 'Madhumitha S', phone: '9482139571' },
-      { name: 'Jeevan G', phone: '9686585450' }
+      { name: 'harshith R', phone: '7204560373' },
+      { name: 'Suhas', phone: '8073800496' }
     ],
-    imageUrl: '/event-images/it-manager.jpg',
+    imageUrl: '/event-images/video-making.png',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSfxIeqxlEMXWDeun6F1Zs2OSf9zIhwSwM_0Xl8C2Ve9lcanfg/viewform'
   },
 
   {
-    id: 'drishti',
-    title: 'DRISHTI',
+    id: 'photography',
+    title: 'PHOTOGRAPHY',
     subtitle: 'The Royal Lens (Photography)',
     category: EventCategory.PHOTOGRAPHY,
     description:
-      'Capture the essence of the fest through photography and videography.',
+      'Capture the essence of the fest through photography.',
     prizePool: '₹3,500',
     registrationFee: '₹200',
     teamSize: 'Solo',
@@ -101,17 +103,17 @@ export const EVENTS: EventDetails[] = [
       'Any malpractice leads to elimination.'
     ],
     coordinators: [
-      { name: 'Pooja R', phone: '8296077558' },
-      { name: 'Akash Y', phone: '6363614954' }
+      { name: 'Adithya', phone: '6361384725' },
+      { name: 'Jeevan M', phone: '8277558979' }
     ],
-    imageUrl: '/event-images/photography.jpg',
+    imageUrl: '/event-images/photography.png',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLScz3b8KdImvTaYtCoRQmTRHya9KxezLqhBVXmLJCrPpcDb2tg/viewform'
   },
 
   {
-    id: 'dhwani',
-    title: 'DHWANI YUDDHA',
+    id: 'tech-talk',
+    title: 'TECH TALK',
     subtitle: 'Tech Talk',
     category: EventCategory.SPEAKING,
     description:
@@ -122,24 +124,25 @@ export const EVENTS: EventDetails[] = [
     maxMembers: 1,
     rules: [
       'Solo event.',
-      'No preparation time.',
+      'Topic is given on spot.',
+      '30mins on spot preparation time.',
       'No electronic devices allowed.',
       'Offensive language leads to disqualification.',
       'Any malpractice will lead to elimination.',
-      'Judges’ decision is final.'
+      'Judges decision is final.'
     ],
     coordinators: [
       { name: 'Mohith K V', phone: '9353938681' },
       { name: 'Snehashree N', phone: '8088816630' }
     ],
-    imageUrl: '/event-images/tech-talk.jpg',
+    imageUrl: '/event-images/tech-talk.png',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSfRSVs7aNfCRPJvy_o0vMWmxMpC6gu91bFwo1Py-3dRitBG7w/viewform?usp=header'
   },
 
   {
-    id: 'garuda',
-    title: 'GARUDA ANVESHANA',
+    id: 'treasure-hunt',
+    title: 'TREASURE HUNT',
     subtitle: 'Treasure Hunt',
     category: EventCategory.TREASURE_HUNT,
     description:
@@ -161,49 +164,51 @@ export const EVENTS: EventDetails[] = [
       { name: 'Nithya Tejasvi', phone: '7899422270' },
       { name: 'Shashiraj', phone: '9900003586' }
     ],
-    imageUrl: '/event-images/treasure-hunt.jpg',
+    imageUrl: '/event-images/treasure-hunt.png',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSeQnRO8_71iDXu1jcnii3sl1gY_mPxTqQHzTw-OfTwlh2_8yg/viewform'
   },
 
   {
-    id: 'chakravyuha',
-    title: 'CHAKRAVYUHA WARZONE',
-    subtitle: 'BGMI',
-    category: EventCategory.GAMING,
+    id: 'coding',
+    title: 'CODING',
+    subtitle: 'The Battle of Code',
+    category: EventCategory.CODING,
     description:
-      'Battle it out in the BGMI warzone.',
-    prizePool: '₹7,000',
-    registrationFee: '₹500 / Team',
-    teamSize: '4 Members',
-    maxMembers: 4,
+      'A solo coding event to test your algorithmic prowess. Show your skills in C, C++, Java, or Python.',
+    prizePool: '₹4,000',
+    registrationFee: '₹200',
+    teamSize: 'Solo',
+    maxMembers: 1,
     rules: [
-      'Team of 4 members.',
-      'On-spot registration is NOT allowed.',
-      'Only online registration.',
-      'Custom rooms only.',
-      'No exploiting glitches.',
-      'Carry your own mobile device.',
-      'Any malpractice will lead to elimination.',
-      'Judges’ decision is final.'
+      'This is an individual event.',
+      'A maximum of 3 participants per college is allowed.',
+      'Allowed programming languages: C, C++, Java, Python.',
+      'Participants must report to the venue 30 minutes before the event for round-wise instructions.',
+      'Pen and paper will be provided if required.',
+      'HackerRank credentials are mandatory for all participants.',
+      'Personal gadgets are strictly prohibited; organizers will provide a PC for the event.',
+      'Any form of malpractice will lead to immediate disqualification.',
+      'The decision of the judges is final and binding.',
+      'Rules for each round will be announced on the spot.'
     ],
     coordinators: [
-      { name: 'Achyuth U S', phone: '9148686067' },
-      { name: 'Bindusree K S', phone: '8904464903' }
+      { name: 'Shashank G', phone: '9353567961' },
+      { name: 'Sudha', phone: '8050020429' }
     ],
-    imageUrl: '/event-images/bgmi.jpg',
+    imageUrl: '/event-images/coding.png',
     registrationUrl:
-      'https://docs.google.com/forms/d/e/1FAIpQLSchN-x5YgBAvJ1u5q9gmLBRtgF1uHOI2WRsa_BHx3UWxU5ciA/viewform'
+      'https://docs.google.com/forms/d/e/1FAIpQLSeKiwS5OjHcsIvWFiZPL-Az_BFS2cfXqhc-Ma7rgFyRXKaDQQ/viewform'
   },
 
   {
-    id: 'web-kala',
-    title: 'WEB KALA VINYASA',
-    subtitle: 'Poster and Web Designing',
+    id: 'poster-designing',
+    title: 'POSTER DESIGNING',
+    subtitle: 'Poster Designing',
     category: EventCategory.DESIGN,
     description:
-      'Design creative web pages and posters.',
-    prizePool: '₹5,500',
+      'Design creative posters.',
+    prizePool: '₹3000',
     registrationFee: '₹300 / Team',
     teamSize: '2 Members',
     maxMembers: 2,
@@ -211,32 +216,29 @@ export const EVENTS: EventDetails[] = [
       'AI agents are strictly prohibited.',
       'Each team must consist of 2 members only.',
       'Cumulative scoring will decide the final results.',
-      'Allowed software/tools: Adobe Express, Canva, and Figma.',
-      'Some rounds will be based on HTML, CSS, and JavaScript.',
-      'Participants are allowed to use VS Code editor only.',
-      'Referring to external code is strictly not allowed.',
+      'Allowed software/tools: Adobe Photoshop, Canva.',
       'Participants must bring their own laptops, mobile phones, and chargers.',
       'The event schedule must be followed strictly.',
       'Participants must install all required software prior to the event.',
       'Any Malpractice leads to elimination.'
     ],
     coordinators: [
-      { name: 'Nuthan A M', phone: '9845541168' },
+      { name: 'Vinay', phone: '9845541168' },
       { name: 'Harshitha H', phone: '6363323303' }
     ],
-    imageUrl: '/event-images/web-design.jpg',
+    imageUrl: '/event-images/poster-designing.png',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSf8B5d9RP4dEvAJng3rzOaxbWzmW6dbLSrDUhDLq41Jz8V1Yw/viewform'
   },
 
   {
-    id: 'prajna',
-    title: 'PRAJNA PARIKSHA',
+    id: 'it-quiz',
+    title: 'IT QUIZ',
     subtitle: 'The Test of Wisdom (IT Quiz)',
     category: EventCategory.QUIZ,
     description:
       'A battle of wits covering IT and programming.',
-    prizePool: '₹5,000',
+    prizePool: '₹4,000',
     registrationFee: '₹300 / Team',
     teamSize: '2 Members',
     maxMembers: 2,
@@ -250,7 +252,7 @@ export const EVENTS: EventDetails[] = [
       { name: 'Likitha P Kumar', phone: '8660290349' },
       { name: 'Rahul H N', phone: '9632607249' }
     ],
-    imageUrl: '/event-images/it-quiz.jpg',
+    imageUrl: '/event-images/it-quiz.png',
     registrationUrl:
       'https://docs.google.com/forms/d/e/1FAIpQLSd1L8ltxkr3PZIYotx35KGadNQbiN_n3CjVDLZ7RkPiY7WZng/viewform'
   }
@@ -259,23 +261,24 @@ export const EVENTS: EventDetails[] = [
 /* -------------------- TIMELINE -------------------- */
 
 export const TIMELINE: TimelineItem[] = [
-  { time: '7:30 am - 09:00 AM', title: 'Registration', description: 'Registration' },
+  { time: '8:00 am - 09:00 AM', title: 'Registration', description: 'Registration' },
   { time: '09:00 AM - 09:15 AM', title: 'The Royal Inaugural', description: 'Opening Ceremony' },
   { time: '09:15 AM - 01:00 PM', title: 'The Battles Begin', description: 'Event Rounds' },
   { time: '01:00 PM - 02:00 PM', title: 'Grand Feast', description: 'Lunch Break' },
   { time: '02:00 PM - 04:00 PM', title: 'Final Showdown', description: 'Final Rounds' },
   { time: '04:30 PM - 05:30 PM', title: 'Abhinandana', description: 'Prize Distribution' },
-  { time: '05:30 PM Onwards', title: 'ZERONE YUGA', description: 'Closing Ceremony' }
+  { time: '05:30 PM Onwards', title: 'NEXGEN', description: 'Closing Ceremony' }
 ];
 
 /* -------------------- COORDINATORS -------------------- */
 
 export const FACULTY_COORDINATORS: Coordinator[] = [
-  { name: 'Dr. H S VijayaKumar', phone: '' },
-  { name: 'Dr. Prashanth G K', phone: '' }
+  { name: 'Faculty', phone: '1234567890' },
+  { name: 'Faculty', phone: '1234567890' }
 ];
 
 export const STUDENT_COORDINATORS: Coordinator[] = [
-  { name: 'Lingadevaru HP', phone: '9019746824' },
-  { name: 'Khushi Jagadeesh', phone: '9019854409' }
+  { name: 'Gurudeep V', phone: '6363770057' },
+  { name: 'Vijay M', phone: '9353414989' },
+  { name: 'Sourabh', phone: '8431127576' }
 ];

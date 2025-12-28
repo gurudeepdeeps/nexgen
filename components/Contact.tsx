@@ -1,338 +1,301 @@
+import React, { useState } from 'react';
+import { motion } from 'framer-motion';
 
-import React, { useRef } from 'react';
-import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
-import { MapPin, Phone, Award, Shield, Terminal, Palette, Camera, Compass, Briefcase, Brain, Gamepad2, Mic } from 'lucide-react';
-import { EVENTS, FACULTY_COORDINATORS, STUDENT_COORDINATORS } from '../constants';
-import { EventCategory } from '../types';
+/* Small helper icons */
+const PhoneIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+    <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.86 19.86 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.86 19.86 0 0 1-3.07-8.63A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12 1.21.42 2.4.9 3.5a2 2 0 0 1-.45 2.11L9.91 10.6a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c1.1.48 2.29.78 3.5.9A2 2 0 0 1 22 16.92z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round" />
+  </svg>
+);
+
+const MailIcon = ({ className = 'w-4 h-4' }: { className?: string }) => (
+  <svg className={className} viewBox="0 0 24 24" fill="none" aria-hidden>
+    <path d="M3 8.2v7.6a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V8.2" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+    <path d="M21 6H3v2.2l9 6 9-6V6z" stroke="currentColor" strokeWidth="1.2" strokeLinecap="round" strokeLinejoin="round"/>
+  </svg>
+);
+
+type Person = {
+  name: string;
+  role?: string;
+  phone?: string;
+  email?: string;
+  avatar?: string;
+};
+
+const studentCoordinators: Person[] = [
+  { name: 'Gurudeep V', role: 'General Secretary', phone: '+91-6363770057', avatar: '/event-coordinators-dp/gurudeepv.PNG' },
+  { name: 'Vijay M', role: 'General Secretary', phone: '+91-9353414989', avatar: '/event-coordinators-dp/vijaym.png' },
+  { name: 'harshith R', role: 'General Secretary', phone: '+91-7204560373', avatar: '/event-coordinators-dp/harshithr.png' },
+  { name: 'Sourabh', role: 'General Secretary', phone: '+91-8431127576', avatar: '/event-coordinators-dp/sourabh.png' },
+];
+
+const royalAdvisors: Person[] = [
+  { name: 'Teacher Name', role: 'Faculty Coordinator', email: 'example@gmail.com', avatar: '/default-avatar.svg' },
+  { name: 'Teacher Name', role: 'Faculty Coordinator', email: 'example@gmail.com', avatar: '/default-avatar.svg' },
+];
+
+const battalionGroups = [
+  {
+    title: 'BGMI',
+    commanders: [
+      { name: 'Gurudeep V', role: 'Co-ordinator', phone: '+91-6363770057', avatar: '/event-coordinators-dp/gurudeepv.PNG' },
+      { name: 'Vijay M', role: 'Co-ordinator', phone: '+91-9353414989', avatar: '/event-coordinators-dp/vijaym.png' },
+      { name: 'Sourabh', role: 'Co-ordinator', phone: '+91-8431127576', avatar: '/event-coordinators-dp/sourabh.png' },
+    ],
+  },
+  {
+    title: 'Photography',
+    commanders: [
+      { name: 'Adithya', role: 'Co-ordinator', phone: '+91-6361384725', avatar: '/event-coordinators-dp/adithya.png' },
+      { name: 'Jeevan M', role: 'Co-ordinator', phone: '+91-8277558979', avatar: '/event-coordinators-dp/jeevanm.png' },
+    ],
+  },
+  {
+    title: 'Video Making',
+    commanders: [
+      { name: 'Harshith R', role: 'Co-ordinator', phone: '+91-7204560373', avatar: '/event-coordinators-dp/harshithr.png' },
+      { name: 'Suhas', role: 'Co-ordinator', phone: '+91-8073800496', avatar: '/event-coordinators-dp/suhas.png' },
+    ],
+  },
+  {
+    title: 'Coding',
+    commanders: [
+      { name: 'Shashank G', role: 'Co-ordinator', phone: '+91-9353567961', avatar: '/event-coordinators-dp/shahsankg.png' },
+      { name: 'Sudha', role: 'Co-ordinator', phone: '+91-8050020429', avatar: '/event-coordinators-dp/sudha.png' },
+    ],
+  },
+  {
+    title: 'Tech Talk',
+    commanders: [
+      { name: 'Shashank G', role: 'Co-ordinator', phone: '+91-9353567961', avatar: '/event-coordinators-dp/shahsankg.png' },
+      { name: 'Nandini', role: 'Co-ordinator', phone: '+91-8050020429', avatar: '/event-coordinators-dp/nandini.png' },
+    ],
+  },
+  {
+    title: 'Treasure Hunt',
+    commanders: [
+      { name: 'Shashank G', role: 'Co-ordinator', phone: '+91-9353567961', avatar: '/event-coordinators-dp/shahsankg.png' },
+      { name: 'Nandini', role: 'Co-ordinator', phone: '+91-8050020429', avatar: '/event-coordinators-dp/nandini.png' },
+    ],
+  },
+  {
+    title: 'Poster Designing',
+    commanders: [
+      { name: 'Shashank G', role: 'Co-ordinator', phone: '+91-9353567961', avatar: '/event-coordinators-dp/shahsankg.png' },
+      { name: 'Nandini', role: 'Co-ordinator', phone: '+91-8050020429', avatar: '/event-coordinators-dp/nandini.png' },
+    ],
+  },
+  {
+    title: 'IT Quiz',
+    commanders: [
+      { name: 'Shashank G', role: 'Co-ordinator', phone: '+91-9353567961', avatar: '/event-coordinators-dp/shahsankg.png' },
+      { name: 'Nandini', role: 'Co-ordinator', phone: '+91-8050020429', avatar: '/event-coordinators-dp/nandini.png' },
+    ],
+  },
+  // Add more battalions as needed...
+];
 
 const Contact: React.FC = () => {
-    
-  // Mapping of coordinator names to their image files
-  const coordinatorImages: Record<string, string> = {
-    // Event Coordinators - Using images from event co ordnetrs DP folder
-    'Achyuth U S': '/event-coordinators-dp/achyuth.jpg',
-    'Bindusree K S': '/event-coordinators-dp/bindusree_ks.jpeg',
-    'Darshan Shankar Naik': '/event-coordinators-dp/darshan.jpeg',
-    'Jeevan G': '/event-coordinators-dp/jeevan.jpeg',
-    'Madhumitha S': '/event-coordinators-dp/madhumitha.jpeg',
-    'Pooja R': '/event-coordinators-dp/pooja.jpeg',
-    'Mohith K V': '/event-coordinators-dp/Mohith.jpg',
-    'Snehashree N': '/event-coordinators-dp/snehashree.jpeg',
-    'Nithya Tejasvi': '/event-coordinators-dp/nithya.jpg',
-    'Shashiraj': '/event-coordinators-dp/shashiraj.jpeg',
-    'Likitha P Kumar': '/event-coordinators-dp/likitha.jpeg',
-    'Rahul H N': '/event-coordinators-dp/rahual.jpg',
-    'Nuthan A M': '/event-coordinators-dp/nuthan.jpg',
-    'Harshitha H': '/event-coordinators-dp/harshitha.jpeg',
-    'Bindushree T R': '/event-coordinators-dp/bindushree_tr.jpeg',
-    'Akash Y': '/event-coordinators-dp/akash.jpg',
-    'Khushi Jagadeesh': '/event-coordinators-dp/khushi.jpeg',
-    
-    // Student Coordinators
-    'Lingadevaru HP': '/event-coordinators-dp/lingadevaru.jpg',
-    // Removed duplicate 'Khushi Jagadeesh' entry
-    
-    // Faculty Coordinators
-    'Dr. H S VijayaKumar': '/default-avatar.svg',
-    'Dr. Prashanth G K': '/default-avatar.svg'
-  };
+  // keep the old fallback form behavior available
+  const [name, setName] = useState('');
+  const [email, setEmail] = useState('');
+  const [message, setMessage] = useState('');
+  const [status, setStatus] = useState<'idle' | 'sending' | 'done' | 'error'>('idle');
 
-  // Function to get coordinator image with fallback to default avatar
-  const getAvatar = (name: string) => {
-    if (!name) return '/default-avatar.svg';
-    
-    // Try to find an exact match first
-    const exactMatch = coordinatorImages[name];
-    if (exactMatch) return exactMatch;
-    
-    // Try to find a partial match (in case of name variations)
-    const normalizedSearchName = name.toLowerCase().trim();
-    const matchingKey = Object.keys(coordinatorImages).find(key => {
-      const normalizedKey = key.toLowerCase();
-      return normalizedSearchName.includes(normalizedKey) || 
-             normalizedKey.includes(normalizedSearchName);
-    });
-    
-    return matchingKey ? coordinatorImages[matchingKey] : '/default-avatar.svg';
-  };
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setStatus('sending');
 
-  const getEventIcon = (category: EventCategory) => {
-      switch(category) {
-          case EventCategory.CODING: return <Terminal className="w-5 h-5" />;
-          case EventCategory.DESIGN: return <Palette className="w-5 h-5" />;
-          case EventCategory.PHOTOGRAPHY: return <Camera className="w-5 h-5" />;
-          case EventCategory.TREASURE_HUNT: return <Compass className="w-5 h-5" />;
-          case EventCategory.MANAGEMENT: return <Briefcase className="w-5 h-5" />;
-          case EventCategory.QUIZ: return <Brain className="w-5 h-5" />;
-          case EventCategory.GAMING: return <Gamepad2 className="w-5 h-5" />;
-          case EventCategory.SPEAKING: return <Mic className="w-5 h-5" />;
-          default: return <Award className="w-5 h-5" />;
+    try {
+      const formData = new FormData();
+      formData.append('name', name);
+      formData.append('email', email);
+      formData.append('message', message);
+      // helpful Formsubmit parameters
+      formData.append('_subject', 'NEXGEN: Contact Form');
+      formData.append('_captcha', 'false');
+
+      const res = await fetch('https://formsubmit.co/ajax/gurudeepv55@gmail.com', {
+        method: 'POST',
+        body: formData,
+      });
+
+      if (!res.ok) throw new Error(`HTTP ${res.status}`);
+
+      const json = await res.json();
+      if (json.success || res.ok) {
+        setStatus('done');
+        setName('');
+        setEmail('');
+        setMessage('');
+        setTimeout(() => setStatus('idle'), 4000);
+      } else {
+        throw new Error('Submission failed');
       }
+    } catch (err) {
+      // eslint-disable-next-line no-console
+      console.error('Contact form submit error', err);
+      setStatus('error');
+      setTimeout(() => setStatus('idle'), 5000);
+    }
   };
 
   return (
-    <div id="contact" className="relative pt-20 pb-12 px-6 min-h-screen overflow-hidden">
-        {/* Improved Background - Lighter feeling while keeping dark theme */}
-        <div className="absolute inset-0 bg-[#0a0505] z-0" />
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-[#1a0f0f] to-black opacity-80" />
-        
-        {/* Golden ambient glow for "light good" feeling */}
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-gold-600/5 rounded-full blur-[120px] pointer-events-none" />
-        <div className="absolute bottom-0 right-1/4 w-[600px] h-[600px] bg-purple-900/5 rounded-full blur-[120px] pointer-events-none" />
+    <section id="contact" className="relative py-20 px-6 md:px-12 max-w-7xl mx-auto">
+      <motion.div
+        initial={{ opacity: 0, y: 18 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5 }}
+        className="text-center mb-8"
+      >
+        <span className="text-gold-600 font-serif uppercase tracking-[0.3em] text-sm block mb-4">Get In Touch</span>
+        <h2 className="text-4xl md:text-5xl font-display text-gold-300 mb-4">Contact & Coordinators</h2>
+        <p className="text-gray-300 max-w-2xl mx-auto">Find the student coordinators, faculty advisors and battalion commanders below. Click phone icons to call directly.</p>
+      </motion.div>
 
-        {/* Texture */}
-        <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none z-0" 
-            style={{ 
-                backgroundImage: 'url("https://www.transparenttextures.com/patterns/black-linen.png")', 
-                backgroundSize: 'auto' 
-            }} 
-        />
-
-        <div className="max-w-7xl mx-auto relative z-10">
-            <motion.div 
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                className="text-center mb-16"
-            >
-                <h2 className="text-4xl md:text-6xl font-display text-gold-500 mb-6 text-shadow-gold">THE COUNCIL</h2>
-                <p className="text-gray-400 font-serif tracking-[0.2em] uppercase">Keepers of the Code</p>
-            </motion.div>
-
-            {/* General Coordinators Section - Moved to Top */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
-                
-                {/* Student Coordinators */}
-                <TiltCard className="h-full">
-                    <div className="bg-[#1a0505]/60 p-8 h-full backdrop-blur-sm relative overflow-hidden flex flex-col">
-                        <div className="absolute top-0 right-0 p-4 opacity-5">
-                            <Shield className="w-32 h-32" />
-                        </div>
-                        <h3 className="text-xl font-display text-gold-400 mb-8 flex items-center gap-3 border-b border-gold-900/50 pb-4 relative z-10">
-                            <Shield className="w-6 h-6" /> Student Coordinators
-                        </h3>
-                        <div className="space-y-6 relative z-10">
-                            {STUDENT_COORDINATORS.map((student, idx) => (
-                                <div key={idx} className="flex items-center justify-between group">
-                                    <div className="flex items-center gap-4">
-                                        <div className="w-16 h-16 rounded-full border-2 border-gold-600/50 overflow-hidden shrink-0 shadow-[0_0_10px_rgba(212,163,44,0.2)]">
-                                            <img 
-                                                src={getAvatar(student.name)} 
-                                                alt={student.name} 
-                                                className="w-full h-full object-cover"
-                                            />
-                                        </div>
-                                        <div>
-                                            <div className="text-xl font-serif text-white group-hover:text-gold-300 transition-colors">{student.name}</div>
-                                            <div className="text-xs text-gray-500 uppercase tracking-widest mt-1">General Secretary</div>
-                                        </div>
-                                    </div>
-                                    <a href={`tel:${student.phone}`} className="w-10 h-10 rounded-full bg-gold-900/20 flex items-center justify-center text-gold-500 hover:bg-gold-500 hover:text-black transition-all hover:scale-110">
-                                        <Phone className="w-5 h-5" />
-                                    </a>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </TiltCard>
-
-                {/* Faculty Coordinators */}
-                <TiltCard className="h-full">
-                    <div className="bg-[#1a0505]/60 p-8 h-full backdrop-blur-sm relative overflow-hidden flex flex-col">
-                         <div className="absolute top-0 right-0 p-4 opacity-5">
-                            <Award className="w-32 h-32" />
-                        </div>
-                        <h3 className="text-xl font-display text-gold-400 mb-8 flex items-center gap-3 border-b border-gold-900/50 pb-4 relative z-10">
-                            <Award className="w-6 h-6" /> ROYAL ADVISORS (FACULTY)
-                        </h3>
-                        <div className="space-y-6 relative z-10">
-                            {FACULTY_COORDINATORS.map((faculty, idx) => (
-                                <div key={idx} className="flex items-center gap-4 group">
-                                    <div className="w-16 h-16 rounded-full border-2 border-gold-800/50 overflow-hidden shrink-0 grayscale group-hover:grayscale-0 transition-all shadow-[0_0_10px_rgba(212,163,44,0.1)]">
-                                        <img 
-                                            src={getAvatar(faculty.name)} 
-                                            alt={faculty.name} 
-                                            className="w-full h-full object-cover"
-                                        />
-                                    </div>
-                                    <div>
-                                        <div className="text-xl font-serif text-white">{faculty.name}</div>
-                                        <div className="text-xs text-gray-500 uppercase tracking-widest mt-1">Faculty Coordinator</div>
-                                    </div>
-                                </div>
-                            ))}
-                        </div>
-                    </div>
-                </TiltCard>
+      {/* Top: two highlighted groups and a compact contact form */}
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-10">
+        <div className="md:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div className="bg-[#0f0404]/80 p-6 rounded-lg border border-gold-500/15 shadow-xl">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-gold-300 font-semibold">Student Coordinators</h3>
+              <span className="text-sm text-gray-400">Keepers of the code</span>
             </div>
-
-            {/* Event Specific Coordinators - Moved After Faculty/Student */}
-            <div className="mb-24">
-                <div className="flex items-center gap-4 mb-8">
-                    <div className="h-px bg-gold-800/50 flex-grow" />
-                    <h3 className="text-xl md:text-2xl font-serif text-gold-100 uppercase tracking-widest text-center px-4 py-2 rounded bg-black/40 border border-gold-900/30 backdrop-blur-sm">Battalion Commanders</h3>
-                    <div className="h-px bg-gold-800/50 flex-grow" />
-                </div>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {EVENTS.map((event, idx) => (
-                        <TiltCard key={event.id} index={idx}>
-                             {/* Card Header with Image Background Hint */}
-                            <div className="relative h-24 overflow-hidden border-b border-gold-900/30">
-                                <img src={event.imageUrl} alt={event.title} className="w-full h-full object-cover opacity-40 group-hover:opacity-60 transition-opacity duration-500 transform group-hover:scale-110" />
-                                <div className="absolute inset-0 bg-gradient-to-t from-[#0f0404] to-transparent" />
-                                <div className="absolute bottom-3 left-4 flex items-center gap-2 z-10">
-                                     <div className="p-1.5 bg-gold-600/20 rounded-full border border-gold-500/50 text-gold-400">
-                                        {getEventIcon(event.category)}
-                                     </div>
-                                     <h4 className="font-display text-gold-100 text-lg tracking-wide text-shadow-sm">{event.title}</h4>
-                                </div>
-                            </div>
-                            
-                            {/* Coordinators List */}
-                            <div className="p-5 space-y-4 bg-[#0f0404]/80 backdrop-blur-md">
-                                {event.coordinators.map((coord, cIdx) => (
-                                    <div key={cIdx} className="flex items-center justify-between group/coord border-b border-white/5 pb-2 last:border-0 last:pb-0">
-                                        <div className="flex items-center gap-3">
-                                            {/* Avatar */}
-                                            <div className="w-10 h-10 rounded-full border border-gold-800/50 overflow-hidden shrink-0 shadow-sm group-hover/coord:border-gold-500 transition-colors">
-                                                <img 
-                                                    src={getAvatar(coord.name)} 
-                                                    alt={coord.name} 
-                                                    className="w-full h-full object-cover opacity-90 group-hover/coord:opacity-100 transition-opacity"
-                                                />
-                                            </div>
-                                            
-                                            <div className="flex-grow min-w-0">
-                                                <p className="text-gray-200 font-serif text-sm truncate group-hover/coord:text-gold-300 transition-colors">{coord.name}</p>
-                                                <a 
-                                                    href={`tel:${coord.phone}`} 
-                                                    className="flex items-center gap-1 text-gray-500 hover:text-gold-400 transition-colors text-[10px] font-mono mt-0.5"
-                                                >
-                                                    <Phone className="w-3 h-3" />
-                                                    {coord.phone}
-                                                </a>
-                                            </div>
-                                        </div>
-
-                                        {/* Event Icon/Logo Beside Name (Empty Space) */}
-                                        <div className="opacity-20 group-hover/coord:opacity-60 transition-opacity text-gold-500 transform rotate-12">
-                                            {getEventIcon(event.category)}
-                                        </div>
-                                    </div>
-                                ))}
-                            </div>
-                        </TiltCard>
-                    ))}
-                </div>
-            </div>
-
-            {/* Map - With Tilt and Enhanced Style - Made Clickable */}
-            <TiltCard className="w-full h-96 mb-12">
-                 <div className="w-full h-full rounded-lg overflow-hidden border border-gold-800/50 shadow-2xl relative group bg-black/50 cursor-pointer">
-                     <a 
-                        href="https://www.google.com/maps/search/?api=1&query=Birla+Auditorium+Siddaganga+Institute+of+Technology+Tumkur"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="absolute inset-0 z-10"
-                        aria-label="Open Birla Auditorium location in Google Maps"
-                     >
-                     </a>
-                     <iframe 
-                        src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15529.74235335198!2d77.1272223!3d13.3072222!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bb02c6c6e76d9f9%3A0x7d206f4705574522!2sBirla%20Auditorium!5e0!3m2!1sen!2sin" 
-                        width="100%" 
-                        height="100%" 
-                        style={{ border: 0, filter: 'grayscale(100%) invert(90%) contrast(1.2)', pointerEvents: 'none' }} 
-                        allowFullScreen 
-                        loading="lazy" 
-                        title="SIT Map - Birla Auditorium"
-                        className="group-hover:filter-none transition-all duration-700 opacity-80 group-hover:opacity-100"
-                    ></iframe>
-                    <div className="absolute top-4 left-4 bg-black/80 p-3 rounded border border-gold-500 backdrop-blur-md shadow-lg transform group-hover:scale-105 transition-transform pointer-events-none">
-                        <div className="flex items-center gap-2 text-gold-400 font-bold font-sans">
-                            <MapPin className="w-4 h-4 animate-bounce" /> BIRLA AUDITORIUM, SIT
-                        </div>
+            <div className="space-y-4">
+              {studentCoordinators.map((p) => (
+                <div key={p.name} className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <img src={p.avatar} alt={p.name} className="w-12 h-12 rounded-full border border-gold-900/30" />
+                    <div className="text-left">
+                      <div className="text-white font-medium">{p.name}</div>
+                      <div className="text-xs text-gray-400">{p.role}</div>
                     </div>
-                    {/* Map Decorative Overlay */}
-                    <div className="absolute inset-0 border-[4px] border-gold-900/20 pointer-events-none rounded-lg" />
-                    <div className="absolute bottom-0 right-0 w-16 h-16 border-b-4 border-r-4 border-gold-500 rounded-br-lg opacity-50 pointer-events-none" />
-                    {/* Click hint */}
-                    <div className="absolute bottom-4 right-4 bg-black/80 px-3 py-2 rounded border border-gold-500/50 backdrop-blur-md pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-                        <span className="text-gold-300 text-xs font-sans">Click to open in Maps</span>
-                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    {p.phone && <a href={`tel:${p.phone}`} className="text-gold-300 hover:text-gold-400"><PhoneIcon /></a>}
+                    {p.email && <a href={`mailto:${p.email}`} className="text-gray-400 hover:text-gray-200"><MailIcon /></a>}
+                  </div>
                 </div>
-            </TiltCard>
-
-            {/* Footer */}
-            <div className="border-t border-gold-900/30 pt-8 text-center text-gray-500 text-sm">
-                <p>&copy; 2025 ZERONE. Forged in Code.</p>
+              ))}
             </div>
+          </div>
+
+          <div className="bg-[#0f0404]/80 p-6 rounded-lg border border-gold-500/15 shadow-xl">
+            <div className="flex items-center justify-between mb-4">
+              <h3 className="text-gold-300 font-semibold">Royal Advisors (Faculty)</h3>
+              <span className="text-sm text-gray-400">Guiding lights</span>
+            </div>
+            <div className="space-y-4">
+              {royalAdvisors.map((p) => (
+                <div key={p.name} className="flex items-center justify-between">
+                  <div className="flex items-center gap-4">
+                    <img src={p.avatar} alt={p.name} className="w-12 h-12 rounded-full border border-gold-900/30" />
+                    <div className="text-left">
+                      <div className="text-white font-medium">{p.name}</div>
+                      <div className="text-xs text-gray-400">{p.role}</div>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-3">
+                    {p.phone && <a href={`tel:${p.phone}`} className="text-gold-300"><PhoneIcon /></a>}
+                    {p.email && <a href={`mailto:${p.email}`} className="text-gray-400"><MailIcon /></a>}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
-    </div>
+
+        {/* Right column: compact contact form */}
+        <div className="bg-[#0f0404]/80 p-6 rounded-lg border border-gold-500/15 shadow-xl">
+          <h3 className="text-gold-300 font-semibold mb-2">Send a message</h3>
+          <p className="text-sm text-gray-400 mb-4">Or email: <a className="text-gold-300" href="mailto:gurudeepv55@gmail.com">gurudeepv55@gmail.com</a></p>
+          <form onSubmit={handleSubmit} className="space-y-3" noValidate>
+            <input name="name" className="w-full bg-black/60 border border-gold-900/40 p-3 rounded text-white" placeholder="Your name" value={name} onChange={(e) => setName(e.target.value)} required />
+            <input name="email" className="w-full bg-black/60 border border-gold-900/40 p-3 rounded text-white" placeholder="Your email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
+            <textarea name="message" className="w-full bg-black/60 border border-gold-900/40 p-3 rounded text-white min-h-[100px]" placeholder="Message" value={message} onChange={(e) => setMessage(e.target.value)} required />
+            <div className="flex items-center justify-between">
+              <button type="submit" disabled={status === 'sending'} className={`px-4 py-2 bg-gold-500 text-black rounded font-semibold hover:brightness-105 transition ${status === 'sending' ? 'opacity-60 cursor-wait' : ''}`}>
+                {status === 'sending' ? 'Sending...' : 'Send'}
+              </button>
+              <a className="text-sm text-gray-400" href="mailto:gurudeepv55@gmail.com">Or email us</a>
+            </div>
+
+            <div aria-live="polite" className="min-h-[28px]">
+              {status === 'sending' && (
+                <div className="text-sm text-gray-300">Sending…</div>
+              )}
+              {status === 'done' && (
+                <div className="text-sm text-green-400">Message sent — we'll get back to you soon.</div>
+              )}
+              {status === 'error' && (
+                <div className="text-sm text-red-400">Sending failed — please try emailing us directly.</div>
+              )}
+            </div>
+          </form>
+        </div>
+      </div>
+
+      {/* Battalion commanders grid */}
+      <div className="mb-12">
+        <h3 className="text-xl text-gold-300 font-semibold mb-6">Battalion Commanders</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {battalionGroups.map((g) => (
+            <div key={g.title} className="bg-gradient-to-t from-[#070404]/80 to-[#0f0505]/60 rounded-lg border border-gold-900/20 p-4 shadow-lg">
+              <div className="flex items-center justify-between mb-3">
+                <div className="text-white font-medium">{g.title}</div>
+                <div className="text-sm text-gray-400">Command</div>
+              </div>
+              <div className="space-y-3">
+                {g.commanders.map((c) => (
+                  <div key={c.name} className="flex items-center justify-between">
+                    <div className="flex items-center gap-3">
+                      <img src={c.avatar} alt={c.name} className="w-10 h-10 rounded-full border border-gold-900/30" />
+                      <div className="text-left">
+                        <div className="text-white">{c.name}</div>
+                        <div className="text-xs text-gray-400">{c.role}</div>
+                      </div>
+                    </div>
+                    <div className="flex items-center gap-3">
+                      {c.phone && (
+                        <a href={`tel:${c.phone}`} className="text-gold-300 hover:text-gold-400" aria-label={`Call ${c.name}`}>
+                          <PhoneIcon />
+                        </a>
+                      )}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {/* Map block */}
+      <div className="relative rounded-lg overflow-hidden border border-gold-900/20">
+        <a
+          href="https://maps.app.goo.gl/2H6duVmDg6jjUbqEA"
+          target="_blank"
+          rel="noreferrer"
+          className="absolute left-6 top-6 z-10 inline-block bg-[#111]/90 text-gold-300 px-4 py-2 rounded-full font-semibold shadow-md hover:brightness-105"
+        >
+          MCA BLOCK, SJBIT
+        </a>
+
+        {/* Simple embed — using a query embed (falls back gracefully). Styled to appear dark with CSS filter */}
+        <div className="w-full h-64 md:h-80 bg-black">
+          <iframe
+            title="MCA Block - map"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1794.3267499040503!2d77.49571434181553!3d12.900431678958924!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3fba95a0cd07%3A0xbf7b0324578e09b4!2sLabVIEW%20Academy%20%40%20SJBIT!5e0!3m2!1sen!2sin!4v1766914814054!5m2!1sen!2sin"
+            className="w-full h-full border-0"
+            style={{ filter: 'grayscale(100%) contrast(80%) brightness(45%)' }}
+          />
+        </div>
+        <div className="p-4 text-xs text-gray-400">Click the marker or the button to open in Google Maps</div>
+      </div>
+    </section>
   );
 };
-
-// Reusable Tilt Card Component
-const TiltCard: React.FC<{ children: React.ReactNode, className?: string, index?: number }> = ({ children, className = "", index = 0 }) => {
-    const x = useMotionValue(0);
-    const y = useMotionValue(0);
-
-    const mouseXSpring = useSpring(x, { stiffness: 300, damping: 30 });
-    const mouseYSpring = useSpring(y, { stiffness: 300, damping: 30 });
-
-    const rotateX = useTransform(mouseYSpring, [-0.5, 0.5], ["5deg", "-5deg"]);
-    const rotateY = useTransform(mouseXSpring, [-0.5, 0.5], ["-5deg", "5deg"]);
-    
-    const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
-        const rect = e.currentTarget.getBoundingClientRect();
-        const width = rect.width;
-        const height = rect.height;
-        const mouseX = e.clientX - rect.left;
-        const mouseY = e.clientY - rect.top;
-        const xPct = mouseX / width - 0.5;
-        const yPct = mouseY / height - 0.5;
-        x.set(xPct);
-        y.set(yPct);
-    };
-
-    const handleMouseLeave = () => {
-        x.set(0);
-        y.set(0);
-    };
-
-    return (
-        <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-50px" }}
-            transition={{ duration: 0.5, delay: index * 0.1 }}
-            onMouseMove={handleMouseMove}
-            onMouseLeave={handleMouseLeave}
-            style={{ 
-                rotateX, 
-                rotateY, 
-                transformStyle: "preserve-3d" 
-            }}
-            className={`perspective-1000 ${className}`}
-        >
-            <motion.div 
-                className="relative h-full w-full rounded-lg overflow-hidden group shadow-lg transition-shadow hover:shadow-[0_0_30px_rgba(212,163,44,0.15)] border border-gold-900/40 hover:border-gold-500/50 bg-[#0f0404]"
-                style={{ transformStyle: "preserve-3d" }}
-            >
-                {/* Dynamic Shine Effect */}
-                <div 
-                    className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none z-20"
-                    style={{ 
-                        background: `linear-gradient(135deg, rgba(255,255,255,0.05) 0%, transparent 100%)` 
-                    }}
-                />
-                
-                <div style={{ transform: "translateZ(10px)" }} className="h-full">
-                    {children}
-                </div>
-            </motion.div>
-        </motion.div>
-    );
-}
 
 export default Contact;

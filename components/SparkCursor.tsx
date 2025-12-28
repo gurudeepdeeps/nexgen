@@ -84,6 +84,11 @@ const SparkCursor: React.FC = () => {
     return () => clearInterval(interval);
   }, []);
 
+  // Hide on touch devices
+  if (typeof navigator !== 'undefined' && /Android|webOS|iPhone|iPad|iPod|BlackBerry/i.test(navigator.userAgent)) {
+    return null;
+  }
+
   if (!isVisible) return null;
 
   return (

@@ -1,7 +1,7 @@
-// Service Worker for ZERONE - YUGA
-// Version: 3.0.0
+// Service Worker for NEXGEN
+// Version: 1.0.0
 
-const CACHE_NAME = 'zerone-v3';
+const CACHE_NAME = 'nexgen-v1';
 const OFFLINE_URL = '/offline.html';
 
 // List of files to cache during installation
@@ -14,19 +14,14 @@ const PRECACHE_ASSETS = [
   '/types.ts',
   '/vite.config.ts',
   '/SIT-Tumkur-Logo.png',
-  '/event-coordinators-dp/achyuth.jpg',
-  '/event-coordinators-dp/bindushree_tr.jpeg',
-  '/event-coordinators-dp/bindusree_ks.jpeg',
-  '/event-coordinators-dp/khushi.jpeg',
-  '/event-coordinators-dp/likitha.jpeg',
-  '/event-coordinators-dp/lingadevaru.jpg',
-  '/event-coordinators-dp/madhumitha.jpeg',
-  '/event-coordinators-dp/nithya.jpg',
-  '/event-coordinators-dp/nuthan.jpg',
-  '/event-coordinators-dp/pooja.jpeg',
-  '/event-coordinators-dp/shashiraj.jpeg',
-  '/event-coordinators-dp/snehashree.jpeg',
-  '/BROCHURE.pdf',
+  '/event-coordinators-dp/gurudeepv.PNG',
+  '/event-coordinators-dp/adithya.png',
+  '/event-coordinators-dp/harshithr.png',
+  '/event-coordinators-dp/jeevanm.png',
+  '/event-coordinators-dp/sourabh.png',
+  '/event-coordinators-dp/suhas.png',
+  '/event-coordinators-dp/vijaym.png',
+  '/NEXGEN_BROCHURE_2026.pdf',
   // Add other static assets here
 ];
 

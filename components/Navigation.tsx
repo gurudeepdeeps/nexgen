@@ -40,7 +40,7 @@ const Navigation: React.FC<NavProps> = ({ activeView, onChangeView }) => {
                     <span 
                       className="text-2xl font-display text-transparent bg-clip-text bg-gradient-to-r from-gold-400 to-gold-600 tracking-widest drop-shadow-[0_2px_5px_rgba(212,163,44,0.5)] group-hover:text-gold-300 transition-colors leading-none mt-0.5"
                     >
-                        ZERONE
+                        NEXGEN
                     </span>
                 </div> 
             </div>

@@ -7,7 +7,7 @@ import About from './components/About';
 import Events from './components/Events';
 import Roadmap from './components/Roadmap';
 import Sponsors from './components/Sponsors';
-import Contact from './components/Contact';
+import Contact from './components/Contact.tsx';
 import Rules from './components/Rules';
 import Background from './components/Background';
 import SparkCursor from './components/SparkCursor';
@@ -37,7 +37,7 @@ const App: React.FC = () => {
       
       // Track Page View on Change
       window.gtag('config', GA_TRACKING_ID, {
-        page_title: `ZERONE | ${pageTitle}`,
+        page_title: `NEXGEN | ${pageTitle}`,
         page_path: `/${currentView}`,
       });
     }

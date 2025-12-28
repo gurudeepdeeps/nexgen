@@ -169,7 +169,7 @@ const Roadmap: React.FC = () => {
                     <div className="hidden md:block text-gold-400">→</div>
                     <div className="flex items-center gap-2">
                         <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                        <span className="text-red-300 font-serif text-base md:text-lg font-bold">Closes on 22nd December (Night)</span>
+                        <span className="text-red-300 font-serif text-base md:text-lg font-bold">Closes on 14th January (Night)</span>
                     </div>
                 </div>
             </div>
@@ -186,7 +186,7 @@ const Roadmap: React.FC = () => {
              <h2 className="text-5xl md:text-8xl font-display text-transparent bg-clip-text bg-gradient-to-b from-gold-300 via-gold-500 to-gold-800 mb-6 text-shadow-strong drop-shadow-2xl">
                  THE SAGA
              </h2>
-             <p className="text-gold-200/60 font-serif tracking-[0.5em] text-sm md:text-lg uppercase">Journey Through the Ages</p>
+             <p className="text-gold-200/60 font-serif tracking-[0.5em] text-sm md:text-lg uppercase">The Next Generation of Talent</p>
            </motion.div>
         </div>
 

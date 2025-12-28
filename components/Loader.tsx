@@ -39,7 +39,7 @@ const Loader: React.FC<LoaderProps> = ({ onLoadingComplete }) => {
             animate={{ opacity: 1, y: 0 }}
             className="text-5xl md:text-7xl font-display font-black tracking-widest text-transparent bg-clip-text bg-gradient-to-b from-gold-300 to-gold-700 drop-shadow-[0_0_15px_rgba(212,163,44,0.5)] mb-8"
           >
-              ZERONE
+              NEXGEN
           </motion.h1>
           
           {/* Progress Container */}
@@ -67,7 +67,7 @@ const Loader: React.FC<LoaderProps> = ({ onLoadingComplete }) => {
             transition={{ delay: 0.2 }}
             className="mt-6 font-serif tracking-[0.3em] text-gold-300/60 uppercase text-xs md:text-sm animate-pulse"
           >
-              Opening the Zerone Yuga...
+              Opening the NEXGEN...
           </motion.p>
       </div>
     </motion.div>

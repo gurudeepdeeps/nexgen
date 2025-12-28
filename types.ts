@@ -4,7 +4,7 @@ export enum EventCategory {
   DESIGN = 'Design',
   PHOTOGRAPHY = 'Photography',
   TREASURE_HUNT = 'Treasure Hunt',
-  MANAGEMENT = 'Management',
+  VIDEO_MAKING = 'Video Making',
   QUIZ = 'Quiz',
   GAMING = 'Gaming',
   SPEAKING = 'Speaking',

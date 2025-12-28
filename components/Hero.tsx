@@ -33,8 +33,8 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
   };
 
   useEffect(() => {
-    // Set Date to Dec 24, 2025
-    const targetDate = new Date('2025-12-24T09:00:00').getTime();
+    // Set Date to Jan 15, 2026 09:00:00
+    const targetDate = new Date('2026-01-15T09:00:00').getTime();
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate - now;
@@ -55,8 +55,8 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
   const handleDownloadBrochure = async () => {
       setIsDownloading(true);
 
-      const fileName = 'ZERONE_Browser_2025.pdf';
-      const pdfUrl = '/MY_BROCHURE_2025.pdf';
+      const fileName = 'NEXGEN_BROCHURE_2026.pdf';
+      const pdfUrl = '/NEXGEN_BROCHURE_2026.pdf';
 
       // Track download event
       if (typeof window.gtag !== 'undefined') {
@@ -133,8 +133,8 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                     <div className="relative shrink-0 mb-1 md:mb-0">
                          <div className="absolute inset-0 bg-white/10 blur-xl rounded-full" />
                          <img 
-                            src={new URL('../SIT-Tumkur-Logo.png', import.meta.url).href} 
-                            alt="SIT Logo" 
+                            src={new URL('../sjbit-logo.png', import.meta.url).href} 
+                            alt="sjbit-logo" 
                             className="relative w-12 h-12 md:w-20 md:h-20 object-contain"
                          />
                     </div>
@@ -142,7 +142,7 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                     {/* Text Area - Centered Items */}
                     <div className="text-center flex flex-col items-center justify-center w-full">
                         <h3 className="text-white font-serif text-sm sm:text-lg md:text-2xl lg:text-3xl font-bold tracking-wider mb-1 leading-tight text-shadow-strong md:whitespace-nowrap px-2">
-                            SIDDAGANGA INSTITUTE OF TECHNOLOGY
+                            SJB INSTITUTE OF TECHNOLOGY
                         </h3>
                         {/* Divider */}
                         <div className="h-px w-3/4 bg-gradient-to-r from-transparent via-gold-500 to-transparent mb-1 opacity-60" />
@@ -155,10 +155,10 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                 {/* Presented By Section - Below the Box */}
                 <div className="text-center mt-4 md:mt-6">
                     <p className="text-gold-200/60 font-serif text-[10px] md:text-xs tracking-[0.25em] uppercase mb-1">
-                        In Association With Students Coding Club
+                        In Association With Students
                     </p>
                     <h5 className="text-gold-500 font-display text-lg md:text-2xl tracking-[0.2em] uppercase text-shadow-gold flex flex-col md:flex-row items-center justify-center gap-2">
-                        PIEDPIPERS <span className="text-[10px] md:text-xs text-gold-600 tracking-widest font-sans opacity-80 md:mt-1">Presents</span>
+                        Club <span className="text-[10px] md:text-xs text-gold-600 tracking-widest font-sans opacity-80 md:mt-1">Presents</span>
                     </h5>
                 </div>
              </motion.div>
@@ -175,7 +175,7 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                         WebkitTextStroke: '1px rgba(138, 110, 40, 0.5)'
                     }}
                 >
-                    ZERONE
+                    NEXGEN
                 </motion.h1>
             </div>
 
@@ -189,13 +189,13 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                     className="text-2xl md:text-6xl font-serif text-white tracking-[0.3em] uppercase"
                     style={{ textShadow: '0 0 20px rgba(212, 163, 44, 0.6)' }}
                 >
-                    YUGA
+                    MCA
                 </motion.h2>
                 <motion.div animate={{ opacity: [0.5, 1, 0.5] }} transition={{ repeat: Infinity, duration: 2 }} className="text-gold-500 text-lg md:text-2xl hidden md:block">✦</motion.div>
             </div>
             
             <p className="text-gold-200/60 font-sans tracking-[0.3em] text-xs md:text-lg mb-6 md:mb-8 uppercase px-6 py-1">
-                The Age of Digital Empire
+                The next generation of talent
             </p>
 
             {/* Date & Countdown Container */}
@@ -203,8 +203,8 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                 {/* Date Display */}
                 <div className="flex items-center gap-4 bg-black/80 border border-gold-600 px-6 py-3 rounded-lg backdrop-blur-md shadow-[0_0_20px_rgba(212,163,44,0.15)] scale-90 md:scale-100">
                     <Calendar className="text-gold-400 w-6 h-6" />
-                    <span className="text-gold-100 font-serif text-2xl tracking-widest border-r border-gold-600/50 pr-4 mr-1">DEC 24</span>
-                    <span className="text-gold-400 font-sans text-xl">2025</span>
+                    <span className="text-gold-100 font-serif text-2xl tracking-widest border-r border-gold-600/50 pr-4 mr-1">JAN 15</span>
+                    <span className="text-gold-400 font-sans text-xl">2026</span>
                 </div>
 
                 {/* Countdown */}
@@ -242,7 +242,7 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                     </div>
                     <div className="text-center space-y-2">
                         <p className="text-gray-300 font-serif text-base md:text-lg">
-                            <span className="text-gold-300 font-bold">Registration closes on 23rd December 2025 (Night)</span>
+                            <span className="text-gold-300 font-bold">Registration closes on 14th January 2026 (Night)</span>
                         </p>
                         <p className="text-gray-400 font-sans text-sm md:text-base">
                             All events will be conducted simultaneously. Participants can register for <span className="text-gold-400 font-bold">only one event</span>. 

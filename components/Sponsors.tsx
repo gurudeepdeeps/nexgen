@@ -18,7 +18,7 @@ const Sponsors: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }} 
                 className="mb-20"
             > 
-                <h2 className="text-4xl md:text-7xl font-display text-gold-500 mb-6 text-shadow-strong">SANRAKSHANA</h2>
+                <h2 className="text-4xl md:text-7xl font-display text-gold-500 mb-6 text-shadow-strong">SPONSORS</h2>
                 <p className="text-gray-400 font-serif tracking-widest uppercase">The Pillars of the Empire</p>
             </motion.div>
   
