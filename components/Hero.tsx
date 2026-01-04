@@ -33,8 +33,8 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
   };
 
   useEffect(() => {
-    // Set Date to Jan 15, 2026 09:00:00
-    const targetDate = new Date('2026-01-15T09:00:00').getTime();
+    // Set Date to Jan 30, 2026 09:00:00
+    const targetDate = new Date('2026-01-30T09:00:00').getTime();
     const interval = setInterval(() => {
       const now = new Date().getTime();
       const distance = targetDate - now;

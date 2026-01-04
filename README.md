@@ -31,4 +31,4 @@ Rules.tsx
 
 Hero.tsx
 --line 58,59 to change the brocher.
---
+--line 36,37
