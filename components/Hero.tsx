@@ -203,7 +203,7 @@ export const Hero: React.FC<{ onChangeView: (view: string) => void }> = ({ onCha
                 {/* Date Display */}
                 <div className="flex items-center gap-4 bg-black/80 border border-gold-600 px-6 py-3 rounded-lg backdrop-blur-md shadow-[0_0_20px_rgba(212,163,44,0.15)] scale-90 md:scale-100">
                     <Calendar className="text-gold-400 w-6 h-6" />
-                    <span className="text-gold-100 font-serif text-2xl tracking-widest border-r border-gold-600/50 pr-4 mr-1">JAN 15</span>
+                    <span className="text-gold-100 font-serif text-2xl tracking-widest border-r border-gold-600/50 pr-4 mr-1">JAN 30</span>
                     <span className="text-gold-400 font-sans text-xl">2026</span>
                 </div>
 
