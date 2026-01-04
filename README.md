@@ -3,7 +3,7 @@
 ![image alt](https://github.com/gurudeepdeeps/nexgen/blob/473a62a0414c54f159ab6a4fce5d79b6f26b62ca/public/Website-First-Page-Screenshot.png)
 
 Welcome to the NexGen project!
-🌟 About the Project
+   🌟 About the Project
 
 NEXGEN is a modern and responsive college technical event website designed to showcase the next generation of talent.
 The platform serves as a central hub for event information, helping students explore competitions, activities, and updates related to the fest in a clear and engaging way.
@@ -50,42 +50,25 @@ This project was developed as part of a college event initiative, focusing on cl
 
 ----------------------------------------------------------------------------------
 
-📂 Project Structure
-
-nexgen/
-│
-├── public/              # Static assets (images, icons)
-├── src/
-│   ├── components/      # Reusable UI components
-│   ├── pages/           # Page-level components
-│   ├── App.tsx          # Root application component
-│   ├── main.tsx         # Application entry point
-│
-├── package.json         # Project dependencies
-├── vite.config.ts       # Vite configuration
-└── README.md            # Project documentation
-
-----------------------------------------------------------------------------------
-
 🚀 Getting Started
 
 Follow these steps to run the project locally:
 
 1️⃣ Clone the Repository
 
-git clone https://github.com/yourusername/nexgen.git
+`git clone https://github.com/yourusername/nexgen.git`
 
 2️⃣ Navigate to Project Folder
 
-cd nexgen
+`cd nexgen`
 
 3️⃣ Install Dependencies
 
-npm install
+`npm install`
 
 4️⃣ Run Development Server
 
-npm run dev
+`npm run dev`
 
 5️⃣ Open in Browser
 
@@ -105,7 +88,7 @@ https://nexgen-orpin.vercel.app/         //Deployed on Vercel #free
 
 👥 Contributors
 
-• Gurudeep Deepu – Developer & Designer
+• Gurudeep V – Developer & Designer
 
 ----------------------------------------------------------------------------------
 
@@ -120,6 +103,8 @@ https://nexgen-orpin.vercel.app/         //Deployed on Vercel #free
 • UI/UX planning for college-level applications
 
 • Team collaboration and deployment workflow
+
+----------------------------------------------------------------------------------
 
 🔮 Future Enhancements
 
@@ -139,7 +124,7 @@ This project is developed for academic and educational purposes.
 Feel free to fork, modify, and reuse it for college events.
 ⚠️ Don't reuse the same website ⚠️
 
-# ----------------------------------------IGNORE--------------------------------------
+# ------------------------------IGNORE----------------------------
 
 Requirements
   Node.js , python , npm , Git , Gemini API key , Netlify account , Vercel account
