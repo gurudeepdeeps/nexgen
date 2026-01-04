@@ -1,6 +1,6 @@
 🚀 NEXGEN – College Tech Event Website
 
-![Website-First-Page-Screenshot](.\public\Website-First-Page-Screenshot.png)
+![image alt](https://github.com/gurudeepdeeps/nexgen/blob/473a62a0414c54f159ab6a4fce5d79b6f26b62ca/public/Website-First-Page-Screenshot.png)
 
 Welcome to the NexGen project!
 🌟 About the Project
@@ -191,3 +191,6 @@ constansts.ts
 
 constants.ts
 for changes in events
+
+to add image in the readme file
+--https://youtu.be/ffeaOscUiwU?si=nk53Y2RfIak3s_2u
