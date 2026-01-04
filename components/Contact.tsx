@@ -287,7 +287,7 @@ const Contact: React.FC = () => {
         <div className="w-full h-64 md:h-80 bg-black">
           <iframe
             title="MCA Block - map"
-            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1794.3267499040503!2d77.49571434181553!3d12.900431678958924!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3fba95a0cd07%3A0xbf7b0324578e09b4!2sLabVIEW%20Academy%20%40%20SJBIT!5e0!3m2!1sen!2sin!4v1766914814054!5m2!1sen!2sin"
+            src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d1944.5566795853756!2d77.4957143!3d12.9004317!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae3fba95a0cd07%3A0xbf7b0324578e09b4!2sLabVIEW%20Academy%20%40%20SJBIT!5e0!3m2!1sen!2sin!4v1767558745807!5m2!1sen!2sin"
             className="w-full h-full border-0"
             style={{ filter: 'grayscale(100%) contrast(80%) brightness(45%)' }}
           />
