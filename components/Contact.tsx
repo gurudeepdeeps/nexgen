@@ -31,8 +31,8 @@ const studentCoordinators: Person[] = [
 ];
 
 const royalAdvisors: Person[] = [
-  { name: 'Teacher Name', role: 'Faculty Coordinator', email: 'example@gmail.com', avatar: '/default-avatar.svg' },
-  { name: 'Teacher Name', role: 'Faculty Coordinator', email: 'example@gmail.com', avatar: '/default-avatar.svg' },
+  { name: 'Teacher Name', role: 'Faculty Coordinator', phone: '+91-9999999999', avatar: '/default-avatar.svg' },/* '/faculty-coordinators-dp/chaitra.png' */
+  { name: 'Teacher Name', role: 'Faculty Coordinator', phone: '+91-9999999999', avatar: '/default-avatar.svg' },
 ];
 
 const battalionGroups = [
@@ -151,8 +151,8 @@ const Contact: React.FC = () => {
         className="text-center mb-8"
       >
         <span className="text-gold-600 font-serif uppercase tracking-[0.3em] text-sm block mb-4">Get In Touch</span>
-        <h2 className="text-4xl md:text-5xl font-display text-gold-300 mb-4">Contact & Coordinators</h2>
-        <p className="text-gray-300 max-w-2xl mx-auto">Find the student coordinators, faculty advisors and battalion commanders below. Click phone icons to call directly.</p>
+        <h2 className="text-4xl md:text-5xl font-display text-gold-300 mb-4">Coordinators</h2>
+        <p className="text-gray-300 max-w-2xl mx-auto">Find the student coordinators, faculty advisors and event coordinators below. Click phone icons to call directly.</p>
       </motion.div>
 
       {/* Top: two highlighted groups and a compact contact form */}
@@ -184,7 +184,7 @@ const Contact: React.FC = () => {
 
           <div className="bg-[#0f0404]/80 p-6 rounded-lg border border-gold-500/15 shadow-xl">
             <div className="flex items-center justify-between mb-4">
-              <h3 className="text-gold-300 font-semibold">Royal Advisors (Faculty)</h3>
+              <h3 className="text-gold-300 font-semibold">Faculty Coordinators</h3>
               <span className="text-sm text-gray-400">Guiding lights</span>
             </div>
             <div className="space-y-4">

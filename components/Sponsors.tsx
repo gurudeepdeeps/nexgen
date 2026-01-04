@@ -1,12 +1,11 @@
-
 import React from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 
 const sponsorsList = [
-    { name: "TechTitan Industries", tier: "Title Sponsor", color: "from-gold-300 to-gold-600" },
-    { name: "CodeForge Systems", tier: "Platinum Partner", color: "from-gray-300 to-gray-500" },
-    { name: "PixelPerfect Studios", tier: "Creative Partner", color: "from-orange-400 to-red-600" },
-    { name: "CyberGuard Solutions", tier: "Security Partner", color: "from-blue-400 to-indigo-600" }
+    { name: "TechTitan Industries", tier: "Title Sponsor", color: "from-gold-300 to-gold-600", image: "/sponsor-images/TechTitan-Industries.PNG" },
+    { name: "CodeForge Systems", tier: "Platinum Partner", color: "from-gray-300 to-gray-500", image: "/sponsor-images/CodeForge-Systems.png" },
+    { name: "PixelPerfect Studios", tier: "Creative Partner", color: "from-orange-400 to-red-600", image: "/sponsor-images/PixelPerfect-Studios.png" },
+    { name: "CyberGuard Solutions", tier: "Security Partner", color: "from-blue-400 to-indigo-600", image: "/sponsor-images/CyberGuard-Solutions.png" }
 ];
    
 const Sponsors: React.FC = () => {
@@ -19,7 +18,7 @@ const Sponsors: React.FC = () => {
                 className="mb-20"
             > 
                 <h2 className="text-4xl md:text-7xl font-display text-gold-500 mb-6 text-shadow-strong">SPONSORS</h2>
-                <p className="text-gray-400 font-serif tracking-widest uppercase">The Pillars of the Empire</p>
+                <p className="text-gray-400 font-serif tracking-widest uppercase">Our Valued Partners</p>
             </motion.div>
   
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-5xl mx-auto">
@@ -96,7 +95,7 @@ const SponsorCard: React.FC<{ sponsor: typeof sponsorsList[0], index: number }> 
                     className="flex flex-col items-center justify-center"
                 >
                     <div className={`w-24 h-24 rounded-full bg-gradient-to-br ${sponsor.color} mb-6 shadow-[0_0_20px_rgba(0,0,0,0.5)] flex items-center justify-center border border-white/10`}>
-                        <span className="text-3xl font-bold text-black font-display mix-blend-overlay">{sponsor.name.charAt(0)}</span>
+                        <img src={sponsor.image} alt={sponsor.name} className="w-full h-full object-cover rounded-full" />
                     </div>
                     
                     <h3 className="text-2xl font-display text-white mb-2 tracking-wide group-hover:text-gold-200 transition-colors">{sponsor.name}</h3>

@@ -23,7 +23,7 @@ export const EVENTS: EventDetails[] = [
   {
     id: 'bgmi',
     title: 'BGMI',
-    subtitle: 'BGMI',
+    subtitle: 'Battlegrounds Mobile India',
     category: EventCategory.GAMING,
     description:
       'Battle it out in the BGMI warzone.',
@@ -55,7 +55,7 @@ export const EVENTS: EventDetails[] = [
   {
     id: 'video-making',
     title: 'VIDEO MAKING',
-    subtitle: 'Video Making',
+    subtitle: 'Videography',
     category: EventCategory.VIDEO_MAKING,
     description:
       'Capture the essence of the fest through videography.',
@@ -114,7 +114,7 @@ export const EVENTS: EventDetails[] = [
   {
     id: 'tech-talk',
     title: 'TECH TALK',
-    subtitle: 'Tech Talk',
+    subtitle: 'Technical Talk',
     category: EventCategory.SPEAKING,
     description:
       'A platform to express ideas on emerging technologies.',
@@ -273,8 +273,8 @@ export const TIMELINE: TimelineItem[] = [
 /* -------------------- COORDINATORS -------------------- */
 
 export const FACULTY_COORDINATORS: Coordinator[] = [
-  { name: 'Faculty', phone: '1234567890' },
-  { name: 'Faculty', phone: '1234567890' }
+  { name: 'Faculty Coordinator', phone: '1234567890' },
+  { name: 'Faculty Coordinator', phone: '1234567890' }
 ];
 
 export const STUDENT_COORDINATORS: Coordinator[] = [

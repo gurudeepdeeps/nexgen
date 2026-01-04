@@ -184,7 +184,7 @@ const Roadmap: React.FC = () => {
              transition={{ duration: 1 }}
            >
              <h2 className="text-5xl md:text-8xl font-display text-transparent bg-clip-text bg-gradient-to-b from-gold-300 via-gold-500 to-gold-800 mb-6 text-shadow-strong drop-shadow-2xl">
-                 THE SAGA
+                 TIMELINE
              </h2>
              <p className="text-gold-200/60 font-serif tracking-[0.5em] text-sm md:text-lg uppercase">The Next Generation of Talent</p>
            </motion.div>

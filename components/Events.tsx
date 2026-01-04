@@ -32,20 +32,20 @@ const Events: React.FC = () => {
   return (
     <div id="events" className="relative py-20 px-0 md:px-12 max-w-[100vw] overflow-hidden min-h-screen flex flex-col justify-center">
       <div className="text-center mb-8 md:mb-12 px-4">
-         <h2 className="text-4xl md:text-6xl font-display text-gold-500 mb-4 text-shadow-gold">THE BATTLEFIELDS</h2>
+         <h2 className="text-4xl md:text-6xl font-display text-gold-500 mb-4 text-shadow-gold">NEXGEN--EVENTS</h2>
          
          {/* Search Bar */}
          <div className="relative max-w-lg mx-auto mb-6 group sticky top-4 z-50">
             <div className="absolute inset-y-0 left-3 flex items-center pointer-events-none">
                 <Search className="w-5 h-5 text-gold-500 group-focus-within:text-gold-300" />
             </div>
-            <label htmlFor="battlefield-search" className="block text-xs uppercase tracking-widest text-gold-400 mb-2">Choose Yuddh</label>
+            <label htmlFor="nexgenevents-search" className="block text-xs uppercase tracking-widest text-gold-400 mb-2">Choose Event</label>
             <input 
-                id="battlefield-search"
+                id="nexgenevents-search"
                 type="text"
-                aria-label="Choose Yuddh"
+                aria-label="Choose Event"
                 autoComplete="off"
-                placeholder="Choose Yuddh (e.g., Coding, Gaming)…"
+                placeholder="Choose Event (e.g., Coding, Gaming)…"
                 value={searchQuery}
                 onChange={(e) => setSearchQuery(e.target.value)}
                 className="w-full bg-black/70 border border-gold-600 rounded-full py-3.5 pl-12 pr-12 text-white placeholder-white/60 focus:outline-none focus:border-gold-500 focus:ring-2 focus:ring-gold-500 transition-all backdrop-blur-md shadow-[0_0_24px_rgba(212,163,44,0.25)]"
@@ -63,7 +63,7 @@ const Events: React.FC = () => {
          </div>
 
          <p className="text-gray-400 font-serif tracking-widest uppercase hidden md:block text-sm">
-            {filteredEvents.length === 0 ? "No Battlefields Found" : "Select Your Arena"}
+            {filteredEvents.length === 0 ? "No Events Found" : "Select Your Arena"}
          </p>
          
          {/* Mobile Instructions */}
@@ -91,7 +91,7 @@ const Events: React.FC = () => {
                 <EventCardDesktop key={event.id} event={event} index={index} onClick={() => setSelectedEvent(event)} />
             ))
         ) : (
-            <div className="w-full text-center text-gray-500 py-20 font-serif italic">The archives hold no record of such a battle...</div>
+            <div className="w-full text-center text-gray-500 py-20 font-serif italic">We hold no record of such a event...</div>
         )}
         {/* Spacer for end of scroll */}
         <div className="w-1 flex-shrink-0" />

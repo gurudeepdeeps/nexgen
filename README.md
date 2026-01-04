@@ -49,3 +49,6 @@ Rules.tsx
 --line 24,25 for changing General rules heading 
 constansts.ts
 --line 3 for changing rules
+
+constants.ts
+for changes in events
