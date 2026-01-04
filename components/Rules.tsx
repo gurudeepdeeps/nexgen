@@ -21,7 +21,7 @@ const Rules: React.FC = () => {
                 animate={{ opacity: 1, y: 0 }}
                 className="text-center mb-12"
             >
-                <h2 className="text-4xl md:text-6xl font-display text-gold-500 mb-4 text-shadow-gold">THE ROYAL CODE</h2>
+                <h2 className="text-4xl md:text-6xl font-display text-gold-500 mb-4 text-shadow-gold">GENERAL RULES</h2>
                 <p className="text-gray-400 font-serif tracking-widest uppercase">General Rules & Regulations</p>
             </motion.div>
 

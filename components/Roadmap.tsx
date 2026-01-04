@@ -169,7 +169,7 @@ const Roadmap: React.FC = () => {
                     <div className="hidden md:block text-gold-400">→</div>
                     <div className="flex items-center gap-2">
                         <div className="w-3 h-3 bg-red-400 rounded-full"></div>
-                        <span className="text-red-300 font-serif text-base md:text-lg font-bold">Closes on 14th January (Night)</span>
+                        <span className="text-red-300 font-serif text-base md:text-lg font-bold">Closes on 28th January (Night)</span>
                     </div>
                 </div>
             </div>

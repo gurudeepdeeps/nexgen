@@ -31,4 +31,21 @@ Rules.tsx
 
 Hero.tsx
 --line 58,59 to change the brocher.
---line 36,37
+
+Hero.tsx
+--line 36,37 set countdown time
+--date line 206
+
+constants.ts
+--line 261 for timeline
+
+constants.ts
+--line 273 for faculty coordinators
+
+Roadmap.tsx
+--line 161,167,172 to change the Registration Timeline and Registration closing date
+
+Rules.tsx
+--line 24,25 for changing General rules heading 
+constansts.ts
+--line 3 for changing rules
